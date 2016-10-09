@@ -3,14 +3,14 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.0 - 2016-10-09
+## Version [0.2.0] - 2016-10-09
 ### Added
 - A new bow type, recurve bow.
 - Custom textures for RecurveBow.
 - Language support for RecurveBow.
 - Texture project files in textures\items\projects.
 
-## Version 0.1.6 - 2016-10-09
+## Version [0.1.6] - 2016-10-09
 ### Added
 - New abstract parent class for all custom bows.
 
@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Replaced ResourceLibrary with init.Items
 - Updated RegularBow Item to new standards.
 
-## Version 0.1.5 - 2016-10-09
+## Version [0.1.5] - 2016-10-09
 ### Added
 - Language files for US and GB.
 - Language support for RegularBow and creative tab.
@@ -53,6 +53,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.0]: https://github.com/yooksi/Better-Archery-Reborn/compare/4500b7395764db49c5dbd587b59ccffbafeb32fe...cbf7233f3aa6f3173ec3afc4846bab09ddc0d3ee
+[0.1.5]: https://github.com/yooksi/Better-Archery-Reborn/commit/c0c5a80fa7fd615b93ec42dbc14672a84b862bee
+[0.1.6]: https://github.com/yooksi/Better-Archery-Reborn/commit/4500b7395764db49c5dbd587b59ccffbafeb32fe
 [0.1.4]: https://github.com/yooksi/Better-Archery-Reborn/commit/99ab2984b444ff9c76138a495f77e7e5c195c3c1
 [0.1.3]: https://github.com/yooksi/Better-Archery-Reborn/commit/d4707c731dbc9f025ee79733c115bc1f023fddae
 [0.1.2]: https://github.com/yooksi/Better-Archery-Reborn/commit/785c7492a0b08482d91da34f7aa98002bbfcc3a9
