@@ -3,6 +3,11 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.1.2 (2016-10-09)
+### Added
+- Resource Library for storing block and item instances.
+- Block and item registration with Forge.
+
 ## Version 0.1.1 (2016-10-09)
 ### Added
 - Network support for client and server.
