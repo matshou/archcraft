@@ -3,6 +3,15 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.1.6 - 2016-10-09
+### Added
+- New abstract parent class for all custom bows.
+
+### Changed
+- Replaced ResourceLibrary with init.Items
+- Updated RegularBow Item to new standards.
+
+
 ## Version 0.1.5 - 2016-10-09
 ### Added
 - Language files for US and GB.

@@ -1,6 +1,7 @@
 package com.yooksi.betterarchery.common;
 
 import com.yooksi.betterarchery.item.*;
+import com.yooksi.betterarchery.init.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,7 +23,7 @@ public class CommonProxy
 	{
 		Logger.info("Preparing to register item and block instances...");
 		
-		registerItem(new RegularBow(), "regular_bow");
+		registerItem(Items.REGULAR_BOW, "regular_bow");
 		
 		Logger.info("Finished registering object instances. ");
 	}
