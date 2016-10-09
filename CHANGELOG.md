@@ -3,6 +3,11 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.1.5 - 2016-10-09
+### Added
+- Language files for US and GB.
+- Language support for RegularBow and creative tab.
+
 ## Version [0.1.4] - 2016-10-09
 ### Fixed
 - Resolved: [#1](https://github.com/yooksi/Better-Archery-Reborn/issues/1) RegularBow model animation issue

@@ -15,10 +15,10 @@ public class BetterArchery
 {
 	public static final String MODID = "betterarchery";
 	public static final String NAME = "Better Archery Reborn";
-    public static final String VERSION = "0.1.4";
+    public static final String VERSION = "0.1.5";
 
 	// This is where all our custom items should be listed in-game
-	public static final CreativeTabs tabBetterArchery = new CreativeTabs("Better Archery") 
+	public static final CreativeTabs tabBetterArchery = new CreativeTabs("BetterArchery") 
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
@@ -29,7 +29,7 @@ public class BetterArchery
 	};
 	
 	@Mod.Instance(MODID)
-	public static BetterArchery  instance;
+	public static BetterArchery instance;
 	
 	@SidedProxy(clientSide = "com.yooksi.betterarchery.network.ClientProxy",   
 			serverSide = "com.yooksi.betterarchery.network.ServerProxy")
