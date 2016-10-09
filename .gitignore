@@ -6,3 +6,10 @@
 #gradle
 /build
 /.gradle
+
+#Minecraft
+/logs
+/config
+/saves
+/crash-reports
+options.txt

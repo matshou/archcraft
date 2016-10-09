@@ -9,15 +9,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-
-
 @Mod(modid = BetterArcheryReborn .MODID, version = BetterArcheryReborn.VERSION, name= BetterArcheryReborn.NAME, acceptedMinecraftVersions = "[1.10,1.10.2]")
 
 public class BetterArcheryReborn 
 {
 	public static final String MODID = "betterarchery";
 	public static final String NAME = "Better Archery Reborn";
-    public static final String VERSION = "0.0.1";
+    public static final String VERSION = "0.1.0";
     
     /** The instance of our mod that Forge uses. */
 	@Mod.Instance(MODID)
