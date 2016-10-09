@@ -3,6 +3,10 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.1.3 (2016-10-09)
+### Added
+- A new bow type, regular bow.
+
 ## Version 0.1.2 (2016-10-09)
 ### Added
 - Resource Library for storing block and item instances.
