@@ -3,6 +3,16 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.1 - 2016-10-10
+### Added
+- Support texture project files.
+
+### Changed
+- Improved RecurveBow textures.
+
+### Fixed
+- Resolved: [#3](https://github.com/yooksi/Better-Archery-Reborn/issues/3) RecurveBow animation is missing an arrow.
+
 ## Version [0.2.0] - 2016-10-09
 ### Added
 - A new bow type, recurve bow.
