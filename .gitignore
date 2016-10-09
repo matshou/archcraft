@@ -12,4 +12,7 @@
 /config
 /saves
 /crash-reports
-options.txt
+
+#generics
+/*.json
+/*.txt
