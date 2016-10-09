@@ -3,6 +3,13 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.0 - 2016-10-09
+### Added
+- A new bow type, recurve bow.
+- Custom textures for RecurveBow.
+- Language support for RecurveBow.
+- Texture project files in textures\items\projects.
+
 ## Version 0.1.6 - 2016-10-09
 ### Added
 - New abstract parent class for all custom bows.
@@ -10,7 +17,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 ### Changed
 - Replaced ResourceLibrary with init.Items
 - Updated RegularBow Item to new standards.
-
 
 ## Version 0.1.5 - 2016-10-09
 ### Added
