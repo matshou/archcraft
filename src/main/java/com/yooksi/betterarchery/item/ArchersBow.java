@@ -20,6 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
 {	
+	/** This multiplier modifies the duration of the bows pulling animation.  */
+	protected float pullBackMult = 1.0F;
+	
 	/** 
 	 * Perform custom bow initialization after it's been created. <br>  
 	 * This initialization protocol should be followed by all custom bows.
@@ -50,7 +53,17 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
                 if (entityIn != null)
                 {
                     ItemStack itemstack = entityIn.getActiveItemStack();
-                    return itemstack != null && itemstack.getItem() == item ? (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
+                    int useCount = entityIn.getItemInUseCount();
+                    final int maxUseDuration = stack.getMaxItemUseDuration();
+                    
+                    /* 
+                     * Change the speed of the pulling animation here. The animation is divided into three stages,
+                     * and the speed of every stage is exponentially increased as they progress.
+                     * That's why we use a multiplier, instead of directly increasing or decreasing the value.
+                     */
+                    
+                    float pullBackSpeed = itemstack != null && itemstack.getItem() == item ? (float)(maxUseDuration - useCount) / 20.0F : 0.0F;
+                    return pullBackSpeed *= ((ArchersBow)item).pullBackMult;
                 }
                 else return 0.0F;
             }
