@@ -32,7 +32,7 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
 	/** This multiplier modifies the duration of the bows pulling animation. */
 	protected float pullingSpeedMult = 1.0F;
 	
-	/** This multiplier modifies the speed of arrow being shot from this bow. */
+	/** This multiplier modifies the speed and damage of an arrow being shot from this bow. */
 	protected float arrowSpeedMult = 1.0F;
 	
 	/** 
@@ -138,12 +138,15 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
                     itemstack = new ItemStack(Items.ARROW);
                 }
 
-                // Vanilla arrow velocity value ranges from 0.0F to 1.0F.               
+                /*  Vanilla arrow velocity value ranges from 0.0F to 1.0F.
+                 *  Increasing arrow velocity will proportionally increase it's damage,
+                 *  as well as the pitch of the sound played upon releasing the arrow.
+                 */
                 float f = getArrowVelocity(i) * arrowSpeedMult;
                 
-                if ((double)f >= 0.1D)
+                if ((double)f >= 0.1D * arrowSpeedMult)
                 {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow ? ((ItemArrow)itemstack.getItem()).isInfinite(itemstack, stack, entityplayer) : false);
+                    boolean itemStackInfinite = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow ? ((ItemArrow)itemstack.getItem()).isInfinite(itemstack, stack, entityplayer) : false);
 
                     if (!worldIn.isRemote)
                     {
@@ -151,51 +154,35 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
                         EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
                         entityarrow.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
-                        if (f >= 1.0F)
-                        {
+                        if (f >= 1.0F * arrowSpeedMult)
                             entityarrow.setIsCritical(true);
-                        }
 
-                        int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+                        int enchLvlPower = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+                        int enchLvlPunch = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
+                        int enchLvlFlame  = EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack);
+                        
+                        if (enchLvlPower > 0)
+                            entityarrow.setDamage(entityarrow.getDamage() + (double)enchLvlPower * 0.5D + 0.5D);
 
-                        if (j > 0)
-                        {
-                            entityarrow.setDamage(entityarrow.getDamage() + (double)j * 0.5D + 0.5D);
-                        }
+                        if (enchLvlPunch > 0)
+                            entityarrow.setKnockbackStrength(enchLvlPunch);
 
-                        int k = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
-
-                        if (k > 0)
-                        {
-                            entityarrow.setKnockbackStrength(k);
-                        }
-
-                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
-                        {
+                        if (enchLvlFlame > 0)
                             entityarrow.setFire(100);
-                        }
 
                         stack.damageItem(1, entityplayer);
 
-                        if (flag1)
-                        {
+                        if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-                        }
 
                         worldIn.spawnEntityInWorld(entityarrow);
                     }
+                    
+                    final float soundPitch = 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F;
+                    worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, soundPitch);
 
-                    worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-
-                    if (!flag1)
-                    {
-                        --itemstack.stackSize;
-
-                        if (itemstack.stackSize == 0)
-                        {
-                            entityplayer.inventory.deleteStack(itemstack);
-                        }
-                    }
+                    if (!itemStackInfinite && --itemstack.stackSize == 0)  
+                    	entityplayer.inventory.deleteStack(itemstack);
 
                     entityplayer.addStat(StatList.getObjectUseStats(this));
                 }
