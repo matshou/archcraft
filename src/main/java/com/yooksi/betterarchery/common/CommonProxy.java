@@ -1,7 +1,6 @@
 package com.yooksi.betterarchery.common;
 
-import com.yooksi.betterarchery.item.*;
-import com.yooksi.betterarchery.init.*;
+import com.yooksi.betterarchery.init.Items;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

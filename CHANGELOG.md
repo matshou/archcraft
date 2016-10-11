@@ -3,6 +3,14 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.3 - 
+### Added
+- Bow arrow velocity controller.
+
+### Changed
+- Durability for RecurveBow.
+- Arrow velocity for RecurveBow.
+
 ## Version 0.2.2 - 2016-10-11
 ### Added
 - Bow pulling animation speed controler.

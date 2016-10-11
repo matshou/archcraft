@@ -1,7 +1,7 @@
 package com.yooksi.betterarchery.network;
 
 import com.yooksi.betterarchery.common.CommonProxy;
-import com.yooksi.betterarchery.init.*;
+import com.yooksi.betterarchery.init.Items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
