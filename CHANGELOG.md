@@ -3,6 +3,15 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.2 - 2016-10-11
+### Added
+- Bow pulling animation speed controler.
+- Mod EventHandler for general Forge events.
+- FOV zooming effect when pulling the bow.
+
+### Fixed
+- Resolved [#2](https://github.com/yooksi/Better-Archery-Reborn/issues/2) Bows not zooming in when pulled.
+
 ## Version 0.2.1 - 2016-10-10
 ### Added
 - Support texture project files.

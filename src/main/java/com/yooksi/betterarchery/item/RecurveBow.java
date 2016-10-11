@@ -6,6 +6,6 @@ public class RecurveBow extends ArchersBow
 {
 	public RecurveBow()
 	{
-		pullBackMult = 0.80F;
+		pullingSpeedMult = 0.80F;
 	}
 }

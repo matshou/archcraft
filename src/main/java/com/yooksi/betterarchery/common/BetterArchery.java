@@ -15,7 +15,7 @@ public class BetterArchery
 {
 	public static final String MODID = "betterarchery";
 	public static final String NAME = "Better Archery Reborn";
-    public static final String VERSION = "0.2.1";
+    public static final String VERSION = "0.2.2";
 
 	// This is where all our custom items should be listed in-game
 	public static final CreativeTabs tabBetterArchery = new CreativeTabs("BetterArchery") 
@@ -60,6 +60,7 @@ public class BetterArchery
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		// Register event handler here.
+		// The majority of events use the MinecraftForge event bus:
+		net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 }

@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
@@ -21,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
 {	
 	/** This multiplier modifies the duration of the bows pulling animation.  */
-	protected float pullBackMult = 1.0F;
+	protected float pullingSpeedMult = 1.0F;
 	
 	/** 
 	 * Perform custom bow initialization after it's been created. <br>  
@@ -38,7 +39,7 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
 	}
 	
 	/** 
-	 * This is what enables the bow to play the pull-back animation.
+	 * This is what enables the bow to play the pulling animation.
 	 * 
 	 * @param <T> has to be a valid custom bow type
 	 * @param item your custom bow instance <i>(not cast)</i>.  
@@ -52,18 +53,16 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
             {
                 if (entityIn != null)
                 {
+                	ArchersBow bowItem = (ArchersBow) item;
                     ItemStack itemstack = entityIn.getActiveItemStack();
-                    int useCount = entityIn.getItemInUseCount();
-                    final int maxUseDuration = stack.getMaxItemUseDuration();
                     
                     /* 
                      * Change the speed of the pulling animation here. The animation is divided into three stages,
                      * and the speed of every stage is exponentially increased as they progress.
                      * That's why we use a multiplier, instead of directly increasing or decreasing the value.
                      */
-                    
-                    float pullBackSpeed = itemstack != null && itemstack.getItem() == item ? (float)(maxUseDuration - useCount) / 20.0F : 0.0F;
-                    return pullBackSpeed *= ((ArchersBow)item).pullBackMult;
+
+                    return itemstack != null && itemstack.getItem() == item ? item.getPullingAnimationProgress(stack, entityIn) : 0.0F;
                 }
                 else return 0.0F;
             }
@@ -76,5 +75,26 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
+	}
+	
+	/**
+	 * Get the current progress of the bow's pulling animation for entity. <br>
+	 * <i>When pulling is in progress, the return will increase by <b>0.05</b> every tick.</i> <p>
+	 * 
+	 * The progress can be divided into three stages; check the method comments for more info. <br>
+	 * These stages and associated values are important for updating entity FOV.
+	 * 
+	 * @return a value between 0 <i>(did not start pulling)</i> and 1 <i>(fully pulled)</i>.  
+	 */
+	public float getPullingAnimationProgress(ItemStack bow, EntityLivingBase archer)
+	{
+		/*
+	     * pulling_0: 0.00 - 0.60 - Slightly pulled
+	     * pulling_1: 0.65 - 0.85 - Moderately pulled
+	     * pulling_2: 0.90 - 1.00 - Fully pulled
+		 */
+		
+		float animationProgress = (bow != null && archer != null) ? (float)(bow.getMaxItemUseDuration() - archer.getItemInUseCount()) / 20.0F : 0.0F;
+		return animationProgress > 1.0F ? 1.0F : animationProgress * pullingSpeedMult;
 	}
 }
