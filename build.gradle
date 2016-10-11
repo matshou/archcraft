@@ -24,7 +24,7 @@ group= "com.yooksi.betterarchery" // http://maven.apache.org/guides/mini/guide-n
 archivesBaseName = "BetterArcheryReborn"
 
 minecraft {
-    version = "1.10.2-12.18.1.2011"
+    version = "1.10.2-12.18.2.2099"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * An abstract parent class for all custom bows in this mod. <br>
  * Every bow should extend this class and be initialized with {@link #initNewBowType}.
  */
-public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
+public abstract class ArchersBow extends ItemBow
 {	
 	/** This multiplier modifies the duration of the bows pulling animation. */
 	protected float pullingSpeedMult = 1.0F;
@@ -55,7 +55,7 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
 	 * @param <T> has to be a valid custom bow type
 	 * @param item your custom bow instance <i>(not cast)</i>.  
 	 */
-	protected static <T extends ArchersBow> void addPropertyOverrides(T item)
+	protected static <T extends ArchersBow> void addPropertyOverrides(final T item)
 	{
 		item.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()
         {
@@ -64,15 +64,11 @@ public abstract class ArchersBow<I extends ArchersBow> extends ItemBow
             {
                 if (entityIn != null)
                 {
-                	ArchersBow bowItem = (ArchersBow) item;
-                    ItemStack itemstack = entityIn.getActiveItemStack();
-                    
-                    /* 
-                     * Change the speed of the pulling animation here. The animation is divided into three stages,
+                    /* Change the speed of the pulling animation here. The animation is divided into three stages,
                      * and the speed of every stage is exponentially increased as they progress.
                      * That's why we use a multiplier, instead of directly increasing or decreasing the value.
                      */
-
+                	ItemStack itemstack = entityIn.getActiveItemStack();
                     return itemstack != null && itemstack.getItem() == item ? item.getPullingAnimationProgress(stack, entityIn) : 0.0F;
                 }
                 else return 0.0F;
