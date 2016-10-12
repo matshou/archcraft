@@ -55,8 +55,11 @@ public class CommonProxy
 		
 		Logger.info("Removed " + recipesRemovedCount + " vanilla recipes.");
 		
+		GameRegistry.addShapedRecipe(new ItemStack(BowParts.SIMPLE_BOW_LIMB), 
+				new Object[] { " / ", "/# ", " / ", '/', Items.STICK, '#', Items.LEATHER});
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW), 
-				new Object[] { " /@", "/#@", " /@", '@', Items.STRING, '/', Items.STICK, '#', Items.LEATHER});
+				new Object[] { "  @", " (@", "  @", '(', BowParts.SIMPLE_BOW_LIMB, '@', Items.STRING}); 
     }
 	
 	/** 
