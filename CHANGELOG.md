@@ -3,7 +3,7 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.4 - 2016-10-12
+## Version [0.2.4] - 2016-10-12
 ### Added
 - Recipe handling methods.
 - Removed vanilla bow recipe.
@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 ### Changed
 - Renamed RegularBow to SimpleBow.
 
-## Version 0.2.3 - 2016-10-11
+## Version [0.2.3] - 2016-10-11
 ### Added
 - Bow arrow velocity controller.
 
@@ -20,7 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Durability for RecurveBow.
 - Arrow velocity for RecurveBow.
 
-## Version 0.2.2 - 2016-10-11
+## Version [0.2.2] - 2016-10-11
 ### Added
 - Bow pulling animation speed controler.
 - Mod EventHandler for general Forge events.
@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 ### Fixed
 - Resolved [#2](https://github.com/yooksi/Better-Archery-Reborn/issues/2) Bows not zooming in when pulled.
 
-## Version 0.2.1 - 2016-10-10
+## Version [0.2.1] - 2016-10-10
 ### Added
 - Support texture project files.
 
@@ -89,6 +89,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.4]: https://github.com/yooksi/Better-Archery-Reborn/compare/a36dc013a05b9d7a5f2b475832ad4fbf70010dd8...147fea16124b64cb243ca02a0d96cc673e03a0c4
+[0.2.3]: https://github.com/yooksi/Better-Archery-Reborn/compare/df13f19798bf11b561af539ad2dabd23177ea83d...a36dc013a05b9d7a5f2b475832ad4fbf70010dd8
+[0.2.2]: https://github.com/yooksi/Better-Archery-Reborn/compare/e8bb23afe03903ea83f2d141b77a5fcd1b8ec34a...df13f19798bf11b561af539ad2dabd23177ea83d
+[0.2.1]: https://github.com/yooksi/Better-Archery-Reborn/compare/cbf7233f3aa6f3173ec3afc4846bab09ddc0d3ee...e8bb23afe03903ea83f2d141b77a5fcd1b8ec34a
 [0.2.0]: https://github.com/yooksi/Better-Archery-Reborn/compare/4500b7395764db49c5dbd587b59ccffbafeb32fe...cbf7233f3aa6f3173ec3afc4846bab09ddc0d3ee
 [0.1.5]: https://github.com/yooksi/Better-Archery-Reborn/commit/c0c5a80fa7fd615b93ec42dbc14672a84b862bee
 [0.1.6]: https://github.com/yooksi/Better-Archery-Reborn/commit/4500b7395764db49c5dbd587b59ccffbafeb32fe
