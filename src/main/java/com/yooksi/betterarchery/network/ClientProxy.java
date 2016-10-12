@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy
 		// This step is necessary in order to make your block render properly when it is an item (i.e. in the inventory or in your hand or thrown on the ground).
 	    // It must be done on client only, and must be done after the block has been created in Common.preinit().
 		
-		ModelLoader.setCustomModelResourceLocation(Items.REGULAR_BOW, 0, new ModelResourceLocation(Items.REGULAR_BOW.getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(Items.SIMPLE_BOW, 0, new ModelResourceLocation(Items.SIMPLE_BOW.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(Items.RECURVE_BOW, 0, new ModelResourceLocation(Items.RECURVE_BOW.getRegistryName().toString()));
 	}
 }

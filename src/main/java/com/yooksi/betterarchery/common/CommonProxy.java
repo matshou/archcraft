@@ -1,8 +1,8 @@
 package com.yooksi.betterarchery.common;
 
-import com.yooksi.betterarchery.init.Items;
-
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -24,8 +24,8 @@ public class CommonProxy
 	{
 		Logger.info("Preparing to register item and block instances...");
 		
-		registerItem(Items.REGULAR_BOW, "regular_bow");
-		registerItem(Items.RECURVE_BOW, "recurve_bow");
+		registerItem(com.yooksi.betterarchery.init.Items.SIMPLE_BOW, "simple_bow");
+		registerItem(com.yooksi.betterarchery.init.Items.RECURVE_BOW, "recurve_bow");
 		
 		Logger.info("Finished registering object instances. ");
 	}
@@ -45,7 +45,13 @@ public class CommonProxy
     {	
 		// Remove vanilla recipes here
 		int recipesRemovedCount = 0;
+		
+		recipesRemovedCount += removeRecipe(Items.BOW);		
+		
 		Logger.info("Removed " + recipesRemovedCount + " vanilla recipes.");
+		
+		GameRegistry.addShapedRecipe(new ItemStack(com.yooksi.betterarchery.init.Items.SIMPLE_BOW), 
+				new Object[] { " /@", "/#@", " /@", '@', Items.STRING, '/', Items.STICK, '#', Items.LEATHER});
     }
 	
 	/** 

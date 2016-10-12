@@ -4,8 +4,8 @@ public class RecurveBow extends ArchersBow
 {
 	public RecurveBow()
 	{
-		pullingSpeedMult = 0.80F;
-		arrowSpeedMult = 1.25F;
+		pullingSpeedMult = 0.85F;
+		arrowSpeedMult = 1.20F;
 		
 		this.setMaxDamage(256);
 	}

@@ -1,6 +1,6 @@
 package com.yooksi.betterarchery.item;
 
-public class RegularBow extends ArchersBow
+public class SimpleBow extends ArchersBow
 {
 	
 }

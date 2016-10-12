@@ -5,12 +5,12 @@ import com.yooksi.betterarchery.item.*;
 /** All custom items are initialized and stored here. */
 public class Items 
 {
-	public static final RegularBow REGULAR_BOW;
+	public static final SimpleBow SIMPLE_BOW;
 	public static final RecurveBow RECURVE_BOW;
 
 	static
 	{
-		REGULAR_BOW = ArchersBow.initNewBowType(new RegularBow());
+		SIMPLE_BOW = ArchersBow.initNewBowType(new SimpleBow());
 		RECURVE_BOW = ArchersBow.initNewBowType(new RecurveBow());
 	}
 }

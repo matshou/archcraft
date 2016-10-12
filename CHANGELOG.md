@@ -3,6 +3,15 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.4 - 2016-10-12
+### Added
+- Recipe handling methods.
+- Removed vanilla bow recipe.
+- New recipe for SimpleBow.
+
+### Changed
+- Renamed RegularBow to SimpleBow.
+
 ## Version 0.2.3 - 2016-10-11
 ### Added
 - Bow arrow velocity controller.
