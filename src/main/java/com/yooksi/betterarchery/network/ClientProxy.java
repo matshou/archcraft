@@ -24,6 +24,6 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW, 0, new ModelResourceLocation(ModItems.RECURVE_BOW.getRegistryName().toString()));
 	
-		ModelLoader.setCustomModelResourceLocation(BowParts.SIMPLE_BOW_LIMB, 0, new ModelResourceLocation(BowParts.SIMPLE_BOW_LIMB.getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(BowParts.SIMPLE_BOW_BODY, 0, new ModelResourceLocation(BowParts.SIMPLE_BOW_BODY.getRegistryName().toString()));
 	}
 }

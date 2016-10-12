@@ -30,7 +30,7 @@ public class CommonProxy
 		registerItem(ModItems.SIMPLE_BOW, "simple_bow");
 		registerItem(ModItems.RECURVE_BOW, "recurve_bow");
 		
-		registerItem(BowParts.SIMPLE_BOW_LIMB, "simple_bow_limb");
+		registerItem(BowParts.SIMPLE_BOW_BODY, "simple_bow_body");
 		
 		Logger.info("Finished registering object instances. ");
 	}
@@ -55,11 +55,11 @@ public class CommonProxy
 		
 		Logger.info("Removed " + recipesRemovedCount + " vanilla recipes.");
 		
-		GameRegistry.addShapedRecipe(new ItemStack(BowParts.SIMPLE_BOW_LIMB), 
+		GameRegistry.addShapedRecipe(new ItemStack(BowParts.SIMPLE_BOW_BODY), 
 				new Object[] { " / ", "/# ", " / ", '/', Items.STICK, '#', Items.LEATHER});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW), 
-				new Object[] { "  @", " (@", "  @", '(', BowParts.SIMPLE_BOW_LIMB, '@', Items.STRING}); 
+				new Object[] { "  @", " (@", "  @", '(', BowParts.SIMPLE_BOW_BODY, '@', Items.STRING}); 
     }
 	
 	/** 
