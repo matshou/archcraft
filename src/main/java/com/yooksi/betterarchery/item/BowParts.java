@@ -10,14 +10,13 @@ public class BowParts extends Item
 	 *  Should only be initialized privately, once.
 	 */
 	private static final BowParts bowParts;
-	private final BowPartLimb bowPartLimb;
+	private static final BowPartLimb bowPartLimb;
 	
 	public static final BowPartLimb.SimpleBowLimb SIMPLE_BOW_LIMB;
 	
 	private BowParts()
 	{
 		setCreativeTab(BetterArchery.tabBetterArchery);
-		bowPartLimb = new BowPartLimb();
 	}
 	
 	public class BowPartLimb extends BowParts
@@ -33,6 +32,7 @@ public class BowParts extends Item
 	static
 	{
 		bowParts = new BowParts();
-		SIMPLE_BOW_LIMB = bowParts.bowPartLimb.new SimpleBowLimb();
+		bowPartLimb = bowParts.new BowPartLimb();
+		SIMPLE_BOW_LIMB = bowPartLimb.new SimpleBowLimb();
 	}
 }
