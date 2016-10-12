@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/simple_bow_limb"
+        "layer0": "betterarchery:items/simple_bow_body_standby"
     },
     "display": {
         "thirdperson_righthand": {
