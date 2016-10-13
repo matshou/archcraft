@@ -3,6 +3,16 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.5 - 2016-10-12
+### Added
+- Many new bow texture layers.
+
+### Changed
+- Updated old textures and their project files.
+- Renamed init.Items class.
+- SimpleBow recipe.
+- build.gradle file.
+
 ## Version [0.2.4] - 2016-10-12
 ### Added
 - Recipe handling methods.
