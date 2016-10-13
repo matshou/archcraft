@@ -45,7 +45,7 @@ public abstract class ArchersBow extends ItemBow
 	public static <T extends ArchersBow> T initNewBowType(T customBow)
 	{
 		addPropertyOverrides(customBow);
-		customBow.setCreativeTab(BetterArchery.tabBetterArchery);
+		customBow.setCreativeTab(BetterArchery.creativeTab);
 		return customBow;
 	}
 	

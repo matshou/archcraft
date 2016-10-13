@@ -27,7 +27,7 @@ public class CommonProxy
 		Logger.info("Preparing to register item and block instances...");
 		
 		registerItem(ModItems.SIMPLE_BOW, "simple_bow_plain");
-		registerItem(ModItems.RECURVE_BOW, "recurve_bow");
+		registerItem(ModItems.RECURVE_BOW, "recurve_bow_plain");
 
 		Logger.info("Finished registering object instances. ");
 	}
