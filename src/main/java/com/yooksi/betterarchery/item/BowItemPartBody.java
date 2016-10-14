@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BowItemPartBody extends Item
 {
 	/** Lets Forge know where to find body part models. */
-	public static final String modelDir = ":bow_item_parts/";
+	public static final String modelDir = ":bow_item_part_models/";
 	
 	public BowItemPartBody()
 	{
