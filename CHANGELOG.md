@@ -3,7 +3,7 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.6 - 2016-10-14
+## Version [0.2.6] - 2016-10-14
 ### Added
 - BowItemPartBody item with one variant.
 - New RecurveBow item variant. 
@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Renamed and moved model files.
 - Updated resource language files.
 
-## Version 0.2.5 - 2016-10-14
+## Version [0.2.5] - 2016-10-14
 ### Added
 - Many new bow texture layers.
 
@@ -111,6 +111,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.6]: https://github.com/yooksi/Better-Archery-Reborn/compare/2d9909a488866cc40b8d027df4207d7208f2a9f5...cb70b9184b4bf9d61aab7189b81642b4fc5073e4
+[0.2.5]: https://github.com/yooksi/Better-Archery-Reborn/compare/147fea16124b64cb243ca02a0d96cc673e03a0c4...2d9909a488866cc40b8d027df4207d7208f2a9f5
 [0.2.4]: https://github.com/yooksi/Better-Archery-Reborn/compare/a36dc013a05b9d7a5f2b475832ad4fbf70010dd8...147fea16124b64cb243ca02a0d96cc673e03a0c4
 [0.2.3]: https://github.com/yooksi/Better-Archery-Reborn/compare/df13f19798bf11b561af539ad2dabd23177ea83d...a36dc013a05b9d7a5f2b475832ad4fbf70010dd8
 [0.2.2]: https://github.com/yooksi/Better-Archery-Reborn/compare/e8bb23afe03903ea83f2d141b77a5fcd1b8ec34a...df13f19798bf11b561af539ad2dabd23177ea83d

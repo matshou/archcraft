@@ -15,7 +15,7 @@ public class BetterArchery
 {
 	public static final String MODID = "betterarchery";
 	public static final String NAME = "Better Archery Reborn";
-    public static final String VERSION = "0.2.4";
+    public static final String VERSION = "0.2.6";
 
 	// This is where all our custom items should be listed in-game
 	public static final CreativeTabs creativeTab = new CreativeTabs("BetterArchery") 
