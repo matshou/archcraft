@@ -29,6 +29,8 @@ public class CommonProxy
 		registerItem(ModItems.SIMPLE_BOW, "simple_bow_plain");
 		registerItem(ModItems.RECURVE_BOW, "recurve_bow_plain");
 
+		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
+		
 		Logger.info("Finished registering object instances. ");
 	}
 	

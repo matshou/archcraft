@@ -1,7 +1,9 @@
 package com.yooksi.betterarchery.network;
 
+import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
+import com.yooksi.betterarchery.item.BowItemPartBody;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -19,5 +21,8 @@ public class ClientProxy extends CommonProxy
 
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW, 0, new ModelResourceLocation(ModItems.RECURVE_BOW.getRegistryName().toString()));
+	
+		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(0)));
+		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(1)));
 	}
 }

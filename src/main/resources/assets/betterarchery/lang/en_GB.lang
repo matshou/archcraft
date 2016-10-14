@@ -1,3 +1,5 @@
 itemGroup.BetterArchery=Better Archery
 item.simple_bow_plain.name=Self Bow
 item.recurve_bow_plain.name=Recurve Bow
+item.simple_bow_body_plain.name=Self Bow Body
+item.simple_bow_body_leather_grip.name=Self Bow Body

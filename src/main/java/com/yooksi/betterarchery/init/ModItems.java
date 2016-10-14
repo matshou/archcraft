@@ -11,9 +11,13 @@ public class ModItems
 	public static final SimpleBow SIMPLE_BOW;
 	public static final RecurveBow RECURVE_BOW;
 
+	public static final BowItemPartBody BOW_ITEM_PART_BODY;
+	
 	static
 	{
 		SIMPLE_BOW = ArchersBow.initNewBowType(new SimpleBow());
 		RECURVE_BOW = ArchersBow.initNewBowType(new RecurveBow());
+		
+		BOW_ITEM_PART_BODY = new BowItemPartBody();
 	}
 }
