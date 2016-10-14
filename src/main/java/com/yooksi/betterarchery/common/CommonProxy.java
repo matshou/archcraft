@@ -29,7 +29,8 @@ public class CommonProxy
 		registerItem(ModItems.SIMPLE_BOW_PLAIN, "simple_bow_plain");
 		registerItem(ModItems.SIMPLE_BOW_LG, "simple_bow_leather_grip");
 		
-		registerItem(ModItems.RECURVE_BOW, "recurve_bow_plain");
+		registerItem(ModItems.RECURVE_BOW_PLAIN, "recurve_bow_plain");
+		registerItem(ModItems.RECURVE_BOW_LG, "recurve_bow_leather_grip");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
 		

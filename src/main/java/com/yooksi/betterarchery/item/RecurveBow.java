@@ -9,4 +9,6 @@ public class RecurveBow extends ArchersBow
 		
 		this.setMaxDamage(256);
 	}
+	
+	public class LeatherGripVariant extends RecurveBow {}
 }

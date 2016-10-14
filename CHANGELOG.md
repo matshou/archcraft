@@ -3,7 +3,19 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.5 - 2016-10-12
+## Version 0.2.6 - 2016-10-14
+### Added
+- BowItemPartBody item with one variant.
+- New RecurveBow item variant. 
+- New SimpleBow item variant.
+- Leather grip texture. 
+
+### Changed
+- Removed ServerProxy class.
+- Renamed and moved model files.
+- Updated resource language files.
+
+## Version 0.2.5 - 2016-10-14
 ### Added
 - Many new bow texture layers.
 

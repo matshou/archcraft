@@ -22,8 +22,9 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_LG, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW_LG.getRegistryName().toString()));
 			
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW, 0, new ModelResourceLocation(ModItems.RECURVE_BOW.getRegistryName().toString()));
-	
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_PLAIN, 0, new ModelResourceLocation(ModItems.RECURVE_BOW_PLAIN.getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LG, 0, new ModelResourceLocation(ModItems.RECURVE_BOW_LG.getRegistryName().toString()));
+		
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(0)));
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(1)));
 	}

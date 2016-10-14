@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/bow_pulling_textures/simple_bow_body_pulling_2",
+        "layer0": "betterarchery:items/bow_pulling_textures/recurve_bow_body_pulling_2",
 		"layer1": "betterarchery:items/bow_leather_grip_layer",
 		"layer2": "betterarchery:items/bow_pulling_textures/bow_string_pulling_2",
 		"layer3": "betterarchery:items/bow_pulling_textures/bow_arrow_pulling_2"
