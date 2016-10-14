@@ -26,7 +26,9 @@ public class CommonProxy
 	{
 		Logger.info("Preparing to register item and block instances...");
 		
-		registerItem(ModItems.SIMPLE_BOW, "simple_bow_plain");
+		registerItem(ModItems.SIMPLE_BOW_PLAIN, "simple_bow_plain");
+		registerItem(ModItems.SIMPLE_BOW_LG, "simple_bow_leather_grip");
+		
 		registerItem(ModItems.RECURVE_BOW, "recurve_bow_plain");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
@@ -54,7 +56,7 @@ public class CommonProxy
 		
 		Logger.info("Removed " + recipesRemovedCount + " vanilla recipes.");
 
-		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW), 
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_PLAIN), 
 				new Object[] { " /@", "/ @", " /@", '/', Items.STICK, '@', Items.STRING});
     }
 	

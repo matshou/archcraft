@@ -8,14 +8,18 @@ import com.yooksi.betterarchery.item.*;
  */
 public class ModItems 
 {
-	public static final SimpleBow SIMPLE_BOW;
+	public static final SimpleBow SIMPLE_BOW_PLAIN;
+	public static final SimpleBow.LeatherGripVariant SIMPLE_BOW_LG;
+	
 	public static final RecurveBow RECURVE_BOW;
 
 	public static final BowItemPartBody BOW_ITEM_PART_BODY;
 	
 	static
 	{
-		SIMPLE_BOW = ArchersBow.initNewBowType(new SimpleBow());
+		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow());
+		SIMPLE_BOW_LG = ArchersBow.initNewBowType(SIMPLE_BOW_PLAIN.new LeatherGripVariant());
+		
 		RECURVE_BOW = ArchersBow.initNewBowType(new RecurveBow());
 		
 		BOW_ITEM_PART_BODY = new BowItemPartBody();
