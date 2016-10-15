@@ -55,15 +55,6 @@ public abstract class ArchersBow extends ItemBow
 		BOW_CLOTH_GRIP(null),
 		BOW_LEATHER_GRIP(new Color(107, 46, 22));
 
-		/**
-		 *  A list of items that are considered color variation, and require to be registered with ColorHandler.
-		 */
-		public static final Item[] colorVariants = new Item[] 
-		{
-				ModItems.SIMPLE_BOW_LEATHER_GRIP, 
-				ModItems.RECURVE_BOW_LEATHER_GRIP 
-		};
-		
 		private final Color color;
 		
 		BowItemVariant(@Nullable Color color)
@@ -87,6 +78,15 @@ public abstract class ArchersBow extends ItemBow
 	@SideOnly(Side.CLIENT)
 	public static class ColorHandler implements IItemColor 
 	{
+		/**
+		 *  A list of items that are considered color variation, and require to be registered with ColorHandler.
+		 */
+		private static final Item[] colorVariants = new Item[] 
+		{
+				ModItems.SIMPLE_BOW_LEATHER_GRIP, 
+				ModItems.RECURVE_BOW_LEATHER_GRIP 
+		};
+		
 		@Override
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
@@ -100,7 +100,7 @@ public abstract class ArchersBow extends ItemBow
 		public static void registerColorHandler()
 		{
 			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-			itemColors.registerItemColorHandler(new ColorHandler(), BowItemVariant.colorVariants);
+			itemColors.registerItemColorHandler(new ColorHandler(), colorVariants);
 		}
 	}
 	

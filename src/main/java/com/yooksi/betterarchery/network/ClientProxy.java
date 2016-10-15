@@ -35,6 +35,7 @@ public class ClientProxy extends CommonProxy
 	@SideOnly(Side.CLIENT)
 	public void init(FMLInitializationEvent event)
 	{
+		super.init(event);
 		this.registerColorHandlers();
 	}
 	
