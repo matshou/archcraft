@@ -8,6 +8,7 @@ import com.yooksi.betterarchery.item.BowItemPartBody;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,5 +29,18 @@ public class ClientProxy extends CommonProxy
 		
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(0)));
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(1)));
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void init(FMLInitializationEvent event)
+	{
+		this.registerColorHandlers();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private void registerColorHandlers()
+	{
+		ArchersBow.ColorHandler.registerColorHandler();
 	}
 }
