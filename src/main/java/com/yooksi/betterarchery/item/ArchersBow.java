@@ -1,9 +1,15 @@
 package com.yooksi.betterarchery.item;
 
+import java.awt.Color;
+
 import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
+import com.yooksi.betterarchery.init.ModItems;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +18,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -34,6 +41,68 @@ public abstract class ArchersBow extends ItemBow
 	
 	/** This multiplier modifies the speed and damage of an arrow being shot from this bow. */
 	protected float arrowSpeedMult = 1.0F;
+	
+	private final BowItemVariant variant;
+	
+	protected ArchersBow(BowItemVariant variant)
+	{
+		this.variant = variant;
+	}
+	
+	public enum BowItemVariant
+	{
+		BOW_PLAIN(null), 
+		BOW_CLOTH_GRIP(null),
+		BOW_LEATHER_GRIP(new Color(107, 46, 22));
+
+		/**
+		 *  A list of items that are considered color variation, and require to be registered with ColorHandler.
+		 */
+		public static final Item[] colorVariants = new Item[] 
+		{
+				ModItems.SIMPLE_BOW_LEATHER_GRIP, 
+				ModItems.RECURVE_BOW_LEATHER_GRIP 
+		};
+		
+		private final Color color;
+		
+		BowItemVariant(@Nullable Color color)
+		{
+			this.color = color;
+		}
+		
+		/**
+		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, or <b>-1</b> if no color.  
+		 */
+		public int getColorRGB()
+		{
+			return color != null ? color.getRGB() : -1;
+		}
+	}		
+	
+	/**
+	 *  This handler will take care of all bow item variants that require different texture colors. <br>
+	 *  Register it with Minecraft using {@link #registerColorHandler()}.
+	 */
+	@SideOnly(Side.CLIENT)
+	public static class ColorHandler implements IItemColor 
+	{
+		@Override
+		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
+		{
+			BowItemVariant variant = ((ArchersBow) stack.getItem()).variant;
+			return tintIndex == 1 ? variant.getColorRGB() : -1;
+		}
+		
+		/**
+		 *  Register this color handler with Minecraft for all mod bow items.
+		 */
+		public static void registerColorHandler()
+		{
+			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+			itemColors.registerItemColorHandler(new ColorHandler(), BowItemVariant.colorVariants);
+		}
+	}
 	
 	/** 
 	 * Perform custom bow initialization after it's been created. <br>  
