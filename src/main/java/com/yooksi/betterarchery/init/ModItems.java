@@ -1,6 +1,7 @@
 package com.yooksi.betterarchery.init;
 
 import com.yooksi.betterarchery.item.*;
+import com.yooksi.betterarchery.item.ArchersBow.BowItemVariant;
 
 /** 
  *  All custom items are initialized and stored here. <br>
@@ -9,20 +10,20 @@ import com.yooksi.betterarchery.item.*;
 public class ModItems 
 {
 	public static final SimpleBow SIMPLE_BOW_PLAIN;
-	public static final SimpleBow.LeatherGripVariant SIMPLE_BOW_LG;
+	public static final SimpleBow SIMPLE_BOW_LEATHER_GRIP;
 	
 	public static final RecurveBow RECURVE_BOW_PLAIN;
-	public static final RecurveBow.LeatherGripVariant RECURVE_BOW_LG;
+	public static final RecurveBow RECURVE_BOW_LEATHER_GRIP;
 
 	public static final BowItemPartBody BOW_ITEM_PART_BODY;
 	
 	static
 	{
-		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow());
-		SIMPLE_BOW_LG = ArchersBow.initNewBowType(SIMPLE_BOW_PLAIN.new LeatherGripVariant());
+		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.BOW_PLAIN));
+		SIMPLE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.BOW_LEATHER_GRIP));
 		
-		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new RecurveBow());
-		RECURVE_BOW_LG = ArchersBow.initNewBowType(RECURVE_BOW_PLAIN.new LeatherGripVariant());
+		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_PLAIN));
+		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_LEATHER_GRIP));
 		
 		BOW_ITEM_PART_BODY = new BowItemPartBody();
 	}

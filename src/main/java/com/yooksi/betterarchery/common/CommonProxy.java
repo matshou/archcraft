@@ -27,10 +27,10 @@ public class CommonProxy
 		Logger.info("Preparing to register item and block instances...");
 		
 		registerItem(ModItems.SIMPLE_BOW_PLAIN, "simple_bow_plain");
-		registerItem(ModItems.SIMPLE_BOW_LG, "simple_bow_leather_grip");
+		registerItem(ModItems.SIMPLE_BOW_LEATHER_GRIP, "simple_bow_with_grip");
 		
 		registerItem(ModItems.RECURVE_BOW_PLAIN, "recurve_bow_plain");
-		registerItem(ModItems.RECURVE_BOW_LG, "recurve_bow_leather_grip");
+		registerItem(ModItems.RECURVE_BOW_LEATHER_GRIP, "recurve_bow_with_grip");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
 		
