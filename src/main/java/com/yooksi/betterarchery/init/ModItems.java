@@ -17,7 +17,7 @@ public class ModItems
 	public static final RecurveBow RECURVE_BOW_LEATHER_GRIP;
     public static final RecurveBow RECURVE_BOW_WOOLEN_GRIP;
 	
-	public static final BowItemPartBody BOW_ITEM_PART_BODY;
+	public static final BowItemParts BOW_ITEM_PART_BODY;
 	
 	static
 	{
@@ -29,6 +29,6 @@ public class ModItems
 		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_LEATHER_GRIP));
 		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_WOOLEN_GRIP));
 		
-		BOW_ITEM_PART_BODY = new BowItemPartBody();
+		BOW_ITEM_PART_BODY = new BowItemParts();
 	}
 }
