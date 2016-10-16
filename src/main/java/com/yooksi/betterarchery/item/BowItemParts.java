@@ -47,16 +47,26 @@ public class BowItemParts extends Item
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)
     {
-    	subItems.add(new ItemStack(itemIn));           // TYPE_BODY_SIMPLE_PLAIN
+    	subItems.add(new ItemStack(itemIn, 1, 0));     // TYPE_BODY_SIMPLE_PLAIN
         subItems.add(new ItemStack(itemIn, 1, 1));     // TYPE_BODY_SIMPLE_LEATHER_GRIP
+        subItems.add(new ItemStack(itemIn, 1, 2));     // TYPE_BODY_SIMPLE_WOOLEN_GRIP
+        
+        subItems.add(new ItemStack(itemIn, 1, 3));     // TYPE_BODY_RECURVE_PLAIN
+        subItems.add(new ItemStack(itemIn, 1, 4));     // TYPE_BODY_RECURVE_LEATHER_GRIP
+        subItems.add(new ItemStack(itemIn, 1, 5));     // TYPE_BODY_RECURVE_WOOLEN_GRIP
     } 
 	
 	public static enum ItemPartType
     {
     	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
-    	TYPE_BODY_SIMPLE_LEATHER_GRIP(1, "simple_bow_body_with_grip", new Color(107, 46, 22));
-    	
-    	private final int meta;
+    	TYPE_BODY_SIMPLE_LEATHER_GRIP(1, "simple_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_SIMPLE_WOOLEN_GRIP(2, "simple_bow_body_with_grip", new Color(255, 255, 255)),
+
+    	TYPE_BODY_RECURVE_PLAIN(3, "recurve_bow_body_plain", null),
+    	TYPE_BODY_RECURVE_LEATHER_GRIP(4, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_RECURVE_WOOLEN_GRIP(5, "recurve_bow_body_with_grip", new Color(255, 255, 255));
+    
+		private final int meta;
     	private final String typeName;        // Used as a model file name as well
     	private final Color variantColor;
     	
@@ -65,6 +75,11 @@ public class BowItemParts extends Item
     		this.meta = meta;
     		this.typeName = name;
     		this.variantColor = color;
+    	}
+    	
+    	public int getTypeMetadata()
+    	{
+    		return meta;
     	}
     	
     	/**
@@ -78,7 +93,7 @@ public class BowItemParts extends Item
 		/** 
          *  Create and return a new instance of the texture model file resource location.
 		 */
-		private ModelResourceLocation getModelResourceLocation()
+		public ModelResourceLocation getModelResourceLocation()
 		{
 			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + typeName);
 		}
@@ -101,18 +116,6 @@ public class BowItemParts extends Item
     		throw new IllegalArgumentException();
     	}
     }
-	
-	/** 
-	 *  Model file names for each bow item part variant have been stored in <i>ItemPartType</i>. <br>
-	 *  These names are needed by <i>ClientProxy</i> to register our model files with <i>ModelLoader</i>. <p> 
-	 *
-	 *  For convenience, the construction of this object has been placed here, so we don't have to <br>
-	 *  repeat the same lines of code for every item variant.
-	 */
-	public static ModelResourceLocation getModelResourceLocationByMeta(int metadata)
-	{
-		return ItemPartType.getTypeByMeta(metadata).getModelResourceLocation();
-	}
 	
 	/**
 	 *  This handler will take care of all bow item part variants that require different texture colors. <br>

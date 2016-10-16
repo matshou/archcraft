@@ -27,8 +27,10 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
-		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, BowItemParts.getModelResourceLocationByMeta(0));
-		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, BowItemParts.getModelResourceLocationByMeta(1));
+		for (BowItemParts.ItemPartType type : BowItemParts.ItemPartType.values())
+		{
+			ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, type.getTypeMetadata(), type.getModelResourceLocation());
+		}
 	}
 	
 	@Override
