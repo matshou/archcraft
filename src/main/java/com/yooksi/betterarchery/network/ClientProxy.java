@@ -1,12 +1,12 @@
 package com.yooksi.betterarchery.network;
 
-import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemPartBody;
+import com.yooksi.betterarchery.item.ArchersBow;
+import com.yooksi.betterarchery.item.BowItemParts;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,13 +19,32 @@ public class ClientProxy extends CommonProxy
 	{
 		super.preInit(event);
 
-		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN.getRegistryName().toString()));
-		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_LG, 0, new ModelResourceLocation(ModItems.SIMPLE_BOW_LG.getRegistryName().toString()));
-			
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_PLAIN, 0, new ModelResourceLocation(ModItems.RECURVE_BOW_PLAIN.getRegistryName().toString()));
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LG, 0, new ModelResourceLocation(ModItems.RECURVE_BOW_LG.getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN, 0, ModItems.SIMPLE_BOW_PLAIN.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_LEATHER_GRIP, 0, ModItems.SIMPLE_BOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_WOOLEN_GRIP, 0, ModItems.SIMPLE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
-		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(0)));
-		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(1)));
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_PLAIN, 0, ModItems.RECURVE_BOW_PLAIN.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
+		
+		for (BowItemParts.ItemPartType type : BowItemParts.ItemPartType.values())
+		{
+			ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, type.getTypeMetadata(), type.getModelResourceLocation());
+		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void init(FMLInitializationEvent event)
+	{
+		super.init(event);
+		this.registerColorHandlers();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private void registerColorHandlers()
+	{
+		ArchersBow.ColorHandler.registerColorHandler();
+		BowItemParts.ColorHandler.registerColorHandler();
 	}
 }

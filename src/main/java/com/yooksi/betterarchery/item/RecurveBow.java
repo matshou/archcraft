@@ -2,13 +2,13 @@ package com.yooksi.betterarchery.item;
 
 public class RecurveBow extends ArchersBow
 {
-	public RecurveBow()
+	public RecurveBow(BowItemVariant variant)
 	{
-		pullingSpeedMult = 0.85F;
-		arrowSpeedMult = 1.20F;
+		super(variant);
 		
 		this.setMaxDamage(256);
+		
+		pullingSpeedMult = 0.85F;
+		arrowSpeedMult = 1.20F;
 	}
-	
-	public class LeatherGripVariant extends RecurveBow {}
 }
