@@ -1,10 +1,10 @@
 package com.yooksi.betterarchery.item;
 
 import java.awt.Color;
-
 import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
+import com.yooksi.betterarchery.common.Logger;
 import com.yooksi.betterarchery.init.ModItems;
 
 import net.minecraft.client.Minecraft;
@@ -50,14 +50,24 @@ public abstract class ArchersBow extends ItemBow
 		this.variant = variant;
 	}
 	
+	protected static BowItemVariant getBowItemVariant(Item item)
+	{
+		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
+	}
+	
 	public enum BowItemVariant
 	{
-		BOW_PLAIN("simple_bow_plain", null), 
-		BOW_CLOTH_GRIP("simple_bow_with_grip", null),
+		BOW_PLAIN("bow_plain", null), 
+		BOW_CLOTH_GRIP("bow_with_grip", null),
 		
-		BOW_WOOLEN_GRIP("simple_bow_with_grip", new Color(255, 255, 255)),
-		BOW_LEATHER_GRIP("simple_bow_with_grip", new Color(107, 46, 22));
+		BOW_WOOLEN_GRIP("bow_with_grip", new Color(255, 255, 255)),
+		BOW_LEATHER_GRIP("bow_with_grip", new Color(107, 46, 22));
 
+		/**
+		 *  String values in this map are used to assemble a model file name for the associated class.
+		 */
+		private static final java.util.Map<Class<? extends ArchersBow>, String> modelFileNamePrefix;	
+				
 		private final String modelFileName;
 		private final Color variantColor;
 		
@@ -69,10 +79,21 @@ public abstract class ArchersBow extends ItemBow
 		
 		/** 
          *  Create and return a new instance of the texture model file resource location.
+         *  
+         *  @param bowClass native class of this bow, used to assemble the model file name.
+         *  @throws NoSuchElementException if prefix String for model file name was not found for class.
 		 */
-		private ModelResourceLocation getModelResourceLocation()
+		private ModelResourceLocation getModelResourceLocation(Class<? extends ArchersBow> bowClass)
 		{
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelFileName);
+			String namePrefix = modelFileNamePrefix.get(bowClass);
+			
+			if (namePrefix == null)
+			{
+				Logger.fatal("Bow class was not registered properly, missing modelFilePrefix entry.");
+				throw new java.util.NoSuchElementException();
+			}
+			
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + namePrefix + modelFileName);
 		}
 		
 		/**
@@ -82,6 +103,22 @@ public abstract class ArchersBow extends ItemBow
 		{
 			return variantColor != null ? variantColor.getRGB() : -1;
 		}
+		
+		static 
+		{
+			java.util.Map<Class<? extends ArchersBow>, String> temp = new java.util.HashMap<>();
+
+			/* 
+			 *  Register your bow.class model file name prefix here.
+			 *  Each time you create a new class that extends ArchersBow you should create a new entry for it here.
+			 *  These entries are here to avoid declaring too many variant enum elements.
+			 */
+			
+			temp.put(SimpleBow.class, "simple_");
+			temp.put(RecurveBow.class, "recurve_");
+			
+			modelFileNamePrefix = java.util.Collections.unmodifiableMap(temp);
+		}
 	}		
 	
 	/** 
@@ -90,10 +127,12 @@ public abstract class ArchersBow extends ItemBow
 	 *
 	 *  For convenience, the construction of this object has been placed here, so we don't have to <br>
 	 *  repeat the same lines of code for every item variant.
+	 *  
+	 *  @throws NoSuchElementException if prefix String for model file name was not found for class. 
 	 */
 	public ModelResourceLocation getModelResourceLocation()
 	{
-		return variant.getModelResourceLocation();
+		return variant.getModelResourceLocation(this.getClass());
 	}
 	
 	/**
@@ -115,7 +154,7 @@ public abstract class ArchersBow extends ItemBow
 		@Override
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
-			BowItemVariant variant = ((ArchersBow) stack.getItem()).variant;
+			BowItemVariant variant = getBowItemVariant(stack.getItem());
 			return tintIndex == 1 ? variant.getColorRGB() : -1;
 		}
 		
