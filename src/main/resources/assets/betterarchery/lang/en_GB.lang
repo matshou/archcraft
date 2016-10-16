@@ -4,14 +4,14 @@ item.simple_bow_plain.name=Self Bow
 item.simple_bow_leather_grip.name=Self Bow
 item.simple_bow_woolen_grip.name= Self Bow
 
-item.simple_bow_body_plain.name=Self Bow Body Part
-item.simple_bow_body_leather_grip.name=Self Bow Body Part
-item.simple_bow_body_woolen_grip.name=Self Bow Body Part
+item.simple_bow_body_plain.name=Unstrung Self Bow
+item.simple_bow_body_leather_grip.name=Unstrung Self Bow
+item.simple_bow_body_woolen_grip.name=Unstrung Self Bow
 
 item.recurve_bow_plain.name=Recurve Bow
 item.recurve_bow_leather_grip.name=Recurve Bow
 item.recurve_bow_woolen_grip.name=Recurve Bow
 
-item.recurve_bow_body_plain.name=Recurve Bow Body Part
-item.recurve_bow_body_leather_grip.name=Recurve Bow Body Part
-item.recurve_bow_body_woolen_grip.name=Recurve Bow Body Part
+item.recurve_bow_body_plain.name=Unstrung Recurve Bow
+item.recurve_bow_body_leather_grip.name=Unstrung Recurve Bow
+item.recurve_bow_body_woolen_grip.name=Unstrung Recurve Bow
