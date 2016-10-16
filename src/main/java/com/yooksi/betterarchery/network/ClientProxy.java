@@ -23,9 +23,11 @@ public class ClientProxy extends CommonProxy
 
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN, 0, ModItems.SIMPLE_BOW_PLAIN.getModelResourceLocation());
 		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_LEATHER_GRIP, 0, ModItems.SIMPLE_BOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_WOOLEN_GRIP, 0, ModItems.SIMPLE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_PLAIN, 0, ModItems.RECURVE_BOW_PLAIN.getModelResourceLocation());
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 0, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(0)));
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, 1, new ModelResourceLocation(BetterArchery.MODID + BowItemPartBody.modelDir + BowItemPartBody.BodyType.getTypeNameByMeta(1)));

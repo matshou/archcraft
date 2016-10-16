@@ -53,6 +53,7 @@ public abstract class ArchersBow extends ItemBow
 	public enum BowItemVariant
 	{
 		BOW_PLAIN("simple_bow_plain", null), 
+		BOW_CLOTH_GRIP("simple_bow_with_grip", null),
 		
 		BOW_WOOLEN_GRIP("simple_bow_with_grip", new Color(255, 255, 255)),
 		BOW_LEATHER_GRIP("simple_bow_with_grip", new Color(107, 46, 22));
