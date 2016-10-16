@@ -38,7 +38,7 @@ public class BowItemParts extends Item
 	@Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item." + ItemPartType.getTypeByMeta(stack.getMetadata()).typeName;
+        return "item." + ItemPartType.getTypeByMeta(stack.getMetadata()).unlocalizedName;
     }
 	
 	 /**
@@ -58,28 +58,30 @@ public class BowItemParts extends Item
 	
 	public static enum ItemPartType
     {
-    	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
-    	TYPE_BODY_SIMPLE_LEATHER_GRIP(1, "simple_bow_body_with_grip", new Color(107, 46, 22)),
-    	TYPE_BODY_SIMPLE_WOOLEN_GRIP(2, "simple_bow_body_with_grip", new Color(255, 255, 255)),
+    	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", "simple_bow_body_plain", null),
+    	TYPE_BODY_SIMPLE_LEATHER_GRIP(1, "simple_bow_body_with_grip", "simple_bow_body_leather_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_SIMPLE_WOOLEN_GRIP(2, "simple_bow_body_with_grip", "simple_bow_body_woolen_grip", new Color(255, 255, 255)),
 
-    	TYPE_BODY_RECURVE_PLAIN(3, "recurve_bow_body_plain", null),
-    	TYPE_BODY_RECURVE_LEATHER_GRIP(4, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
-    	TYPE_BODY_RECURVE_WOOLEN_GRIP(5, "recurve_bow_body_with_grip", new Color(255, 255, 255));
+    	TYPE_BODY_RECURVE_PLAIN(3, "recurve_bow_body_plain", "recurve_bow_body_plain", null),
+    	TYPE_BODY_RECURVE_LEATHER_GRIP(4, "recurve_bow_body_with_grip", "recurve_bow_body_leather_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_RECURVE_WOOLEN_GRIP(5, "recurve_bow_body_with_grip", "recurve_bow_body_woolen_grip", new Color(255, 255, 255));
     
-		private final int meta;
-    	private final String typeName;        // Used as a model file name as well
+		private final int metadata;
+    	private final String modelFileName;
+    	private final String unlocalizedName;
     	private final Color variantColor;
     	
-    	private ItemPartType(int meta, String name, Color color)
+    	private ItemPartType(int meta, String modelName, String name, Color color)
     	{
-    		this.meta = meta;
-    		this.typeName = name;
+    		this.modelFileName = modelName;
+    		this.unlocalizedName = name;
+    		this.metadata = meta;
     		this.variantColor = color;
     	}
     	
     	public int getTypeMetadata()
     	{
-    		return meta;
+    		return metadata;
     	}
     	
     	/**
@@ -95,7 +97,7 @@ public class BowItemParts extends Item
 		 */
 		public ModelResourceLocation getModelResourceLocation()
 		{
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + typeName);
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + modelFileName);
 		}
 		
     	/** 
@@ -108,7 +110,7 @@ public class BowItemParts extends Item
     	{
     		for (ItemPartType type : ItemPartType.values())
     		{
-    			if (type.meta == meta)
+    			if (type.metadata == meta)
     				return type;
     		}
     		
