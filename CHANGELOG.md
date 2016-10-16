@@ -3,6 +3,16 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version [0.2.7] - 2016-10-16
+### Added
+- New item color variant system for bows and parts.
+- New bow and bow part item variants.
+
+### Changed
+- Removed a lot of redundant model and texture files.
+- Refactored a big portion of code base. 
+- Updated language files.
+
 ## Version [0.2.6] - 2016-10-14
 ### Added
 - BowItemPartBody item with one variant.
@@ -44,7 +54,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 
 ## Version [0.2.2] - 2016-10-11
 ### Added
-- Bow pulling animation speed controler.
+- Bow pulling animation speed controller.
 - Mod EventHandler for general Forge events.
 - FOV zooming effect when pulling the bow.
 
@@ -111,6 +121,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.7]: https://github.com/yooksi/Better-Archery-Reborn/pull/4
 [0.2.6]: https://github.com/yooksi/Better-Archery-Reborn/compare/2d9909a488866cc40b8d027df4207d7208f2a9f5...cb70b9184b4bf9d61aab7189b81642b4fc5073e4
 [0.2.5]: https://github.com/yooksi/Better-Archery-Reborn/compare/147fea16124b64cb243ca02a0d96cc673e03a0c4...2d9909a488866cc40b8d027df4207d7208f2a9f5
 [0.2.4]: https://github.com/yooksi/Better-Archery-Reborn/compare/a36dc013a05b9d7a5f2b475832ad4fbf70010dd8...147fea16124b64cb243ca02a0d96cc673e03a0c4
