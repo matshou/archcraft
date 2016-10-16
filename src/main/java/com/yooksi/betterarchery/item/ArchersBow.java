@@ -8,6 +8,7 @@ import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.init.ModItems;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -51,25 +52,48 @@ public abstract class ArchersBow extends ItemBow
 	
 	public enum BowItemVariant
 	{
-		BOW_PLAIN(null), 
-		BOW_CLOTH_GRIP(null),
-		BOW_LEATHER_GRIP(new Color(107, 46, 22));
-
-		private final Color color;
+		BOW_PLAIN("simple_bow_plain", null), 
 		
-		BowItemVariant(@Nullable Color color)
+		BOW_WOOLEN_GRIP("simple_bow_with_grip", new Color(255, 255, 255)),
+		BOW_LEATHER_GRIP("simple_bow_with_grip", new Color(107, 46, 22));
+
+		private final String modelFileName;
+		private final Color variantColor;
+		
+		BowItemVariant(String modelFile, @Nullable Color color)
 		{
-			this.color = color;
+			this.modelFileName = modelFile; 
+			this.variantColor = color;
+		}
+		
+		/** 
+         *  Create and return a new instance of the texture model file resource location.
+		 */
+		private ModelResourceLocation getModelResourceLocation()
+		{
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelFileName);
 		}
 		
 		/**
 		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, or <b>-1</b> if no color.  
 		 */
-		public int getColorRGB()
+		private int getColorRGB()
 		{
-			return color != null ? color.getRGB() : -1;
+			return variantColor != null ? variantColor.getRGB() : -1;
 		}
 	}		
+	
+	/** 
+	 *  Model file names for each bow variant have been stored in <i>BowItemVariant</i>. <br>
+	 *  These names are needed by <i>ClientProxy</i> to register our model files with <i>ModelLoader</i>. <p> 
+	 *
+	 *  For convenience, the construction of this object has been placed here, so we don't have to <br>
+	 *  repeat the same lines of code for every item variant.
+	 */
+	public ModelResourceLocation getModelResourceLocation()
+	{
+		return variant.getModelResourceLocation();
+	}
 	
 	/**
 	 *  This handler will take care of all bow item variants that require different texture colors. <br>
