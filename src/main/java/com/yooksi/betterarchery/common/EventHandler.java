@@ -1,9 +1,15 @@
 package com.yooksi.betterarchery.common;
 
+import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ArchersBow;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandler 
@@ -33,6 +39,31 @@ public class EventHandler
 			 */
 			
 			event.setNewfov(event.getFov() - (float)(0.15F * animationProgress));
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerBreakingBlock(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		Block target = event.getState().getBlock();
+		
+		if (player != null && player.isServerWorld() && target instanceof net.minecraft.block.BlockLog)
+		{
+			/*
+			 *  This will not work for custom glass bottles from third party mods,
+			 *  implement special support here to achieve compatibility.
+			 */
+			
+			ItemStack offHandStack = player.getHeldItem(EnumHand.OFF_HAND);
+			if (offHandStack != null && offHandStack.getItem() == Items.GLASS_BOTTLE)
+			{
+				if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown()) 
+				{				
+					ItemStack stack = new ItemStack(ModItems.TREE_RESIN_LIQUID, 1);
+				    player.setHeldItem(EnumHand.OFF_HAND, stack);
+				}
+			}
 		}
 	}
 }

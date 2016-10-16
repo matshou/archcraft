@@ -5,6 +5,7 @@ import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ArchersBow;
 import com.yooksi.betterarchery.item.BowItemParts;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -31,6 +32,8 @@ public class ClientProxy extends CommonProxy
 		{
 			ModelLoader.setCustomModelResourceLocation(ModItems.BOW_ITEM_PART_BODY, type.getTypeMetadata(), type.getModelResourceLocation());
 		}
+		
+		ModelLoader.setCustomModelResourceLocation(ModItems.TREE_RESIN_LIQUID, 0, new ModelResourceLocation(ModItems.TREE_RESIN_LIQUID.getRegistryName().toString()));
 	}
 	
 	@Override
