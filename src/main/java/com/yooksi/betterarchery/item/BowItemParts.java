@@ -31,19 +31,12 @@ public class BowItemParts extends Item
 		this.setMaxDamage(0);
 	}
 
-	/**
-     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
-     * different names based on their damage or NBT.
-     */
 	@Override
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item." + ItemPartType.getTypeByMeta(stack.getMetadata()).unlocalizedName;
     }
-	
-	 /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
+
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)
     {
@@ -56,7 +49,7 @@ public class BowItemParts extends Item
         subItems.add(new ItemStack(itemIn, 1, 5));     // TYPE_BODY_RECURVE_WOOLEN_GRIP
     } 
 	
-	public static enum ItemPartType
+	public static enum ItemPartType implements ItemSubtype
     {
     	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", "simple_bow_body_plain", null),
     	TYPE_BODY_SIMPLE_LEATHER_GRIP(1, "simple_bow_body_with_grip", "simple_bow_body_leather_grip", new Color(107, 46, 22)),
@@ -84,6 +77,11 @@ public class BowItemParts extends Item
     		return metadata;
     	}
     	
+    	public ModelResourceLocation getModelResourceLocation()
+		{
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + modelFileName);
+		}
+    	
     	/**
 		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, or <b>-1</b> if no color.  
 		 */
@@ -91,15 +89,7 @@ public class BowItemParts extends Item
 		{
 			return variantColor != null ? variantColor.getRGB() : -1;
 		}
-    	
-		/** 
-         *  Create and return a new instance of the texture model file resource location.
-		 */
-		public ModelResourceLocation getModelResourceLocation()
-		{
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + modelFileName);
-		}
-		
+ 
     	/** 
     	 * Get bow item part type from metadata value. <br>
     	 * 
@@ -114,7 +104,7 @@ public class BowItemParts extends Item
     				return type;
     		}
     		
-    		Logger.error("Tried to get type with an unregistered metadata value"); 
+    		Logger.error("Tried to get ItemPartType with an unregistered metadata value"); 
     		throw new IllegalArgumentException();
     	}
     }
