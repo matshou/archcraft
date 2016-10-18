@@ -15,3 +15,9 @@ item.recurve_bow_woolen_grip.name=Recurve Bow
 item.recurve_bow_body_plain.name=Unstrung Recurve Bow
 item.recurve_bow_body_leather_grip.name=Unstrung Recurve Bow
 item.recurve_bow_body_woolen_grip.name=Unstrung Recurve Bow
+
+item.tree_resin_liquid_inpure.name=Inpure Tree Resin
+item.tree_resin_liquid_pure.name=Pure Tree Resin
+item.tree_resin_liquid_mixed_bowl.name=Bowl of Mixed Tree Resin
+item.tree_resin_liquid_mixed_bottle.name=Bottle of Mixed Tree Resin
+item.tree_resin_glue.name=Tree Resin Glue
