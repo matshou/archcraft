@@ -60,7 +60,9 @@ public class EventHandler
 			if (offHandStack != null && offHandStack.getItem() == Items.GLASS_BOTTLE)
 			{
 				if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown()) 
-				{				
+				{
+					// TODO: Either do a random roll or implement a timer to make this harder.
+					
 					ItemStack stack = new ItemStack(ModItems.TREE_RESIN_LIQUID, 1);
 				    player.setHeldItem(EnumHand.OFF_HAND, stack);
 				}

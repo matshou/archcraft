@@ -5,17 +5,13 @@ import com.yooksi.betterarchery.common.Logger;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
+public class TreeResinLiquid extends Item
 {
 	public TreeResinLiquid()
 	{
@@ -32,14 +28,6 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
 		 */
 		ResinLiquidType type = ResinLiquidType.getTypeByMeta(itemStack.getMetadata());
 		return new ItemStack(type == ResinLiquidType.LIQUID_TYPE_MIXED_IN_BOWL ? Items.BOWL : Items.GLASS_BOTTLE);
-    }
-	
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-		/*
-		 *  Prevent the item from being used in the world.
-		 */ 
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }
 	
 	@Override

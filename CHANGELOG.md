@@ -3,6 +3,22 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.2.8 - 2016-10-19
+### Added
+- Simple and recurve bow tooltip info.
+- Two new items for crafting bows with recipes.
+- Recipes for all current mod items.
+
+### Changed
+- Item names in-game.
+- Subtype model registration.
+- How EventHandler is registered.
+- Simple and recurve bow max durability.
+- Removed most bow item parts.
+
+### Fixed
+- Major model loading issue.
+
 ## Version [0.2.7] - 2016-10-16
 ### Added
 - New item color variant system for bows and parts.
