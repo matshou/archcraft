@@ -27,6 +27,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -298,8 +299,8 @@ public abstract class ArchersBow extends ItemBow
                         if (enchLvlFlame > 0)
                             entityarrow.setFire(100);
 
-                        stack.damageItem(1, entityplayer);
-
+                        stack.damageItem(worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1, entityplayer);
+                        
                         if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
