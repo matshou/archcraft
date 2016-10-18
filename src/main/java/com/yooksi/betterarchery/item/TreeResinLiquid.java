@@ -28,9 +28,10 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
 	public ItemStack getContainerItem(ItemStack itemStack)
     {
 		/*
-		 *  Don't destroy the bottle when we're filtering the liquid.
+		 *  Don't destroy the bottle when we're filtering or mixing the liquid.
 		 */
-		return new ItemStack(ResinLiquidType.isLiquidInpure(itemStack) ? Items.GLASS_BOTTLE : null);
+		ResinLiquidType type = ResinLiquidType.getTypeByMeta(itemStack.getMetadata());
+		return new ItemStack(type == ResinLiquidType.LIQUID_TYPE_MIXED_IN_BOWL ? Items.BOWL : Items.GLASS_BOTTLE);
     }
 	
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
@@ -52,14 +53,18 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
 	{	
 		subItems.add(new ItemStack(itemIn, 1, 0));     // LIQUID_TYPE_INPURE
 	    subItems.add(new ItemStack(itemIn, 1, 1));     // LIQUID_TYPE_PURE
-	    //subItems.add(new ItemStack(itemIn, 1, 2));     // LIQUID_TYPE_MIXED
+	    
+	    subItems.add(new ItemStack(itemIn, 1, 2));     // LIQUID_TYPE_MIXED_IN_BOWL
+	    subItems.add(new ItemStack(itemIn, 1, 3));     // LIQUID_TYPE_MIXED_IN_BOTTLE
 	}
 	
 	public static enum ResinLiquidType implements ItemSubtype
     {
 		LIQUID_TYPE_INPURE(0, "tree_resin_liquid_inpure"), 
-		LIQUID_TYPE_PURE(1, "tree_resin_liquid_pure"); 
-		//LIQUID_TYPE_MIXED(2, "tree_resin_liquid_mixed");
+		LIQUID_TYPE_PURE(1, "tree_resin_liquid_pure"),
+		
+		LIQUID_TYPE_MIXED_IN_BOWL(2, "tree_resin_liquid_mixed_bowl"),
+		LIQUID_TYPE_MIXED_IN_BOTTLE(3, "tree_resin_liquid_mixed_bottle");
 
 		private final int metadata;
 		private final String unlocalizedName;
@@ -73,17 +78,11 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
         public int getTypeMetadata()
     	{
     		return metadata;
-    	}
-        
+    	} 
         
 		public ModelResourceLocation getModelResourceLocation()
 		{
 			return new ModelResourceLocation(BetterArchery.MODID + ":" + unlocalizedName);
-		}
-		
-		private static boolean isLiquidInpure(ItemStack liquid)
-		{
-			return getTypeByMeta(liquid.getMetadata()) == LIQUID_TYPE_INPURE;
 		}
 		
 		/** 
