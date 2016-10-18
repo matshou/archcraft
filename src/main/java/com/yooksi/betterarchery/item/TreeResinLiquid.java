@@ -6,6 +6,7 @@ import com.yooksi.betterarchery.common.Logger;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -20,7 +21,17 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
 	{
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
+		this.setContainerItem(this);
 	}
+	
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack)
+    {
+		/*
+		 *  Don't destroy the bottle when we're filtering the liquid.
+		 */
+		return new ItemStack(ResinLiquidType.isLiquidInpure(itemStack) ? Items.GLASS_BOTTLE : null);
+    }
 	
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
@@ -68,6 +79,11 @@ public class TreeResinLiquid extends net.minecraft.item.ItemGlassBottle
 		public ModelResourceLocation getModelResourceLocation()
 		{
 			return new ModelResourceLocation(BetterArchery.MODID + ":" + unlocalizedName);
+		}
+		
+		private static boolean isLiquidInpure(ItemStack liquid)
+		{
+			return getTypeByMeta(liquid.getMetadata()) == LIQUID_TYPE_INPURE;
 		}
 		
 		/** 
