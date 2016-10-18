@@ -11,7 +11,7 @@ public class RecurveBow extends ArchersBow
 	{
 		super(variant);
 		
-		this.setMaxDamage(256);
+		this.setMaxDamage(250);
 		
 		pullingSpeedMult = 0.85F;
 		arrowSpeedMult = 1.20F;

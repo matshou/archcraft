@@ -10,6 +10,7 @@ public class SimpleBow extends ArchersBow
 	public SimpleBow(BowItemVariant variant)
 	{
 		super(variant);
+		this.setMaxDamage(150);
 	}
 	
 	@SideOnly(Side.CLIENT)
