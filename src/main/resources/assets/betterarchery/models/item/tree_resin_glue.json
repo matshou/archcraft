@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "betterarchery:items/tree_resin_item_textures/tree_resin_glue"
+    }
+}

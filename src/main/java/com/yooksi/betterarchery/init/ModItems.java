@@ -20,6 +20,7 @@ public class ModItems
 	public static final BowItemParts BOW_ITEM_PART_BODY;
 	
 	public static final TreeResinLiquid TREE_RESIN_LIQUID;
+	public static final TreeResinGlue TREE_RESIN_GLUE;
 	
 	static
 	{
@@ -34,5 +35,6 @@ public class ModItems
 		BOW_ITEM_PART_BODY = new BowItemParts();
 		
 		TREE_RESIN_LIQUID = new TreeResinLiquid();
+		TREE_RESIN_GLUE = new TreeResinGlue();
 	}
 }

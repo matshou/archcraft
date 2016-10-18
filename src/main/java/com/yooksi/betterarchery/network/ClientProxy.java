@@ -7,6 +7,7 @@ import com.yooksi.betterarchery.item.BowItemParts;
 import com.yooksi.betterarchery.item.ItemSubtype;
 import com.yooksi.betterarchery.item.TreeResinLiquid;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -31,6 +32,8 @@ public class ClientProxy extends CommonProxy
 		
 		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, BowItemParts.ItemPartType.values());
 		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, TreeResinLiquid.ResinLiquidType.values());	
+	
+		ModelLoader.setCustomModelResourceLocation(ModItems.TREE_RESIN_GLUE, 0, new ModelResourceLocation(ModItems.TREE_RESIN_GLUE.getRegistryName().toString()));
 	}
 	
 	private void setCustomModelResourceLocationForItemSubtypes(net.minecraft.item.Item item, final Enum<? extends ItemSubtype>[] subtypes)

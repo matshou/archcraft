@@ -38,6 +38,7 @@ public class CommonProxy
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
 		
 		registerItem(ModItems.TREE_RESIN_LIQUID, "tree_resin_liquid");
+		registerItem(ModItems.TREE_RESIN_GLUE, "tree_resin_glue");
 		
 		Logger.info("Finished registering object instances. ");
 	}
