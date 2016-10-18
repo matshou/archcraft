@@ -60,6 +60,6 @@ public class BetterArchery
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		// The majority of events use the MinecraftForge event bus:
-		net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new EventHandler());
+		//net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 }

@@ -9,13 +9,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@Mod.EventBusSubscriber
 public class EventHandler 
 {
 	@SubscribeEvent
-	public void FOVUpdateEvent(net.minecraftforge.client.event.FOVUpdateEvent event)
+	public static void FOVUpdateEvent(net.minecraftforge.client.event.FOVUpdateEvent event)
 	{
         EntityPlayer player = event.getEntity();
         ItemStack activeItem = player != null ? player.getActiveItemStack() : null;
@@ -43,7 +44,7 @@ public class EventHandler
 	}
 
 	@SubscribeEvent
-	public void onPlayerBreakingBlock(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event)
+	public static void onPlayerBreakingBlock(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event)
 	{
 		EntityPlayer player = event.getEntityPlayer();
 		Block target = event.getState().getBlock();
