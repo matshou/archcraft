@@ -2,6 +2,7 @@ package com.yooksi.betterarchery.common;
 
 import com.yooksi.betterarchery.init.ModItems;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -63,6 +64,15 @@ public class CommonProxy
 
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_PLAIN), 
 				new Object[] { " /@", "/ @", " /@", '/', Items.STICK, '@', Items.STRING});
+		//================================================================================
+	    //                                 Support Items
+	    //================================================================================
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 
+				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', Item.getItemFromBlock(Blocks.WOOL), 'y', Items.GLASS_BOTTLE});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 
+				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', Items.PAPER, 'y', Items.GLASS_BOTTLE});
     }
 	
 	/** 
