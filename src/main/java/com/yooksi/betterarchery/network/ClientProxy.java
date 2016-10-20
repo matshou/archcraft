@@ -34,6 +34,7 @@ public class ClientProxy extends CommonProxy
 		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, TreeResinLiquid.ResinLiquidType.values());	
 	
 		ModelLoader.setCustomModelResourceLocation(ModItems.TREE_RESIN_GLUE, 0, new ModelResourceLocation(ModItems.TREE_RESIN_GLUE.getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_STRING_ITEM, 0, new ModelResourceLocation(ModItems.BOW_STRING_ITEM.getRegistryName().toString()));
 	}
 	
 	private void setCustomModelResourceLocationForItemSubtypes(net.minecraft.item.Item item, final Enum<? extends ItemSubtype>[] subtypes)

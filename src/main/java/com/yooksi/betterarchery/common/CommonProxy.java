@@ -36,6 +36,7 @@ public class CommonProxy
 		registerItem(ModItems.RECURVE_BOW_WOOLEN_GRIP, "recurve_bow_woolen_grip");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
+		registerItem(ModItems.BOW_STRING_ITEM, "bow_string_item");
 		
 		registerItem(ModItems.TREE_RESIN_LIQUID, "tree_resin_liquid");
 		registerItem(ModItems.TREE_RESIN_GLUE, "tree_resin_glue");

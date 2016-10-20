@@ -18,6 +18,7 @@ public class ModItems
     public static final RecurveBow RECURVE_BOW_WOOLEN_GRIP;
 	
 	public static final BowItemParts BOW_ITEM_PART_BODY;
+	public static final BowItemString BOW_STRING_ITEM;
 	
 	public static final TreeResinLiquid TREE_RESIN_LIQUID;
 	public static final TreeResinGlue TREE_RESIN_GLUE;
@@ -33,6 +34,7 @@ public class ModItems
 		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_WOOLEN_GRIP));
 		
 		BOW_ITEM_PART_BODY = new BowItemParts();
+		BOW_STRING_ITEM = new BowItemString();
 		
 		TREE_RESIN_LIQUID = new TreeResinLiquid();
 		TREE_RESIN_GLUE = new TreeResinGlue();
