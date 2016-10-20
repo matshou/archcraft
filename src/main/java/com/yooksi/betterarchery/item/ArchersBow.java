@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.Logger;
 import com.yooksi.betterarchery.init.ModItems;
+import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -58,42 +59,24 @@ public abstract class ArchersBow extends ItemBow
 	
 	public enum BowItemVariant
 	{
-		BOW_PLAIN("bow_plain", null), 
-
-		BOW_WOOLEN_GRIP("bow_with_grip", new Color(255, 255, 255)),
-		BOW_LEATHER_GRIP("bow_with_grip", new Color(107, 46, 22));
-
-		/**
-		 *  String values in this map are used to assemble a model file name for the associated class.
-		 */
-		private static final java.util.Map<Class<? extends ArchersBow>, String> modelFileNamePrefix;	
-				
+		SIMPLE_BOW_PLAIN("simple_bow_plain", ItemPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
+		RECURVE_BOW_PLAIN("recurve_bow_plain", ItemPartType.TYPE_BODY_RECURVE_PLAIN, null),
+		
+		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
+		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+	
+		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
+		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22));
+	
 		private final String modelFileName;
+		private final ItemPartType bodyType;
 		private final Color variantColor;
 		
-		BowItemVariant(String modelFile, @Nullable Color color)
+		BowItemVariant(String modelFile, ItemPartType bodyType, @Nullable Color color)
 		{
-			this.modelFileName = modelFile; 
+			this.modelFileName = modelFile;
+			this.bodyType = bodyType;
 			this.variantColor = color;
-		}
-		
-		/** 
-         *  Create and return a new instance of the texture model file resource location.
-         *  
-         *  @param bowClass native class of this bow, used to assemble the model file name.
-         *  @throws NoSuchElementException if prefix String for model file name was not found for class.
-		 */
-		private ModelResourceLocation getModelResourceLocation(Class<? extends ArchersBow> bowClass)
-		{
-			String namePrefix = modelFileNamePrefix.get(bowClass);
-			
-			if (namePrefix == null)
-			{
-				Logger.fatal("Bow class was not registered properly, missing modelFilePrefix entry.");
-				throw new java.util.NoSuchElementException();
-			}
-			
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + namePrefix + modelFileName);
 		}
 		
 		/**
@@ -103,22 +86,6 @@ public abstract class ArchersBow extends ItemBow
 		{
 			return variantColor != null ? variantColor.getRGB() : -1;
 		}
-		
-		static 
-		{
-			java.util.Map<Class<? extends ArchersBow>, String> temp = new java.util.HashMap<>();
-
-			/* 
-			 *  Register your bow.class model file name prefix here.
-			 *  Each time you create a new class that extends ArchersBow you should create a new entry for it here.
-			 *  These entries are here to avoid declaring too many variant enum elements.
-			 */
-			
-			temp.put(SimpleBow.class, "simple_");
-			temp.put(RecurveBow.class, "recurve_");
-			
-			modelFileNamePrefix = java.util.Collections.unmodifiableMap(temp);
-		}
 	}		
 	
 	/** 
@@ -127,18 +94,12 @@ public abstract class ArchersBow extends ItemBow
 	 *
 	 *  For convenience, the construction of this object has been placed here, so we don't have to <br>
 	 *  repeat the same lines of code for every item variant.
-	 *  
-	 *  @throws NoSuchElementException if prefix String for model file name was not found for class. 
-	 */
+     */
 	public ModelResourceLocation getModelResourceLocation()
 	{
-		return variant.getModelResourceLocation(this.getClass());
+		return new ModelResourceLocation(BetterArchery.MODID + ":" + variant.modelFileName);
 	}
 	
-	/**
-	 *  This handler will take care of all bow item variants that require different texture colors. <br>
-	 *  Register it with Minecraft using {@link #registerColorHandler()}.
-	 */
 	@SideOnly(Side.CLIENT)
 	public static class ColorHandler implements IItemColor 
 	{

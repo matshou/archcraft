@@ -1,9 +1,15 @@
 package com.yooksi.betterarchery.item;
 
+import java.awt.Color;
+
 import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.Logger;
+import com.yooksi.betterarchery.init.ModItems;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,20 +42,34 @@ public class BowItemParts extends Item
     {
     	subItems.add(new ItemStack(itemIn, 1, 0));     // TYPE_BODY_SIMPLE_PLAIN
         subItems.add(new ItemStack(itemIn, 1, 1));     // TYPE_BODY_RECURVE_PLAIN
+        
+        subItems.add(new ItemStack(itemIn, 1, 2));     // TYPE_BODY_SIMPLE_WITH_GRIP
+        subItems.add(new ItemStack(itemIn, 1, 3));     // TYPE_BODY_RECURVE_WITH_GRIP
+
+        subItems.add(new ItemStack(itemIn, 1, 4));     // TYPE_BODY_RECURVE_WITH_LEATHER_GRIP
+        subItems.add(new ItemStack(itemIn, 1, 5));     // TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP
     } 
 	
 	public static enum ItemPartType implements ItemSubtype
     {
-    	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_item"),
-    	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_item");
-    
+    	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
+    	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_plain", null),
+    	
+    	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(2, "simple_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(3, "simple_bow_body_with_grip", new Color(255, 255, 255)),
+    	
+    	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(4, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(5, "recurve_bow_body_with_grip", new Color(255, 255, 255));
+    	
 		private final int metadata;
     	private final String unlocalizedName;
+    	private final Color subtypeColor;
     	
-    	private ItemPartType(int meta, String name)
+    	private ItemPartType(int meta, String name, Color color)
     	{
-    		this.unlocalizedName = name;
     		this.metadata = meta;
+    		this.unlocalizedName = name;
+    		this.subtypeColor = color;
     	}
     	
     	public int getTypeMetadata()
@@ -78,6 +98,22 @@ public class BowItemParts extends Item
     		
     		Logger.error("Tried to get ItemPartType with an unregistered metadata value"); 
     		throw new IllegalArgumentException();
+    	}
+    	
+    	@SideOnly(Side.CLIENT)
+    	public static class ColorHandler implements IItemColor 
+    	{
+    		@Override
+    		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
+    		{
+    			return tintIndex == 1 ? getTypeByMeta(stack.getMetadata()).subtypeColor.getRGB() : -1;
+    		}
+    		
+    		public static void registerColorHandler()
+    		{
+    			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+    			itemColors.registerItemColorHandler(new ColorHandler(), ModItems.BOW_ITEM_PART_BODY);
+    		}
     	}
     }
 }

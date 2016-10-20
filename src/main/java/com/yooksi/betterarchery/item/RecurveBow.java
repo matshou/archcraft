@@ -25,11 +25,11 @@ public class RecurveBow extends ArchersBow
 		
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
-		case BOW_LEATHER_GRIP:
+		case RECURVE_BOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "Equipped with a leather grip.");
 			break;
 			
-		case BOW_WOOLEN_GRIP:	
+		case RECURVE_BOW_WOOLEN_GRIP:	
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "Equipped with a woolen grip.");
 		
 		default: 

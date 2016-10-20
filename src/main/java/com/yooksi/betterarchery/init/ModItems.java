@@ -25,13 +25,13 @@ public class ModItems
 	
 	static
 	{
-		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.BOW_PLAIN));
-		SIMPLE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.BOW_LEATHER_GRIP));
-		SIMPLE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.BOW_WOOLEN_GRIP));
+		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_PLAIN));
+		SIMPLE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_LEATHER_GRIP));
+		SIMPLE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_WOOLEN_GRIP));
 		
-		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_PLAIN));
-		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_LEATHER_GRIP));
-		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.BOW_WOOLEN_GRIP));
+		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_PLAIN));
+		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_LEATHER_GRIP));
+		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_WOOLEN_GRIP));
 		
 		BOW_ITEM_PART_BODY = new BowItemParts();
 		BOW_STRING_ITEM = new BowItemString();

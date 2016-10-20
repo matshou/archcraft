@@ -21,11 +21,11 @@ public class SimpleBow extends ArchersBow
 		
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
-		case BOW_LEATHER_GRIP:
+		case SIMPLE_BOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "With a leather grip.");
 			break;
 			
-		case BOW_WOOLEN_GRIP:	
+		case SIMPLE_BOW_WOOLEN_GRIP:	
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "With a woolen grip.");
 		
 		default: 

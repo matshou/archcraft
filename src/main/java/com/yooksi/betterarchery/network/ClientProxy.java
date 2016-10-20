@@ -58,5 +58,6 @@ public class ClientProxy extends CommonProxy
 	private void registerColorHandlers()
 	{
 		ArchersBow.ColorHandler.registerColorHandler();
+		BowItemParts.ItemPartType.ColorHandler.registerColorHandler();
 	}
 }
