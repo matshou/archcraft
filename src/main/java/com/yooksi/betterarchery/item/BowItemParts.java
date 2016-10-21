@@ -25,7 +25,6 @@ public class BowItemParts extends Item
 	
 	public BowItemParts()
 	{
-		this.setCreativeTab(BetterArchery.creativeTab);
 		this.setHasSubtypes(true);
 		this.setMaxStackSize(5);
 		this.setMaxDamage(0);
@@ -106,7 +105,8 @@ public class BowItemParts extends Item
     		@Override
     		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
     		{
-    			return tintIndex == 1 ? getTypeByMeta(stack.getMetadata()).subtypeColor.getRGB() : -1;
+    			int meta = stack.getMetadata();
+    			return tintIndex == 1 && meta > 1 ? getTypeByMeta(meta).subtypeColor.getRGB() : -1;
     		}
     		
     		public static void registerColorHandler()
