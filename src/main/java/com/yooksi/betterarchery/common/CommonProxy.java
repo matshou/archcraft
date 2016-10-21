@@ -127,6 +127,13 @@ public class CommonProxy
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', woolItemStack, '@', Items.STRING});
 		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_LEATHER_GRIP), 
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '@', Items.STRING});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 3), '@', Items.STRING});
+		
+		
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
 				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', Items.STRING});
@@ -136,6 +143,12 @@ public class CommonProxy
 	
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', woolItemStack, '@', Items.STRING});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_LEATHER_GRIP), 
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', Items.STRING});
+	
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 5), '@', Items.STRING});
 		
 		
 		//================================================================================
