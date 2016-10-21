@@ -1,10 +1,10 @@
 package com.yooksi.betterarchery.item;
 
 import java.awt.Color;
+
 import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
-import com.yooksi.betterarchery.common.Logger;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
 
@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -276,8 +277,49 @@ public abstract class ArchersBow extends ItemBow
                         if (enchLvlFlame > 0)
                             entityarrow.setFire(100);
 
-                        stack.damageItem(worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1, entityplayer);
+                        /*
+                         *  Durability damage is based on world difficulty.
+                         */
+                        final int damage = worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1;
                         
+                        stack.damageItem(damage, entityplayer);
+                        
+                        final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_durability") + damage;
+                        boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
+                      
+                        float randomFloat = worldIn.rand.nextFloat();
+                        float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
+                		
+                        if (stack.stackSize == 0)  // Bow has been broken this tick
+                        {
+                        	if (!isBowStringBroken)
+                        	{
+                        	    ItemStack bowString = new ItemStack(ModItems.BOW_STRING_ITEM);
+                        	    bowString.setItemDamage(bowStringDamage);
+                        	    
+                        	    entityplayer.inventory.addItemStackToInventory(bowString);
+                            }
+                        }
+                        else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)
+                        {
+                        	EnumHand activeHand = entityplayer.getActiveHand();
+                            entityplayer.setHeldItem(activeHand, new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()));
+                        }
+                        else stack.getTagCompound().setInteger("bow_string_durability", bowStringDamage);
+                       
+                        /* float a = 0;
+                        for (int b = 0; b < 100; b++)
+                        {
+                        	for (int c = 0; c < stack.getMaxDamage(); c++)
+                        	{
+                        		 float randomFloat2 = worldIn.rand.nextFloat();
+                                 float durabilityMod2 = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
+                        		
+                        		if (randomFloat2 < 0.0015F * durabilityMod2)
+                        			a++;
+                        	}
+                        }   Logger.info("Simulated 100 times, bow broke " + a + " times."); */
+                        	
                         if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
