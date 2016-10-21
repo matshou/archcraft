@@ -6,10 +6,7 @@ import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.Logger;
 import com.yooksi.betterarchery.init.ModItems;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -98,14 +95,23 @@ public class BowItemParts extends Item
 		{
 			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + unlocalizedName);
 		}
- 
+       	
+    	/**
+		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, 
+		 *  or <b>-1</b> if no color.  
+		 */
+		public int getColorRGB()
+		{
+			return subtypeColor.getRGB();
+		}
+    	
     	/** 
     	 * Get bow item part type from metadata value. <br>
     	 * 
     	 * @param meta used to distinguish different item subtypes.  
     	 * @throws IllegalArgumentException if argument in an unregistered value.
     	 */
-    	private static ItemPartType getTypeByMeta(int meta)
+    	public static ItemPartType getTypeByMeta(int meta)
     	{
     		for (ItemPartType type : ItemPartType.values())
     		{
@@ -115,34 +121,6 @@ public class BowItemParts extends Item
     		
     		Logger.error("Tried to get ItemPartType with an unregistered metadata value"); 
     		throw new IllegalArgumentException();
-    	}
-    	
-    	@SideOnly(Side.CLIENT)
-    	public static class ColorHandler implements IItemColor 
-    	{
-    		@Override
-    		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
-    		{
-    			/*
-    			 *  Skip first two subtypes because they don't have color values.
-    			 *  This is a just a bit of performance optimizing.
-    			 */
-    			if (tintIndex == 1 && stack.getMetadata() > 1)
-    			{
-    				/*
-    				 *  The color value from NBT will always override default subtype color.
-    				 */
-    				int colorFromNBT = stack.hasTagCompound() ? stack.getTagCompound().getInteger("itemColor") : 0;
-    				return colorFromNBT > 0 ? colorFromNBT : getTypeByMeta(stack.getMetadata()).subtypeColor.getRGB();
-    			}
-    			else return -1;
-    		}
-    		
-    		public static void registerColorHandler()
-    		{
-    			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-    			itemColors.registerItemColorHandler(new ColorHandler(), ModItems.BOW_ITEM_PART_BODY);
-    		}
     	}
     }
 

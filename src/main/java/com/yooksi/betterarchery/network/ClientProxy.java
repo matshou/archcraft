@@ -2,8 +2,8 @@ package com.yooksi.betterarchery.network;
 
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ArchersBow;
 import com.yooksi.betterarchery.item.BowItemParts;
+import com.yooksi.betterarchery.item.ItemColorHandler;
 import com.yooksi.betterarchery.item.ItemSubtype;
 import com.yooksi.betterarchery.item.TreeResinLiquid;
 
@@ -51,13 +51,6 @@ public class ClientProxy extends CommonProxy
 	public void init(FMLInitializationEvent event)
 	{
 		super.init(event);
-		this.registerColorHandlers();
-	}
-	
-	@SideOnly(Side.CLIENT)
-	private void registerColorHandlers()
-	{
-		ArchersBow.ColorHandler.registerColorHandler();
-		BowItemParts.ItemPartType.ColorHandler.registerColorHandler();
+		ItemColorHandler.registerItemColorHandlers();
 	}
 }

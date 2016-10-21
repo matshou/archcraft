@@ -8,10 +8,7 @@ import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -69,7 +66,7 @@ public abstract class ArchersBow extends ItemBow
     	subItems.add(archersBow);
     }
 	
-	protected static BowItemVariant getBowItemVariant(Item item)
+	public static BowItemVariant getBowItemVariant(Item item)
 	{
 		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
 	}
@@ -97,9 +94,10 @@ public abstract class ArchersBow extends ItemBow
 		}
 		
 		/**
-		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, or <b>-1</b> if no color.  
+		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, 
+		 *  or <b>-1</b> if no color.  
 		 */
-		private int getColorRGB()
+		public int getColorRGB()
 		{
 			return variantColor != null ? variantColor.getRGB() : -1;
 		}
@@ -115,44 +113,6 @@ public abstract class ArchersBow extends ItemBow
 	public ModelResourceLocation getModelResourceLocation()
 	{
 		return new ModelResourceLocation(BetterArchery.MODID + ":" + variant.modelFileName);
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static class ColorHandler implements IItemColor 
-	{
-		/**
-		 *  A list of items that are considered color variation, and require to be registered with ColorHandler.
-		 */
-		private static final Item[] colorVariants = new Item[] 
-		{
-				ModItems.SIMPLE_BOW_LEATHER_GRIP,
-				ModItems.RECURVE_BOW_LEATHER_GRIP,
-				ModItems.SIMPLE_BOW_WOOLEN_GRIP,
-				ModItems.RECURVE_BOW_WOOLEN_GRIP
-		};
-		
-		@Override
-		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
-		{
-			if (tintIndex == 1)
-			{
-				/*
-				 *  The color value from NBT will always override default variant color.
-				 */
-				int colorFromNBT = stack.hasTagCompound() ? stack.getTagCompound().getInteger("itemColor") : 0;
-				return colorFromNBT > 0 ? colorFromNBT : getBowItemVariant(stack.getItem()).getColorRGB();
-			}
-			else return -1;
-		}
-		
-		/**
-		 *  Register this color handler with Minecraft for all mod bow items.
-		 */
-		public static void registerColorHandler()
-		{
-			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-			itemColors.registerItemColorHandler(new ColorHandler(), colorVariants);
-		}
 	}
 	
 	/** 
@@ -317,7 +277,7 @@ public abstract class ArchersBow extends ItemBow
                         	bowBody.setTagCompound(tagCompound);
                         	
                             tagCompound.setInteger("item_damage", stack.getItemDamage());
-                            tagCompound.setInteger("itemColor", stack.getTagCompound().getInteger("itemColor"));
+                            tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
                 
                             entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
                         }

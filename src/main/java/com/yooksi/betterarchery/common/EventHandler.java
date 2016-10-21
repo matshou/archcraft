@@ -102,21 +102,23 @@ public class EventHandler
 					else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
 					{
 						event.crafting.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
-						int stackColor = stack.getTagCompound().getInteger("itemColor");
+						
+						int dyeColorMeta = stack.getTagCompound().getInteger("dyeColorMeta");
+						int stackColor = EnumDyeColor.byMetadata(dyeColorMeta).getMapColor().colorValue;
 						
 						/*
 						 *  Make sure not to override the color inherited by wool.
 						 */
-						if (nbt.getInteger("itemColor") == 0 && stackColor > 0)
-							nbt.setInteger("itemColor", stackColor);
+						if (!nbt.hasKey("dyeColorMeta") && stack.getTagCompound().hasKey("dyeColorMeta"))
+							nbt.setInteger("dyeColorMeta", stackColor);
 					}
 					else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
 					{
 						/*
 						 *  The color of the grip will match the color of the wool.
 						 */
-						int color = EnumDyeColor.byMetadata(stack.getMetadata()).getMapColor().colorValue;
-						nbt.setInteger("itemColor", color);
+						EnumDyeColor dyeColor = EnumDyeColor.byMetadata(stack.getMetadata());
+						nbt.setInteger("dyeColorMeta", dyeColor.getMetadata());
 					}
 				}
 			}
