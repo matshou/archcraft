@@ -24,6 +24,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -51,6 +52,21 @@ public abstract class ArchersBow extends ItemBow
 	{
 		this.variant = variant;
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)
+    {
+		/*
+		 *  This method here is only used to create stack NBT when in creative mode.
+		 *  When crafting the NBT is being created in EventHandler.
+		 */
+		ItemStack archersBow = new ItemStack(itemIn);
+		
+		NBTTagCompound nbt = new NBTTagCompound();
+		archersBow.setTagCompound(nbt);
+		
+    	subItems.add(archersBow);
+    }
 	
 	protected static BowItemVariant getBowItemVariant(Item item)
 	{

@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -66,6 +67,29 @@ public class EventHandler
 					ItemStack stack = new ItemStack(ModItems.TREE_RESIN_LIQUID, 1);
 				    player.setHeldItem(EnumHand.OFF_HAND, stack);
 				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public static void onCrafting(net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent event) 
+	{
+		/*
+		 *  This is where we create the NBTTagCompound for our bow when crafting,
+		 *  and save bow string damage if crafted with bow string.
+		 */
+		if (event.crafting.getItem() instanceof ArchersBow)
+		{
+			final NBTTagCompound nbt = new NBTTagCompound();
+			event.crafting.setTagCompound(nbt);
+			
+			final net.minecraft.inventory.IInventory inventory = event.craftMatrix;
+			for (int i = 0; i < inventory.getSizeInventory(); i++)
+			{
+				ItemStack stack = inventory.getStackInSlot(i);
+				
+				if (stack != null && stack.getItem() == ModItems.BOW_STRING_ITEM)
+					nbt.setInteger("bow_string_durability", stack.getItemDamage());
 			}
 		}
 	}
