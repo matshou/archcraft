@@ -3,7 +3,20 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.8 - 2016-10-19
+## Version 0.2.9 - 2016-10-21
+### Added
+- A bow string item used in crafting.
+- Bows strings have durability and will take damage same as bows.
+- When bow string breaks, the bow will become an unstrung bow.
+- NBT tag compounds for bow items.
+- More bow item recipes.
+
+### Changed
+- Bow durability damage is now based on world difficulty.
+- Brought back all previously removed bow item parts.
+- Changed existing bow recipes.
+
+## Version [0.2.8] - 2016-10-19
 ### Added
 - Simple and recurve bow tooltip info.
 - Two new items for crafting bows with recipes.
@@ -137,6 +150,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.8]: https://github.com/yooksi/Better-Archery-Reborn/compare/3a9b4e68a9f2963be63e995cef15a12169ca9c34...3fd203337c9b8717051f1c34ef70bfdb4e583ade
 [0.2.7]: https://github.com/yooksi/Better-Archery-Reborn/pull/4
 [0.2.6]: https://github.com/yooksi/Better-Archery-Reborn/compare/2d9909a488866cc40b8d027df4207d7208f2a9f5...cb70b9184b4bf9d61aab7189b81642b4fc5073e4
 [0.2.5]: https://github.com/yooksi/Better-Archery-Reborn/compare/147fea16124b64cb243ca02a0d96cc673e03a0c4...2d9909a488866cc40b8d027df4207d7208f2a9f5
