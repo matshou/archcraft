@@ -9,6 +9,6 @@ public class BowItemString extends Item
 	public BowItemString()
 	{
 		this.setCreativeTab(BetterArchery.creativeTab);
-		this.setMaxDamage(350);
+		this.setMaxDamage(400);
 	}
 }
