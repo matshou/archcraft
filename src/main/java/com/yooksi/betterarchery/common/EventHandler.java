@@ -88,9 +88,19 @@ public class EventHandler
 			{
 				ItemStack stack = inventory.getStackInSlot(i);
 				
-				if (stack != null && stack.getItem() == ModItems.BOW_STRING_ITEM)
-					nbt.setInteger("bow_string_durability", stack.getItemDamage());
+				if (stack != null)
+				{
+					if (stack.getItem() == ModItems.BOW_STRING_ITEM)
+						nbt.setInteger("bow_string_damage", stack.getItemDamage());
+					
+					else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
+						event.crafting.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
+				}
 			}
+		}
+		else if (event.crafting.getItem() == ModItems.BOW_ITEM_PART_BODY)
+		{
+			event.crafting.setTagCompound(new NBTTagCompound());
 		}
 	}
 }

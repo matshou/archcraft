@@ -33,7 +33,7 @@ public class ModItems
 		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_LEATHER_GRIP));
 		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_WOOLEN_GRIP));
 		
-		BOW_ITEM_PART_BODY = new BowItemParts();
+		BOW_ITEM_PART_BODY = new BowItemParts();  // initialize after all bow items
 		BOW_STRING_ITEM = new BowItemString();
 		
 		TREE_RESIN_LIQUID = new TreeResinLiquid();

@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -23,11 +24,26 @@ public class BowItemParts extends Item
 	 */
 	public static final String modelDir = "bow_item_part_models";
 	
+	/**
+	 *  List of bows crafted from these parts.
+	 */
+	private final ArchersBow[] craftingProducts;
+	
 	public BowItemParts()
 	{
 		this.setHasSubtypes(true);
 		this.setMaxStackSize(5);
 		this.setMaxDamage(0);
+
+		craftingProducts = new ArchersBow[]
+		{ 	
+			ModItems.SIMPLE_BOW_PLAIN,
+			ModItems.RECURVE_BOW_PLAIN, 
+			ModItems.SIMPLE_BOW_LEATHER_GRIP, 
+			ModItems.SIMPLE_BOW_WOOLEN_GRIP,
+			ModItems.RECURVE_BOW_LEATHER_GRIP, 
+			ModItems.RECURVE_BOW_WOOLEN_GRIP
+		};
 	}
 
 	@Override
@@ -39,14 +55,12 @@ public class BowItemParts extends Item
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)
     {
-    	subItems.add(new ItemStack(itemIn, 1, 0));     // TYPE_BODY_SIMPLE_PLAIN
-        subItems.add(new ItemStack(itemIn, 1, 1));     // TYPE_BODY_RECURVE_PLAIN
-        
-        subItems.add(new ItemStack(itemIn, 1, 2));     // TYPE_BODY_SIMPLE_WITH_GRIP
-        subItems.add(new ItemStack(itemIn, 1, 3));     // TYPE_BODY_RECURVE_WITH_GRIP
-
-        subItems.add(new ItemStack(itemIn, 1, 4));     // TYPE_BODY_RECURVE_WITH_LEATHER_GRIP
-        subItems.add(new ItemStack(itemIn, 1, 5));     // TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP
+    	for (ItemPartType type : ItemPartType.values())
+    	{
+    		ItemStack stack = new ItemStack(itemIn, 1, type.metadata);
+    		stack.setTagCompound(new NBTTagCompound());
+    		subItems.add(stack);
+    	}
     } 
 	
 	public static enum ItemPartType implements ItemSubtype
@@ -115,5 +129,21 @@ public class BowItemParts extends Item
     			itemColors.registerItemColorHandler(new ColorHandler(), ModItems.BOW_ITEM_PART_BODY);
     		}
     	}
+    }
+
+	@Override
+	public boolean showDurabilityBar(ItemStack stack)
+	{
+		/*
+		 *  This method is called several times BEFORE we had a chance to create a new NBTTagCompound.
+		 */
+		return stack.hasTagCompound() ? stack.getTagCompound().getInteger("item_damage") > 0 : false;
+	}
+	
+	@Override
+    public double getDurabilityForDisplay(ItemStack stack)
+    {
+		double maxDamage = craftingProducts[stack.getMetadata()].getMaxDamage();
+		return (double)stack.getTagCompound().getInteger("item_damage") / maxDamage;
     }
 }

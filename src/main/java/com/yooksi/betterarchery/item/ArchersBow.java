@@ -284,13 +284,13 @@ public abstract class ArchersBow extends ItemBow
                         
                         stack.damageItem(damage, entityplayer);
                         
-                        final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_durability") + damage;
+                        final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_damage") + damage;
                         boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
                       
                         float randomFloat = worldIn.rand.nextFloat();
                         float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
                 		
-                        if (stack.stackSize == 0)  // Bow has been broken this tick
+                        if (stack.stackSize == 0)  // Bow has been broken after dealing durability damage
                         {
                         	if (!isBowStringBroken)
                         	{
@@ -302,24 +302,15 @@ public abstract class ArchersBow extends ItemBow
                         }
                         else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)
                         {
-                        	EnumHand activeHand = entityplayer.getActiveHand();
-                            entityplayer.setHeldItem(activeHand, new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()));
-                        }
-                        else stack.getTagCompound().setInteger("bow_string_durability", bowStringDamage);
-                       
-                        /* float a = 0;
-                        for (int b = 0; b < 100; b++)
-                        {
-                        	for (int c = 0; c < stack.getMaxDamage(); c++)
-                        	{
-                        		 float randomFloat2 = worldIn.rand.nextFloat();
-                                 float durabilityMod2 = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
-                        		
-                        		if (randomFloat2 < 0.0015F * durabilityMod2)
-                        			a++;
-                        	}
-                        }   Logger.info("Simulated 100 times, bow broke " + a + " times."); */
+                        	ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
                         	
+                        	bowBody.setTagCompound(new NBTTagCompound());
+                            bowBody.getTagCompound().setInteger("item_damage", stack.getItemDamage());
+                
+                            entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
+                        }
+                        else stack.getTagCompound().setInteger("bow_string_damage", bowStringDamage);
+
                         if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
