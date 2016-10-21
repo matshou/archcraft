@@ -35,6 +35,10 @@ public class BowItemParts extends Item
 		this.setMaxStackSize(5);
 		this.setMaxDamage(0);
 
+		/*
+		 *  These items are being used to properly display durability damage,
+		 *  check #getDurabilityForDisplay to see how they are used.
+		 */
 		craftingProducts = new ArchersBow[]
 		{ 	
 			ModItems.SIMPLE_BOW_PLAIN,
@@ -119,8 +123,19 @@ public class BowItemParts extends Item
     		@Override
     		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
     		{
-    			int meta = stack.getMetadata();
-    			return tintIndex == 1 && meta > 1 ? getTypeByMeta(meta).subtypeColor.getRGB() : -1;
+    			/*
+    			 *  Skip first two subtypes because they don't have color values.
+    			 *  This is a just a bit of performance optimizing.
+    			 */
+    			if (tintIndex == 1 && stack.getMetadata() > 1)
+    			{
+    				/*
+    				 *  The color value from NBT will always override default subtype color.
+    				 */
+    				int colorFromNBT = stack.hasTagCompound() ? stack.getTagCompound().getInteger("itemColor") : 0;
+    				return colorFromNBT > 0 ? colorFromNBT : getTypeByMeta(stack.getMetadata()).subtypeColor.getRGB();
+    			}
+    			else return -1;
     		}
     		
     		public static void registerColorHandler()

@@ -6,7 +6,10 @@ import com.yooksi.betterarchery.item.ArchersBow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -90,11 +93,31 @@ public class EventHandler
 				
 				if (stack != null)
 				{
+					/*
+					 *  Save bow string damage in new bow NBT.
+					 */
 					if (stack.getItem() == ModItems.BOW_STRING_ITEM)
 						nbt.setInteger("bow_string_damage", stack.getItemDamage());
 					
 					else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
+					{
 						event.crafting.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
+						int stackColor = stack.getTagCompound().getInteger("itemColor");
+						
+						/*
+						 *  Make sure not to override the color inherited by wool.
+						 */
+						if (nbt.getInteger("itemColor") == 0 && stackColor > 0)
+							nbt.setInteger("itemColor", stackColor);
+					}
+					else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
+					{
+						/*
+						 *  The color of the grip will match the color of the wool.
+						 */
+						int color = EnumDyeColor.byMetadata(stack.getMetadata()).getMapColor().colorValue;
+						nbt.setInteger("itemColor", color);
+					}
 				}
 			}
 		}

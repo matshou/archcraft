@@ -125,15 +125,24 @@ public abstract class ArchersBow extends ItemBow
 		 */
 		private static final Item[] colorVariants = new Item[] 
 		{
-				ModItems.SIMPLE_BOW_LEATHER_GRIP, 
-				ModItems.RECURVE_BOW_LEATHER_GRIP 
+				ModItems.SIMPLE_BOW_LEATHER_GRIP,
+				ModItems.RECURVE_BOW_LEATHER_GRIP,
+				ModItems.SIMPLE_BOW_WOOLEN_GRIP,
+				ModItems.RECURVE_BOW_WOOLEN_GRIP
 		};
 		
 		@Override
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
-			BowItemVariant variant = getBowItemVariant(stack.getItem());
-			return tintIndex == 1 ? variant.getColorRGB() : -1;
+			if (tintIndex == 1)
+			{
+				/*
+				 *  The color value from NBT will always override default variant color.
+				 */
+				int colorFromNBT = stack.hasTagCompound() ? stack.getTagCompound().getInteger("itemColor") : 0;
+				return colorFromNBT > 0 ? colorFromNBT : getBowItemVariant(stack.getItem()).getColorRGB();
+			}
+			else return -1;
 		}
 		
 		/**
@@ -300,12 +309,15 @@ public abstract class ArchersBow extends ItemBow
                         	    entityplayer.inventory.addItemStackToInventory(bowString);
                             }
                         }
-                        else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)
+                        else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)  // Bow string just broke
                         {
                         	ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
                         	
-                        	bowBody.setTagCompound(new NBTTagCompound());
-                            bowBody.getTagCompound().setInteger("item_damage", stack.getItemDamage());
+                        	NBTTagCompound tagCompound = new NBTTagCompound();
+                        	bowBody.setTagCompound(tagCompound);
+                        	
+                            tagCompound.setInteger("item_damage", stack.getItemDamage());
+                            tagCompound.setInteger("itemColor", stack.getTagCompound().getInteger("itemColor"));
                 
                             entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
                         }
