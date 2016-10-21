@@ -10,6 +10,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class CommonProxy 
 {
@@ -64,8 +65,6 @@ public class CommonProxy
 		
 		Logger.info("Removed " + recipesRemovedCount + " vanilla recipes.");
 		
-		final Item itemWool = Item.getItemFromBlock(Blocks.WOOL);
-		
 	    //================================================================================
 	    //                                Bow Item Parts
 	    //================================================================================
@@ -80,6 +79,32 @@ public class CommonProxy
 	    //                                  Bow Items
 	    //================================================================================
 		
+		final ItemStack bowStringStack = new ItemStack(ModItems.BOW_STRING_ITEM, 1, OreDictionary.WILDCARD_VALUE);
+		final ItemStack woolItemStack = new ItemStack(Item.getItemFromBlock(Blocks.WOOL), 1, OreDictionary.WILDCARD_VALUE);
+
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_PLAIN), 
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '@', bowStringStack});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_LEATHER_GRIP), 
+				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', Items.LEATHER, '@', bowStringStack});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
+				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', woolItemStack, '@', bowStringStack});
+		
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', ModItems.BOW_STRING_ITEM});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_LEATHER_GRIP), 
+				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', Items.LEATHER, '@', bowStringStack});
+	
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
+				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', woolItemStack, '@', bowStringStack});
+		
+	    
+		// ========================== Alternative bow recipes ===========================
+		
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_PLAIN), 
 				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '@', Items.STRING});
 		
@@ -87,7 +112,7 @@ public class CommonProxy
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', Items.LEATHER, '@', Items.STRING});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
-				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', itemWool, '@', Items.STRING});
+				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', woolItemStack, '@', Items.STRING});
 		
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
@@ -97,14 +122,17 @@ public class CommonProxy
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', Items.LEATHER, '@', Items.STRING});
 	
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
-				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', itemWool, '@', Items.STRING});
+				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', woolItemStack, '@', Items.STRING});
+		
 		
 		//================================================================================
 	    //                                 Support Items
 	    //================================================================================
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.BOW_STRING_ITEM), new Object[] {Items.STRING, Items.STRING, Items.STRING});
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 
-				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', itemWool, 'y', Items.GLASS_BOTTLE});
+				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', woolItemStack, 'y', Items.GLASS_BOTTLE});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 
 				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', Items.PAPER, 'y', Items.GLASS_BOTTLE});
