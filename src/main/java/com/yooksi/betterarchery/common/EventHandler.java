@@ -6,12 +6,8 @@ import com.yooksi.betterarchery.item.ArchersBow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -71,61 +67,6 @@ public class EventHandler
 				    player.setHeldItem(EnumHand.OFF_HAND, stack);
 				}
 			}
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onCrafting(net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent event) 
-	{
-		/*
-		 *  This is where we create the NBTTagCompound for our bow when crafting,
-		 *  and save bow string damage if crafted with bow string.
-		 */
-		if (event.crafting.getItem() instanceof ArchersBow)
-		{
-			final NBTTagCompound nbt = new NBTTagCompound();
-			event.crafting.setTagCompound(nbt);
-			
-			final net.minecraft.inventory.IInventory inventory = event.craftMatrix;
-			for (int i = 0; i < inventory.getSizeInventory(); i++)
-			{
-				ItemStack stack = inventory.getStackInSlot(i);
-				
-				if (stack != null)
-				{
-					/*
-					 *  Save bow string damage in new bow NBT.
-					 */
-					if (stack.getItem() == ModItems.BOW_STRING_ITEM)
-						nbt.setInteger("bow_string_damage", stack.getItemDamage());
-					
-					else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
-					{
-						event.crafting.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
-						
-						int dyeColorMeta = stack.getTagCompound().getInteger("dyeColorMeta");
-						int stackColor = EnumDyeColor.byMetadata(dyeColorMeta).getMapColor().colorValue;
-						
-						/*
-						 *  Make sure not to override the color inherited by wool.
-						 */
-						if (!nbt.hasKey("dyeColorMeta") && stack.getTagCompound().hasKey("dyeColorMeta"))
-							nbt.setInteger("dyeColorMeta", stackColor);
-					}
-					else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
-					{
-						/*
-						 *  The color of the grip will match the color of the wool.
-						 */
-						EnumDyeColor dyeColor = EnumDyeColor.byMetadata(stack.getMetadata());
-						nbt.setInteger("dyeColorMeta", dyeColor.getMetadata());
-					}
-				}
-			}
-		}
-		else if (event.crafting.getItem() == ModItems.BOW_ITEM_PART_BODY)
-		{
-			event.crafting.setTagCompound(new NBTTagCompound());
 		}
 	}
 }
