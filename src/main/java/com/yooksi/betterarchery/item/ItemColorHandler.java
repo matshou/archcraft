@@ -81,4 +81,17 @@ abstract public class ItemColorHandler
 		itemColors.registerItemColorHandler(new BowColorHandler(), BowColorHandler.colorVariants);
 		itemColors.registerItemColorHandler(new BowBodyColorHandler(), ModItems.BOW_ITEM_PART_BODY);
 	}
+	
+	/** 
+	 *  Return the name of the color assigned to this ItemStack.
+	 *  @return <i>"unknown"</i> is no color was found.
+	 */
+	public static String getDyeColorNameForStack(ItemStack stack)
+	{
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("dyeColorMeta"))
+		{	
+			return EnumDyeColor.byMetadata(stack.getTagCompound().getInteger("dyeColorMeta")).getName(); 
+		}
+		else return "unknown";
+	}
 }

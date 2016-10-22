@@ -17,19 +17,27 @@ public class SimpleBow extends ArchersBow
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, java.util.List<String> info, boolean par4) 
 	{		
-		info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "Such simple, so right.");
+		info.add("An effective weapon made from a single piece of wood.");
 		
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
+		case SIMPLE_BOW_PLAIN:
+			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "Such simple, so right.");
+			break;
+
 		case SIMPLE_BOW_LEATHER_GRIP:
-			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "With a leather grip.");
+			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
 			
-		case SIMPLE_BOW_WOOLEN_GRIP:	
-			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "With a woolen grip.");
-		
-		default: 
-			break;   // BOW_PLAIN or null 	
+		case SIMPLE_BOW_WOOLEN_GRIP:
+		{
+			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		
+			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + (colorName == "pink" ? 
+					"It holds the power of the pink sheep clan." : "It has a " + (colorName != "unknown" ? 
+							colorName + " colored woolen grip." : "woolen grip")));
+		}
+		default:    // null 
+			break;   	
 		}	
 	}
 }
