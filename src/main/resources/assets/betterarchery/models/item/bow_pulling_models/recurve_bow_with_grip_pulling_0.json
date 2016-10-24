@@ -1,5 +1,5 @@
 {
-    "parent": "item/generated",
+    "parent": "item/bow",
     "textures": {
         "layer0": "betterarchery:items/recurve_bow_body_standby",
 		"layer1": "betterarchery:items/bow_grip_layer",
