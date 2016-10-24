@@ -42,6 +42,24 @@ public class EventHandler
 			event.setNewfov(event.getFov() - (float)(0.15F * animationProgress));
 		}
 	}
+	
+	@SubscribeEvent
+	public static void onRenderSpecificHandEvent(net.minecraftforge.client.event.RenderSpecificHandEvent event)
+	{
+		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EnumHand activeHand = player.getActiveHand();
+		
+		/*
+		 *  Note that in case the player is not using an item getActiveHand() 
+		 *  on client will return the last hand that was active. 
+		 */
+		if (player.getItemInUseCount() > 0 && event.getHand() != activeHand)
+		{
+			ItemStack itemInActiveHand = player.getHeldItem(activeHand);
+			if (itemInActiveHand != null && itemInActiveHand.getItem() instanceof ArchersBow)
+				event.setCanceled(true);
+		}
+	}
 
 	@SubscribeEvent
 	public static void onPlayerBreakingBlock(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event)
