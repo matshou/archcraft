@@ -5,10 +5,9 @@ import com.yooksi.betterarchery.item.ArchersBow;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -18,7 +17,7 @@ public class EventHandler
 	@SubscribeEvent
 	public static void FOVUpdateEvent(net.minecraftforge.client.event.FOVUpdateEvent event)
 	{
-        EntityPlayer player = event.getEntity();
+		net.minecraft.entity.player.EntityPlayer player = event.getEntity();
         ItemStack activeItem = player != null ? player.getActiveItemStack() : null;
         
         /* 
@@ -46,7 +45,7 @@ public class EventHandler
 	@SubscribeEvent
 	public static void onRenderSpecificHandEvent(net.minecraftforge.client.event.RenderSpecificHandEvent event)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		net.minecraft.entity.player.EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		EnumHand activeHand = player.getActiveHand();
 		
 		/*
@@ -64,7 +63,7 @@ public class EventHandler
 	@SubscribeEvent
 	public static void onPlayerBreakingBlock(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event)
 	{
-		EntityPlayer player = event.getEntityPlayer();
+		net.minecraft.entity.player.EntityPlayer player = event.getEntityPlayer();
 		Block target = event.getState().getBlock();
 		
 		if (player != null && player.isServerWorld() && target instanceof net.minecraft.block.BlockLog)
@@ -75,7 +74,7 @@ public class EventHandler
 			 */
 			
 			ItemStack offHandStack = player.getHeldItem(EnumHand.OFF_HAND);
-			if (offHandStack != null && offHandStack.getItem() == Items.GLASS_BOTTLE)
+			if (offHandStack != null && offHandStack.getItem() == net.minecraft.init.Items.GLASS_BOTTLE)
 			{
 				if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown()) 
 				{

@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Marker;
  * 
  * <i>Thanks to Choonster for writing the original wrapper.</i> 
  */
-public abstract class Logger 
+public class Logger 
 {
 	private static org.apache.logging.log4j.Logger logger;
 	

@@ -39,11 +39,8 @@ public class TreeResinLiquid extends Item
 	@SideOnly(Side.CLIENT)   
 	public void getSubItems(net.minecraft.item.Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)    
 	{	
-		subItems.add(new ItemStack(itemIn, 1, 0));     // LIQUID_TYPE_INPURE
-	    subItems.add(new ItemStack(itemIn, 1, 1));     // LIQUID_TYPE_PURE
-	    
-	    subItems.add(new ItemStack(itemIn, 1, 2));     // LIQUID_TYPE_MIXED_IN_BOWL
-	    subItems.add(new ItemStack(itemIn, 1, 3));     // LIQUID_TYPE_MIXED_IN_BOTTLE
+		for (ResinLiquidType type : ResinLiquidType.values())
+			subItems.add(new ItemStack(itemIn, 1, type.getTypeMetadata()));
 	}
 	
 	public static enum ResinLiquidType implements ItemSubtype

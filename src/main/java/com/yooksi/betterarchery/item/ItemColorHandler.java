@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-abstract public class ItemColorHandler
+public class ItemColorHandler
 {
 	@SideOnly(Side.CLIENT)
 	public static class BowColorHandler implements IItemColor 
