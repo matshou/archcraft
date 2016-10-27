@@ -1,8 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/simple_bow_body_standby",
-		"layer1": "betterarchery:items/bow_grip_layer"
+        "layer0": "betterarchery:items/item_recurve_bow_body"
     },
     "display": {
         "thirdperson_righthand": {

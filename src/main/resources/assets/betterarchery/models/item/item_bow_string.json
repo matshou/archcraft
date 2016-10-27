@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/bow_string_item"
+        "layer0": "betterarchery:items/item_bow_string"
     }
 }
