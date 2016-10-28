@@ -1,7 +1,5 @@
 package com.yooksi.betterarchery.item;
 
-import java.awt.Color;
-
 import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
@@ -46,9 +44,23 @@ public abstract class ArchersBow extends ItemBow
 	
 	private final BowItemVariant variant;
 	
+	private static final java.util.Map<BodyPartType, ArchersBow> craftingContracts = 
+			new java.util.HashMap<BodyPartType, ArchersBow>();
+	
 	protected ArchersBow(BowItemVariant variant)
 	{
+		craftingContracts.put(variant.bodyType, this);
 		this.variant = variant;
+	}
+	
+	/**
+	 *  Get an item bow that is a crafting product of this body type.
+	 *  @param type should have a parent <code>BowItemVariant</code>, otherwise return will be <code>null</code>.
+	 */
+	@Nullable
+	protected static ArchersBow getCraftingOutputFor(BodyPartType type)
+	{
+		return craftingContracts.get(type);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -66,44 +78,42 @@ public abstract class ArchersBow extends ItemBow
     	subItems.add(archersBow);
     }
 	
-	public static BowItemVariant getBowItemVariant(Item item)
+	protected static BowItemVariant getBowItemVariant(Item item)
 	{
 		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
 	}
 	
 	public enum BowItemVariant
 	{
-		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
-		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN, null),
-		LONG_BOW_PLAIN("long_bow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN, null),
+		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
+		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
+		LONG_BOW_PLAIN("long_bow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
 		
-		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
+		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
 	
-		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
+		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
 	
-		LONG_BOW_WOOLEN_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		LONG_BOW_LEATHER_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP, new Color(107, 46, 22));
+		LONG_BOW_WOOLEN_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
+		LONG_BOW_LEATHER_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
 		
 		private final String modelFileName;
 		private final BodyPartType bodyType;
-		private final Color variantColor;
 		
-		BowItemVariant(String modelFile, BodyPartType bodyType, @Nullable Color color)
+		BowItemVariant(String modelFile, BodyPartType bodyType)
 		{
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;
-			this.variantColor = color;
 		}
 		
 		/**
 		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, 
 		 *  or <b>-1</b> if no color.  
 		 */
-		public int getColorRGB()
+		protected int getColorRGB()
 		{
-			return variantColor != null ? variantColor.getRGB() : -1;
+			return bodyType.getColorRGB();
 		}
 	}		
 	
