@@ -5,38 +5,38 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SimpleBow extends ArchersBow
+public class ItemRecurveBow extends ArchersBow
 {
-	public SimpleBow(BowItemVariant variant)
+	public ItemRecurveBow(BowItemVariant variant)
 	{
 		super(variant);
-		this.setMaxDamage(150);
+		
+		this.setMaxDamage(250);
+		
+		pullingSpeedMult = 0.85F;
+		arrowSpeedMult = 1.20F;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, java.util.List<String> info, boolean par4) 
 	{		
-		info.add("An effective weapon made from a single piece of wood.");
+		info.add("A swift, true-firing bow that almost aims itself.");
 		
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
-		case SIMPLE_BOW_PLAIN:
-			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "Such simple, so right.");
-			break;
-
-		case SIMPLE_BOW_LEATHER_GRIP:
+		case RECURVE_BOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
 			
-		case SIMPLE_BOW_WOOLEN_GRIP:
+		case RECURVE_BOW_WOOLEN_GRIP:
 		{
 			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + (colorName == "pink" ? 
 					"It holds the power of the pink sheep clan." : "It has a " + (colorName != "unknown" ? 
 							colorName + " colored woolen grip." : "woolen grip")));
 		}
-		default:    // null 
+		default:   // BOW_PLAIN or null 
 			break;   	
 		}	
 	}

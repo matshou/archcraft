@@ -1,7 +1,7 @@
 package com.yooksi.betterarchery.item;
 
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
+import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -65,7 +65,7 @@ public class ItemColorHandler
 					int dyeColorMeta = stack.getTagCompound().getInteger("dyeColorMeta");
 					return EnumDyeColor.byMetadata(dyeColorMeta).getMapColor().colorValue;
 				}
-				else return ItemPartType.getTypeByMeta(stack.getMetadata()).getColorRGB();
+				else return BodyPartType.getTypeByMeta(stack.getMetadata()).getColorRGB();
 			}
 			else return -1;
 		}

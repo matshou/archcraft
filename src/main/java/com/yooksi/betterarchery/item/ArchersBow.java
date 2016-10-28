@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
+import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -73,20 +73,20 @@ public abstract class ArchersBow extends ItemBow
 	
 	public enum BowItemVariant
 	{
-		SIMPLE_BOW_PLAIN("simple_bow_plain", ItemPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
-		RECURVE_BOW_PLAIN("recurve_bow_plain", ItemPartType.TYPE_BODY_RECURVE_PLAIN, null),
+		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
+		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN, null),
 		
-		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
+		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
 	
-		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22));
-	
+		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
+		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22));
+		
 		private final String modelFileName;
-		private final ItemPartType bodyType;
+		private final BodyPartType bodyType;
 		private final Color variantColor;
 		
-		BowItemVariant(String modelFile, ItemPartType bodyType, @Nullable Color color)
+		BowItemVariant(String modelFile, BodyPartType bodyType, @Nullable Color color)
 		{
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;

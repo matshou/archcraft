@@ -9,34 +9,37 @@ import com.yooksi.betterarchery.item.ArchersBow.BowItemVariant;
  */
 public class ModItems 
 {
-	public static final SimpleBow SIMPLE_BOW_PLAIN;
-	public static final SimpleBow SIMPLE_BOW_LEATHER_GRIP;
-	public static final SimpleBow SIMPLE_BOW_WOOLEN_GRIP;
+	public static final ItemSimpleBow SIMPLE_BOW_PLAIN;
+	public static final ItemSimpleBow SIMPLE_BOW_LEATHER_GRIP;
+	public static final ItemSimpleBow SIMPLE_BOW_WOOLEN_GRIP;
 	
-	public static final RecurveBow RECURVE_BOW_PLAIN;
-	public static final RecurveBow RECURVE_BOW_LEATHER_GRIP;
-    public static final RecurveBow RECURVE_BOW_WOOLEN_GRIP;
+	public static final ItemRecurveBow RECURVE_BOW_PLAIN;
+	public static final ItemRecurveBow RECURVE_BOW_LEATHER_GRIP;
+    public static final ItemRecurveBow RECURVE_BOW_WOOLEN_GRIP;
+    
 	
-	public static final BowItemParts BOW_ITEM_PART_BODY;
-	public static final BowItemString BOW_STRING_ITEM;
+	public static final ItemBowPartBody BOW_ITEM_PART_BODY;
+	public static final ItemBowString BOW_STRING_ITEM;
 	
-	public static final TreeResinLiquid TREE_RESIN_LIQUID;
-	public static final TreeResinGlue TREE_RESIN_GLUE;
+	public static final ItemTreeResinLiquid TREE_RESIN_LIQUID;
+	public static final ItemTreeResinGlue TREE_RESIN_GLUE;
 	
 	static
 	{
-		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_PLAIN));
-		SIMPLE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_LEATHER_GRIP));
-		SIMPLE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new SimpleBow(BowItemVariant.SIMPLE_BOW_WOOLEN_GRIP));
+		SIMPLE_BOW_PLAIN = ArchersBow.initNewBowType(new ItemSimpleBow(BowItemVariant.SIMPLE_BOW_PLAIN));
+		SIMPLE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new ItemSimpleBow(BowItemVariant.SIMPLE_BOW_LEATHER_GRIP));
+		SIMPLE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new ItemSimpleBow(BowItemVariant.SIMPLE_BOW_WOOLEN_GRIP));
 		
-		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_PLAIN));
-		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_LEATHER_GRIP));
-		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new RecurveBow(BowItemVariant.RECURVE_BOW_WOOLEN_GRIP));
+		RECURVE_BOW_PLAIN = ArchersBow.initNewBowType(new ItemRecurveBow(BowItemVariant.RECURVE_BOW_PLAIN));
+		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new ItemRecurveBow(BowItemVariant.RECURVE_BOW_LEATHER_GRIP));
+		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new ItemRecurveBow(BowItemVariant.RECURVE_BOW_WOOLEN_GRIP));
 		
-		BOW_ITEM_PART_BODY = new BowItemParts();  // initialize after all bow items
-		BOW_STRING_ITEM = new BowItemString();
+		//LONG_BOW_PLAIN = ArchersBow.initNewBowType(new ItemLongBow(BowItemVariant.LONG_BOW_PLAIN));
 		
-		TREE_RESIN_LIQUID = new TreeResinLiquid();
-		TREE_RESIN_GLUE = new TreeResinGlue();
+		BOW_ITEM_PART_BODY = new ItemBowPartBody();  // initialize after all bow items
+		BOW_STRING_ITEM = new ItemBowString();
+		
+		TREE_RESIN_LIQUID = new ItemTreeResinLiquid();
+		TREE_RESIN_GLUE = new ItemTreeResinGlue();
 	}
 }

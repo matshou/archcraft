@@ -4,9 +4,9 @@ import com.yooksi.betterarchery.common.BetterArchery;
 
 import net.minecraft.item.Item;
 
-public class TreeResinGlue extends Item
+public class ItemTreeResinGlue extends Item
 {
-	public TreeResinGlue()
+	public ItemTreeResinGlue()
 	{
 		this.setCreativeTab(BetterArchery.creativeTab);
 	}

@@ -13,14 +13,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BowItemParts extends Item
+public class ItemBowPartBody extends Item
 {
 	/**
 	 *  List of bows crafted from these parts.
 	 */
 	private final ArchersBow[] craftingProducts;
 	
-	public BowItemParts()
+	public ItemBowPartBody()
 	{
 		this.setHasSubtypes(true);
 		this.setMaxStackSize(5);
@@ -44,13 +44,13 @@ public class BowItemParts extends Item
 	@Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item." + ItemPartType.getTypeByMeta(stack.getMetadata()).unlocalizedName;
+        return "item." + BodyPartType.getTypeByMeta(stack.getMetadata()).unlocalizedName;
     }
 
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> subItems)
     {
-    	for (ItemPartType type : ItemPartType.values())
+    	for (BodyPartType type : BodyPartType.values())
     	{
     		ItemStack stack = new ItemStack(itemIn, 1, type.metadata);
     		stack.setTagCompound(new NBTTagCompound());
@@ -58,7 +58,7 @@ public class BowItemParts extends Item
     	}
     } 
 	
-	public static enum ItemPartType implements ItemSubtype
+	public static enum BodyPartType implements ItemSubtype
     {
     	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
     	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_plain", null),
@@ -73,7 +73,7 @@ public class BowItemParts extends Item
     	private final String unlocalizedName;
     	private final Color subtypeColor;
     	
-    	private ItemPartType(int meta, String name, Color color)
+    	private BodyPartType(int meta, String name, Color color)
     	{
     		this.metadata = meta;
     		this.unlocalizedName = name;
@@ -106,9 +106,9 @@ public class BowItemParts extends Item
     	 * @param meta used to distinguish different item subtypes.  
     	 * @throws IllegalArgumentException if argument in an unregistered value.
     	 */
-    	public static ItemPartType getTypeByMeta(int meta)
+    	public static BodyPartType getTypeByMeta(int meta)
     	{
-    		for (ItemPartType type : ItemPartType.values())
+    		for (BodyPartType type : BodyPartType.values())
     		{
     			if (type.metadata == meta)
     				return type;
