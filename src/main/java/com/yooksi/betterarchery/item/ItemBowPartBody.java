@@ -44,25 +44,35 @@ public class ItemBowPartBody extends Item
     	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_plain", ArcheryColor.COLOR_NULL),
     	TYPE_BODY_LONG_PLAIN(2, "long_bow_body_plain", ArcheryColor.COLOR_NULL),
     	
-    	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(3, "simple_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
-    	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(4, "simple_bow_body_with_grip", ArcheryColor.COLOR_WOOL),
+    	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(3, TYPE_BODY_SIMPLE_PLAIN, "simple_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
+    	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(4, TYPE_BODY_SIMPLE_PLAIN, "simple_bow_body_with_grip", ArcheryColor.COLOR_WOOL),
     	
-    	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(5, "recurve_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
-    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(6, "recurve_bow_body_with_grip", ArcheryColor.COLOR_WOOL),
+    	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(5, TYPE_BODY_RECURVE_PLAIN, "recurve_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
+    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(6, TYPE_BODY_RECURVE_PLAIN, "recurve_bow_body_with_grip", ArcheryColor.COLOR_WOOL),
 		
-		TYPE_BODY_LONG_WITH_LEATHER_GRIP(7, "long_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
-		TYPE_BODY_LONG_WITH_WOOLEN_GRIP(8, "long_bow_body_with_grip", ArcheryColor.COLOR_WOOL);
+		TYPE_BODY_LONG_WITH_LEATHER_GRIP(7, TYPE_BODY_LONG_PLAIN, "long_bow_body_with_grip", ArcheryColor.COLOR_LEATHER),
+		TYPE_BODY_LONG_WITH_WOOLEN_GRIP(8, TYPE_BODY_LONG_PLAIN, "long_bow_body_with_grip", ArcheryColor.COLOR_WOOL);
 		
 		private final int metadata;
+		private final String modelFileName;
     	private final String unlocalizedName;
     	private final ArcheryColor subtypeColor;
     	
     	private static final BodyPartType[] META_LOOKUP = new BodyPartType[values().length];
-    	
-    	BodyPartType(int meta, String name, ArcheryColor color)
+
+		BodyPartType(int meta, String name, ArcheryColor color)
     	{
     		this.metadata = meta;
+    		this.modelFileName = name;
     		this.unlocalizedName = name;
+    		this.subtypeColor = color;
+    	}
+    	
+		BodyPartType(int meta, BodyPartType parent, String name, ArcheryColor color)
+    	{
+			this.metadata = meta;
+			this.modelFileName = name;
+    		this.unlocalizedName = parent.unlocalizedName;
     		this.subtypeColor = color;
     	}
     	
@@ -74,7 +84,7 @@ public class ItemBowPartBody extends Item
     	public ModelResourceLocation getModelResourceLocation()
 		{
     		String registryName = ModItems.BOW_ITEM_PART_BODY.getRegistryName().toString();
-			return new ModelResourceLocation(registryName + "/" + unlocalizedName);
+			return new ModelResourceLocation(registryName + "/" + modelFileName);
 		}
        	
     	/**
