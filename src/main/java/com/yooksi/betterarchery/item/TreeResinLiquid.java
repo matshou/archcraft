@@ -1,7 +1,7 @@
 package com.yooksi.betterarchery.item;
 
-import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.Logger;
+import com.yooksi.betterarchery.init.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -48,8 +48,8 @@ public class TreeResinLiquid extends Item
 		LIQUID_TYPE_INPURE(0, "tree_resin_liquid_inpure"), 
 		LIQUID_TYPE_PURE(1, "tree_resin_liquid_pure"),
 		
-		LIQUID_TYPE_MIXED_IN_BOWL(2, "tree_resin_liquid_mixed_bowl"),
-		LIQUID_TYPE_MIXED_IN_BOTTLE(3, "tree_resin_liquid_mixed_bottle");
+		LIQUID_TYPE_MIXED_IN_BOTTLE(2, "tree_resin_liquid_mixed"),
+		LIQUID_TYPE_MIXED_IN_BOWL(3, "tree_resin_mixed_bowl");
 
 		private final int metadata;
 		private final String unlocalizedName;
@@ -67,7 +67,8 @@ public class TreeResinLiquid extends Item
         
 		public ModelResourceLocation getModelResourceLocation()
 		{
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + unlocalizedName);
+			String registryName = ModItems.TREE_RESIN_LIQUID.getRegistryName().toString();
+			return new ModelResourceLocation(registryName + "/" + unlocalizedName);
 		}
 		
 		/** 

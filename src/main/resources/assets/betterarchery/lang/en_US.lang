@@ -15,8 +15,8 @@ item.recurve_bow_body_with_grip.name=Unstrung Recurve Bow
 
 item.tree_resin_liquid_inpure.name=Inpure Tree Resin
 item.tree_resin_liquid_pure.name=Pure Tree Resin
-item.tree_resin_liquid_mixed_bowl.name=Bowl of Mixed Tree Resin
-item.tree_resin_liquid_mixed_bottle.name=Bottle of Mixed Tree Resin
+item.tree_resin_liquid_mixed.name=Bottle of Mixed Tree Resin
+item.tree_resin_mixed_bowl.name=Bowl of Mixed Tree Resin
 
 item.tree_resin_glue.name=Tree Resin Glue
-item.bow_string_item.name=Bow String
+item.archers_bow_string.name=Bow String

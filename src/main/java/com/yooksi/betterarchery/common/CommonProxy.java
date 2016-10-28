@@ -1,5 +1,6 @@
 package com.yooksi.betterarchery.common;
 
+import com.google.common.base.Objects;
 import com.yooksi.betterarchery.crafting.ItemRecipes;
 import com.yooksi.betterarchery.init.ModItems;
 
@@ -32,7 +33,7 @@ public class CommonProxy
 		registerItem(ModItems.RECURVE_BOW_WOOLEN_GRIP, "recurve_bow_woolen_grip");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
-		registerItem(ModItems.BOW_STRING_ITEM, "bow_string_item");
+		registerItem(ModItems.BOW_STRING_ITEM, "item_bow_string");
 		
 		registerItem(ModItems.TREE_RESIN_LIQUID, "tree_resin_liquid");
 		registerItem(ModItems.TREE_RESIN_GLUE, "tree_resin_glue");
@@ -42,7 +43,12 @@ public class CommonProxy
 	
 	private static <T extends net.minecraft.item.Item> T registerItem(T item, String name) 
 	{
-		item.setUnlocalizedName(name);
+		/*
+		 *  If the unlocalized name has already been set by item constructor skip this.
+		 */
+		if (Objects.equal(item.getUnlocalizedName(), new String("item.null")))
+			item.setUnlocalizedName(name);
+		
 		item.setRegistryName(name);
 		return GameRegistry.register(item);
 	}

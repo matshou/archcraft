@@ -2,7 +2,6 @@ package com.yooksi.betterarchery.item;
 
 import java.awt.Color;
 
-import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.common.Logger;
 import com.yooksi.betterarchery.init.ModItems;
 
@@ -16,11 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BowItemParts extends Item
 {
-	/** 
-	 * Name of the directory where item part models are located. 
-	 */
-	public static final String modelDir = "bow_item_part_models";
-	
 	/**
 	 *  List of bows crafted from these parts.
 	 */
@@ -69,12 +63,12 @@ public class BowItemParts extends Item
     	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
     	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_plain", null),
     	
-    	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(2, "simple_bow_body_with_grip", new Color(107, 46, 22)),
-    	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(3, "simple_bow_body_with_grip", new Color(255, 255, 255)),
+    	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(3, "simple_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(4, "simple_bow_body_with_grip", new Color(255, 255, 255)),
     	
-    	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(4, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
-    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(5, "recurve_bow_body_with_grip", new Color(255, 255, 255));
-    	
+    	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(5, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
+    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(6, "recurve_bow_body_with_grip", new Color(255, 255, 255));
+		
 		private final int metadata;
     	private final String unlocalizedName;
     	private final Color subtypeColor;
@@ -93,7 +87,8 @@ public class BowItemParts extends Item
     	
     	public ModelResourceLocation getModelResourceLocation()
 		{
-			return new ModelResourceLocation(BetterArchery.MODID + ":" + modelDir + "/" + unlocalizedName);
+    		String registryName = ModItems.BOW_ITEM_PART_BODY.getRegistryName().toString();
+			return new ModelResourceLocation(registryName + "/" + unlocalizedName);
 		}
        	
     	/**
