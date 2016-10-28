@@ -52,10 +52,10 @@ public class ItemColorHandler
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
 			/*
-			 *  Skip first two subtypes because they don't have color values.
+			 *  Skip first few subtypes because they don't have color values.
 			 *  This is a just a bit of performance optimizing.
 			 */
-			if (tintIndex == 1 && stack.getMetadata() > 1)
+			if (tintIndex == 1 && stack.getMetadata() > 2)
 			{
 				/*
 				 *  The color value from NBT will always override default subtype color.
