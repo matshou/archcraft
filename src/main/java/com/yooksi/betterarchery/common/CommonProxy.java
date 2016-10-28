@@ -13,14 +13,14 @@ public class CommonProxy
 	/** Called by {@link GenericMod#preInit } in the preInit phase of mod loading. */
 	public void preInit(FMLPreInitializationEvent event) 
 	{	
-		registerResources();
+		registerCommons();
 	}
 	
 	/** 
 	 *  Register all items and blocks from the resource library with Forge. <br>
 	 *  This is called when the mod is passing the pre-initialization phase.
 	 */
-	private void registerResources() 
+	private void registerCommons()
 	{
 		Logger.info("Preparing to register item and block instances...");
 		
@@ -31,6 +31,10 @@ public class CommonProxy
 		registerItem(ModItems.RECURVE_BOW_PLAIN, "recurve_bow_plain");
 		registerItem(ModItems.RECURVE_BOW_LEATHER_GRIP, "recurve_bow_leather_grip");
 		registerItem(ModItems.RECURVE_BOW_WOOLEN_GRIP, "recurve_bow_woolen_grip");
+		
+		registerItem(ModItems.LONG_BOW_PLAIN, "long_bow_plain");
+		registerItem(ModItems.LONG_BOW_LEATHER_GRIP, "long_bow_leather_grip");
+		registerItem(ModItems.LONG_BOW_WOOLEN_GRIP, "long_bow_woolen_grip");
 
 		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
 		registerItem(ModItems.BOW_STRING_ITEM, "item_bow_string");

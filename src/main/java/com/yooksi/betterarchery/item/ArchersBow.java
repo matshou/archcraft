@@ -75,12 +75,16 @@ public abstract class ArchersBow extends ItemBow
 	{
 		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
 		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN, null),
+		LONG_BOW_PLAIN("long_bow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN, null),
 		
 		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
 		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
 	
 		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22));
+		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+	
+		LONG_BOW_WOOLEN_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
+		LONG_BOW_LEATHER_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP, new Color(107, 46, 22));
 		
 		private final String modelFileName;
 		private final BodyPartType bodyType;

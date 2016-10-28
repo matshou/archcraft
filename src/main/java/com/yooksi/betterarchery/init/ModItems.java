@@ -17,6 +17,9 @@ public class ModItems
 	public static final ItemRecurveBow RECURVE_BOW_LEATHER_GRIP;
     public static final ItemRecurveBow RECURVE_BOW_WOOLEN_GRIP;
     
+    public static final ItemLongBow LONG_BOW_PLAIN;
+    public static final ItemLongBow LONG_BOW_LEATHER_GRIP;
+    public static final ItemLongBow LONG_BOW_WOOLEN_GRIP;
 	
 	public static final ItemBowPartBody BOW_ITEM_PART_BODY;
 	public static final ItemBowString BOW_STRING_ITEM;
@@ -34,7 +37,9 @@ public class ModItems
 		RECURVE_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new ItemRecurveBow(BowItemVariant.RECURVE_BOW_LEATHER_GRIP));
 		RECURVE_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new ItemRecurveBow(BowItemVariant.RECURVE_BOW_WOOLEN_GRIP));
 		
-		//LONG_BOW_PLAIN = ArchersBow.initNewBowType(new ItemLongBow(BowItemVariant.LONG_BOW_PLAIN));
+		LONG_BOW_PLAIN = ArchersBow.initNewBowType(new ItemLongBow(BowItemVariant.LONG_BOW_PLAIN));
+		LONG_BOW_LEATHER_GRIP = ArchersBow.initNewBowType(new ItemLongBow(BowItemVariant.LONG_BOW_LEATHER_GRIP));
+		LONG_BOW_WOOLEN_GRIP = ArchersBow.initNewBowType(new ItemLongBow(BowItemVariant.LONG_BOW_WOOLEN_GRIP));
 		
 		BOW_ITEM_PART_BODY = new ItemBowPartBody();  // initialize after all bow items
 		BOW_STRING_ITEM = new ItemBowString();

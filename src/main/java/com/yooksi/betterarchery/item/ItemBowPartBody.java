@@ -62,12 +62,16 @@ public class ItemBowPartBody extends Item
     {
     	TYPE_BODY_SIMPLE_PLAIN(0, "simple_bow_body_plain", null),
     	TYPE_BODY_RECURVE_PLAIN(1, "recurve_bow_body_plain", null),
+    	TYPE_BODY_LONG_PLAIN(2, "long_bow_body_plain", null),
     	
     	TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP(3, "simple_bow_body_with_grip", new Color(107, 46, 22)),
     	TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP(4, "simple_bow_body_with_grip", new Color(255, 255, 255)),
     	
     	TYPE_BODY_RECURVE_WITH_LEATHER_GRIP(5, "recurve_bow_body_with_grip", new Color(107, 46, 22)),
-    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(6, "recurve_bow_body_with_grip", new Color(255, 255, 255));
+    	TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP(6, "recurve_bow_body_with_grip", new Color(255, 255, 255)),
+		
+		TYPE_BODY_LONG_WITH_LEATHER_GRIP(7, "long_bow_body_with_grip", new Color(107, 46, 22)),
+		TYPE_BODY_LONG_WITH_WOOLEN_GRIP(8, "long_bow_body_with_grip", new Color(255, 255, 255));
 		
 		private final int metadata;
     	private final String unlocalizedName;

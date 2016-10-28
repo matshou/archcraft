@@ -26,7 +26,9 @@ public class ItemColorHandler
 				ModItems.SIMPLE_BOW_LEATHER_GRIP,
 				ModItems.RECURVE_BOW_LEATHER_GRIP,
 				ModItems.SIMPLE_BOW_WOOLEN_GRIP,
-				ModItems.RECURVE_BOW_WOOLEN_GRIP
+				ModItems.RECURVE_BOW_WOOLEN_GRIP,
+				ModItems.LONG_BOW_LEATHER_GRIP,
+				ModItems.LONG_BOW_WOOLEN_GRIP
 		};
 		
 		@Override
