@@ -24,10 +24,10 @@ public class ItemRecipes
 	    //                                Bow Item Parts
 	    //================================================================================
 		
-		GameRegistry.addRecipe(new BowItemBodyRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), 
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), 
 				new Object[] { " / ", "/  ", " / ", '/', Items.STICK}));
 	
-		GameRegistry.addRecipe(new BowItemBodyRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1),
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1),
 				new Object[] { " / ", "/@ ", " / ", '/', Items.STICK, '@', ModItems.TREE_RESIN_GLUE}));
 		
 	    //================================================================================
@@ -177,6 +177,5 @@ public class ItemRecipes
 	public static void registerRecipeTypes()
 	{
 		RecipeSorter.register("betterarchery:archersBowRecipe", ArchersBowRecipe.class, SHAPED, "after:forge:shapedore");
-		RecipeSorter.register("betterarchery:bowItemBodyRecipe", BowItemBodyRecipe.class, SHAPED, "after:forge:shapedore");
 	}
 }

@@ -27,6 +27,9 @@ public class ArchersBowRecipe extends ShapedOreRecipe
         NBTTagCompound nbt = new NBTTagCompound();
         recipeOutput.setTagCompound(nbt);
 		
+        if (recipeOutput.getItem() == ModItems.BOW_ITEM_PART_BODY)
+        	super.getCraftingResult(inv);
+        
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
