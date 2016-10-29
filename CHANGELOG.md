@@ -3,7 +3,28 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.2.9 - 2016-10-21
+## Version 0.3.0 - 2016-10-29
+### Added
+- A new bow type, longbow.
+- New custom world for testing purposes.
+- Durability for bow bodies.
+- Full pallet of grip colors.
+- More bow recipes.
+
+### Changed
+- Improved arrow velocity calculation.
+- Disable durability damage in creative mode.
+- Rebalanced bow speed multipliers.
+- Reorganized texture and model files.
+- Bow tooltip info.
+
+### Fixed
+- Body crafting issue
+- Bow pulling animation issue.
+- Resolved [#6](https://github.com/yooksi/Better-Archery-Reborn/issues/6) Bow off-hand display issue
+- Resolved [#7](https://github.com/yooksi/Better-Archery-Reborn/issues/7) Hand rendering issue 
+
+## Version [0.2.9] - 2016-10-21
 ### Added
 - A bow string item used in crafting.
 - Bows strings have durability and will take damage same as bows.
@@ -150,6 +171,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.2.9]: https://github.com/yooksi/Better-Archery-Reborn/compare/3fd203337c9b8717051f1c34ef70bfdb4e583ade...87a2fd28961d89636963b0bf5487590f1104e13e
 [0.2.8]: https://github.com/yooksi/Better-Archery-Reborn/compare/3a9b4e68a9f2963be63e995cef15a12169ca9c34...3fd203337c9b8717051f1c34ef70bfdb4e583ade
 [0.2.7]: https://github.com/yooksi/Better-Archery-Reborn/pull/4
 [0.2.6]: https://github.com/yooksi/Better-Archery-Reborn/compare/2d9909a488866cc40b8d027df4207d7208f2a9f5...cb70b9184b4bf9d61aab7189b81642b4fc5073e4
