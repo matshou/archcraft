@@ -232,8 +232,9 @@ public abstract class ArchersBow extends ItemBow
                  *  Increasing arrow velocity will proportionally increase it's damage,
                  *  as well as the pitch of the sound played upon releasing the arrow.
                  */
-                float f = getArrowVelocity(i) * arrowSpeedMult;
-                
+                float f = (float)i / 20.0F * pullingSpeedMult;
+                f = f < 1.0F ? (f * f + f * 2.0F) / 3.0F * arrowSpeedMult : arrowSpeedMult;
+
                 if ((double)f >= 0.1D * arrowSpeedMult)
                 {
                     boolean itemStackInfinite = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow ? ((ItemArrow)itemstack.getItem()).isInfinite(itemstack, stack, entityplayer) : false);
@@ -317,7 +318,7 @@ public abstract class ArchersBow extends ItemBow
 	
 	/**
 	 * Get the current progress of the bow's pulling animation for entity. <br>
-	 * <i>When pulling is in progress, the return will increase by <b>0.05</b> every tick.</i> <p>
+	 * <i>When pulling is in progress, the return will increase by <b>0.05</b> every sixth tick.</i> <p>
 	 * 
 	 * The progress can be divided into three stages; check the method comments for more info. <br>
 	 * These stages and associated values are important for updating entity FOV.
