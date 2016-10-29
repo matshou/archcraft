@@ -9,12 +9,8 @@ public class ItemRecurveBow extends ArchersBow
 {
 	public ItemRecurveBow(BowItemVariant variant)
 	{
-		super(variant);
-		
+		super(variant, 0.85F, 1.20F);
 		this.setMaxDamage(250);
-		
-		pullingSpeedMult = 0.85F;
-		arrowSpeedMult = 1.20F;
 	}
 	
 	@SideOnly(Side.CLIENT)

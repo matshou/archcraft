@@ -9,7 +9,7 @@ public class ItemSimpleBow extends ArchersBow
 {
 	public ItemSimpleBow(BowItemVariant variant)
 	{
-		super(variant);
+		super(variant, 1.0F, 1.0F);
 		this.setMaxDamage(150);
 	}
 	

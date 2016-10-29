@@ -37,20 +37,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class ArchersBow extends ItemBow
 {	
 	/** This multiplier modifies the duration of the bows pulling animation. */
-	protected float pullingSpeedMult = 1.0F;
+	private final float pullingSpeedMult;
 	
 	/** This multiplier modifies the speed and damage of an arrow being shot from this bow. */
-	protected float arrowSpeedMult = 1.0F;
+	private final float arrowSpeedMult;
 	
 	private final BowItemVariant variant;
 	
 	private static final java.util.Map<BodyPartType, ArchersBow> craftingContracts = 
 			new java.util.HashMap<BodyPartType, ArchersBow>();
 	
-	protected ArchersBow(BowItemVariant variant)
+	protected ArchersBow(BowItemVariant variant, float pullingMult, float arrowMult)
 	{
 		craftingContracts.put(variant.bodyType, this);
 		this.variant = variant;
+		
+		this.pullingSpeedMult = pullingMult > 0.0F ? pullingMult : 1.0F;
+		this.arrowSpeedMult = arrowMult > 0.0F ? arrowMult : 1.0F;
 	}
 	
 	/**

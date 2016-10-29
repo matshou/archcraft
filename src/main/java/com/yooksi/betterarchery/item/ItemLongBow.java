@@ -9,7 +9,7 @@ public class ItemLongBow extends ArchersBow
 {
 	public ItemLongBow(BowItemVariant variant)
 	{
-		super(variant);
+		super(variant, 0.60F, 1.35F);
 	}
 	
 	@SideOnly(Side.CLIENT)
