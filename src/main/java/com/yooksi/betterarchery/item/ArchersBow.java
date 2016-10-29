@@ -260,43 +260,43 @@ public abstract class ArchersBow extends ItemBow
                         if (enchLvlFlame > 0)
                             entityarrow.setFire(100);
 
-                        /*
-                         *  Durability damage is based on world difficulty.
-                         */
-                        final int damage = worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1;
-                        
-                        stack.damageItem(damage, entityplayer);
-                        
-                        final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_damage") + damage;
-                        boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
-                      
-                        float randomFloat = worldIn.rand.nextFloat();
-                        float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
-                		
-                        if (stack.stackSize == 0)  // Bow has been broken after dealing durability damage
+                        if (!entityplayer.capabilities.isCreativeMode)
                         {
-                        	if (!isBowStringBroken)
-                        	{
-                        	    ItemStack bowString = new ItemStack(ModItems.BOW_STRING_ITEM);
-                        	    bowString.setItemDamage(bowStringDamage);
-                        	    
-                        	    entityplayer.inventory.addItemStackToInventory(bowString);
-                            }
-                        }
-                        else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)  // Bow string just broke
-                        {
-                        	ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
-                        	
-                        	NBTTagCompound tagCompound = new NBTTagCompound();
-                        	bowBody.setTagCompound(tagCompound);
-                        	
-                            tagCompound.setInteger("item_damage", stack.getItemDamage());
-                            tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
-                
-                            entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
-                        }
-                        else stack.getTagCompound().setInteger("bow_string_damage", bowStringDamage);
+                        	final int damage = worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1;
 
+                        	stack.damageItem(damage, entityplayer);
+
+                        	final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_damage") + damage;
+                        	boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
+
+                        	float randomFloat = worldIn.rand.nextFloat();
+                        	float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
+
+                        	if (stack.stackSize == 0)  // Bow has been broken after dealing durability damage
+                        	{
+                        		if (!isBowStringBroken)
+                        		{
+                        			ItemStack bowString = new ItemStack(ModItems.BOW_STRING_ITEM);
+                        			bowString.setItemDamage(bowStringDamage);
+
+                        			entityplayer.inventory.addItemStackToInventory(bowString);
+                        		}
+                        	}
+                        	else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)  // Bow string just broke
+                        	{
+                        		ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
+
+                        		NBTTagCompound tagCompound = new NBTTagCompound();
+                        		bowBody.setTagCompound(tagCompound);
+
+                        		tagCompound.setInteger("item_damage", stack.getItemDamage());
+                        		tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
+
+                        		entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
+                        	}
+                        	else stack.getTagCompound().setInteger("bow_string_damage", bowStringDamage);
+                        }
+                        
                         if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
