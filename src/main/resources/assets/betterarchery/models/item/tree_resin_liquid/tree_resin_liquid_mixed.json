@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "betterarchery:items/tree_resin_liquid/tree_resin_liquid_mixed"
+    }
+}

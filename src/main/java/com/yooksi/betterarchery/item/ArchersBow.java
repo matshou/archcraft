@@ -1,12 +1,10 @@
 package com.yooksi.betterarchery.item;
 
-import java.awt.Color;
-
 import javax.annotation.Nullable;
 
 import com.yooksi.betterarchery.common.BetterArchery;
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
+import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,16 +37,33 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class ArchersBow extends ItemBow
 {	
 	/** This multiplier modifies the duration of the bows pulling animation. */
-	protected float pullingSpeedMult = 1.0F;
+	private final float pullingSpeedMult;
 	
 	/** This multiplier modifies the speed and damage of an arrow being shot from this bow. */
-	protected float arrowSpeedMult = 1.0F;
+	private final float arrowSpeedMult;
 	
 	private final BowItemVariant variant;
 	
-	protected ArchersBow(BowItemVariant variant)
+	private static final java.util.Map<BodyPartType, ArchersBow> craftingContracts = 
+			new java.util.HashMap<BodyPartType, ArchersBow>();
+	
+	protected ArchersBow(BowItemVariant variant, float pullingMult, float arrowMult)
 	{
+		craftingContracts.put(variant.bodyType, this);
 		this.variant = variant;
+		
+		this.pullingSpeedMult = pullingMult > 0.0F ? pullingMult : 1.0F;
+		this.arrowSpeedMult = arrowMult > 0.0F ? arrowMult : 1.0F;
+	}
+	
+	/**
+	 *  Get an item bow that is a crafting product of this body type.
+	 *  @param type should have a parent <code>BowItemVariant</code>, otherwise return will be <code>null</code>.
+	 */
+	@Nullable
+	protected static ArchersBow getCraftingOutputFor(BodyPartType type)
+	{
+		return craftingContracts.get(type);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -66,40 +81,42 @@ public abstract class ArchersBow extends ItemBow
     	subItems.add(archersBow);
     }
 	
-	public static BowItemVariant getBowItemVariant(Item item)
+	protected static BowItemVariant getBowItemVariant(Item item)
 	{
 		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
 	}
 	
 	public enum BowItemVariant
 	{
-		SIMPLE_BOW_PLAIN("simple_bow_plain", ItemPartType.TYPE_BODY_SIMPLE_PLAIN, null), 
-		RECURVE_BOW_PLAIN("recurve_bow_plain", ItemPartType.TYPE_BODY_RECURVE_PLAIN, null),
+		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
+		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
+		LONG_BOW_PLAIN("long_bow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
 		
-		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", ItemPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP, new Color(107, 46, 22)),
+		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
+		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
 	
-		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP, new Color(255, 255, 255)),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", ItemPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP, new Color(107, 46, 22));
+		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
+		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
 	
+		LONG_BOW_WOOLEN_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
+		LONG_BOW_LEATHER_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
+		
 		private final String modelFileName;
-		private final ItemPartType bodyType;
-		private final Color variantColor;
+		private final BodyPartType bodyType;
 		
-		BowItemVariant(String modelFile, ItemPartType bodyType, @Nullable Color color)
+		BowItemVariant(String modelFile, BodyPartType bodyType)
 		{
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;
-			this.variantColor = color;
 		}
 		
 		/**
 		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> of the variant, 
 		 *  or <b>-1</b> if no color.  
 		 */
-		public int getColorRGB()
+		protected int getColorRGB()
 		{
-			return variantColor != null ? variantColor.getRGB() : -1;
+			return bodyType.getColorRGB();
 		}
 	}		
 	
@@ -218,8 +235,9 @@ public abstract class ArchersBow extends ItemBow
                  *  Increasing arrow velocity will proportionally increase it's damage,
                  *  as well as the pitch of the sound played upon releasing the arrow.
                  */
-                float f = getArrowVelocity(i) * arrowSpeedMult;
-                
+                float f = (float)i / 20.0F * pullingSpeedMult;
+                f = f < 1.0F ? (f * f + f * 2.0F) / 3.0F * arrowSpeedMult : arrowSpeedMult;
+
                 if ((double)f >= 0.1D * arrowSpeedMult)
                 {
                     boolean itemStackInfinite = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow ? ((ItemArrow)itemstack.getItem()).isInfinite(itemstack, stack, entityplayer) : false);
@@ -246,43 +264,43 @@ public abstract class ArchersBow extends ItemBow
                         if (enchLvlFlame > 0)
                             entityarrow.setFire(100);
 
-                        /*
-                         *  Durability damage is based on world difficulty.
-                         */
-                        final int damage = worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1;
-                        
-                        stack.damageItem(damage, entityplayer);
-                        
-                        final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_damage") + damage;
-                        boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
-                      
-                        float randomFloat = worldIn.rand.nextFloat();
-                        float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
-                		
-                        if (stack.stackSize == 0)  // Bow has been broken after dealing durability damage
+                        if (!entityplayer.capabilities.isCreativeMode)
                         {
-                        	if (!isBowStringBroken)
-                        	{
-                        	    ItemStack bowString = new ItemStack(ModItems.BOW_STRING_ITEM);
-                        	    bowString.setItemDamage(bowStringDamage);
-                        	    
-                        	    entityplayer.inventory.addItemStackToInventory(bowString);
-                            }
-                        }
-                        else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)  // Bow string just broke
-                        {
-                        	ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
-                        	
-                        	NBTTagCompound tagCompound = new NBTTagCompound();
-                        	bowBody.setTagCompound(tagCompound);
-                        	
-                            tagCompound.setInteger("item_damage", stack.getItemDamage());
-                            tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
-                
-                            entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
-                        }
-                        else stack.getTagCompound().setInteger("bow_string_damage", bowStringDamage);
+                        	final int damage = worldIn.getDifficulty() == EnumDifficulty.HARD && entityarrow.getIsCritical() ? 2 : 1;
 
+                        	stack.damageItem(damage, entityplayer);
+
+                        	final int bowStringDamage = stack.getTagCompound().getInteger("bow_string_damage") + damage;
+                        	boolean isBowStringBroken = bowStringDamage > ModItems.BOW_STRING_ITEM.getMaxDamage();
+
+                        	float randomFloat = worldIn.rand.nextFloat();
+                        	float durabilityMod = (float)bowStringDamage / (float)ModItems.BOW_STRING_ITEM.getMaxDamage() + 1.0F;
+
+                        	if (stack.stackSize == 0)  // Bow has been broken after dealing durability damage
+                        	{
+                        		if (!isBowStringBroken)
+                        		{
+                        			ItemStack bowString = new ItemStack(ModItems.BOW_STRING_ITEM);
+                        			bowString.setItemDamage(bowStringDamage);
+
+                        			entityplayer.inventory.addItemStackToInventory(bowString);
+                        		}
+                        	}
+                        	else if (isBowStringBroken || randomFloat < 0.0028F * durabilityMod)  // Bow string just broke
+                        	{
+                        		ItemStack bowBody = new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, variant.bodyType.getTypeMetadata()); 
+
+                        		NBTTagCompound tagCompound = new NBTTagCompound();
+                        		bowBody.setTagCompound(tagCompound);
+
+                        		tagCompound.setInteger("item_damage", stack.getItemDamage());
+                        		tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
+
+                        		entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
+                        	}
+                        	else stack.getTagCompound().setInteger("bow_string_damage", bowStringDamage);
+                        }
+                        
                         if (itemStackInfinite)
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
@@ -303,7 +321,7 @@ public abstract class ArchersBow extends ItemBow
 	
 	/**
 	 * Get the current progress of the bow's pulling animation for entity. <br>
-	 * <i>When pulling is in progress, the return will increase by <b>0.05</b> every tick.</i> <p>
+	 * <i>When pulling is in progress, the return will increase by <b>0.05</b> every sixth tick.</i> <p>
 	 * 
 	 * The progress can be divided into three stages; check the method comments for more info. <br>
 	 * These stages and associated values are important for updating entity FOV.
@@ -319,6 +337,6 @@ public abstract class ArchersBow extends ItemBow
 		 */
 		
 		float animationProgress = (bow != null && archer != null) ? (float)(bow.getMaxItemUseDuration() - archer.getItemInUseCount()) / 20.0F : 0.0F;
-		return animationProgress > 1.0F ? 1.0F : animationProgress * pullingSpeedMult;
+		return (float)(animationProgress *= pullingSpeedMult) > 1.0F ? 1.0F : animationProgress;
 	}
 }

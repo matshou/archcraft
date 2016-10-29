@@ -1,7 +1,11 @@
 package com.yooksi.betterarchery.item;
 
+import java.awt.Color;
+
+import javax.annotation.Nullable;
+
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemParts.ItemPartType;
+import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -14,21 +18,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemColorHandler
 {
+	/**
+	 *  All colors used by this mod are stored here for convenient access.
+	 */
+	public enum ArcheryColor
+	{
+		COLOR_LEATHER(new Color(107, 46, 22)),
+		COLOR_WOOL(new Color(238, 238, 238)),
+		COLOR_NULL(null);
+		
+		private final Color color;
+		
+		ArcheryColor(@Nullable Color color)
+		{
+			this.color = color;
+		}
+		
+
+		/**
+		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> 
+		 *  of the variant, or <b>-1</b> if no color.  
+         */
+		public int getColor()
+		{
+			return this != COLOR_NULL ? this.color.getRGB() : -1;
+		}
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public static class BowColorHandler implements IItemColor 
-	{
-		/**
-		 *  A list of items that are considered color variation, 
-		 *  and require to be registered with ColorHandler.
-		 */
-		private static final Item[] colorVariants = new Item[] 
-		{
-				ModItems.SIMPLE_BOW_LEATHER_GRIP,
-				ModItems.RECURVE_BOW_LEATHER_GRIP,
-				ModItems.SIMPLE_BOW_WOOLEN_GRIP,
-				ModItems.RECURVE_BOW_WOOLEN_GRIP
-		};
-		
+	{	
 		@Override
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
@@ -52,10 +71,10 @@ public class ItemColorHandler
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
 			/*
-			 *  Skip first two subtypes because they don't have color values.
+			 *  Skip first few subtypes because they don't have color values.
 			 *  This is a just a bit of performance optimizing.
 			 */
-			if (tintIndex == 1 && stack.getMetadata() > 1)
+			if (tintIndex == 1 && stack.getMetadata() > 2)
 			{
 				/*
 				 *  The color value from NBT will always override default subtype color.
@@ -65,7 +84,7 @@ public class ItemColorHandler
 					int dyeColorMeta = stack.getTagCompound().getInteger("dyeColorMeta");
 					return EnumDyeColor.byMetadata(dyeColorMeta).getMapColor().colorValue;
 				}
-				else return ItemPartType.getTypeByMeta(stack.getMetadata()).getColorRGB();
+				else return BodyPartType.getTypeByMeta(stack.getMetadata()).getColorRGB();
 			}
 			else return -1;
 		}
@@ -78,7 +97,17 @@ public class ItemColorHandler
 	{
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
 		
-		itemColors.registerItemColorHandler(new BowColorHandler(), BowColorHandler.colorVariants);
+		java.util.ArrayList<Item> colorVars = new java.util.ArrayList<Item>();
+		for (BodyPartType type : BodyPartType.values())
+		{
+			/*
+			 *  Find all bow variants that are assigned a valid color.
+			 */
+			if (type.getColorRGB() != -1)
+				colorVars.add(ArchersBow.getCraftingOutputFor(type));
+		}
+
+		itemColors.registerItemColorHandler(new BowColorHandler(), colorVars.toArray(new Item[colorVars.size()]));
 		itemColors.registerItemColorHandler(new BowBodyColorHandler(), ModItems.BOW_ITEM_PART_BODY);
 	}
 	

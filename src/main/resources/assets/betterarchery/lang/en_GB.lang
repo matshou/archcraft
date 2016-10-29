@@ -1,22 +1,17 @@
 itemGroup.BetterArchery=Better Archery
 
-item.simple_bow_plain.name=Self Bow
-item.simple_bow_leather_grip.name=Self Bow
-item.simple_bow_woolen_grip.name= Self Bow
-
-item.recurve_bow_plain.name=Recurve Bow
-item.recurve_bow_leather_grip.name=Recurve Bow
-item.recurve_bow_woolen_grip.name=Recurve Bow
+item.simple_bow.name=Self Bow
+item.recurve_bow.name=Recurve Bow
+item.long_bow.name=Longbow
 
 item.simple_bow_body_plain.name=Unstrung Self Bow
-item.simple_bow_body_with_grip.name=Unstrung Self Bow
 item.recurve_bow_body_plain.name=Unstrung Recurve Bow
-item.recurve_bow_body_with_grip.name=Unstrung Recurve Bow
+item.long_bow_body_plain.name=Unstrung Longbow
 
 item.tree_resin_liquid_inpure.name=Inpure Tree Resin
 item.tree_resin_liquid_pure.name=Pure Tree Resin
-item.tree_resin_liquid_mixed_bowl.name=Bowl of Mixed Tree Resin
-item.tree_resin_liquid_mixed_bottle.name=Bottle of Mixed Tree Resin
+item.tree_resin_liquid_mixed.name=Mixed Tree Resin
+item.tree_resin_mixed_bowl.name=Mixed Tree Resin
 
 item.tree_resin_glue.name=Tree Resin Glue
-item.bow_string_item.name=Bow String
+item.archers_bow_string.name=Bow String

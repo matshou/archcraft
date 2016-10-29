@@ -2,10 +2,10 @@ package com.yooksi.betterarchery.network;
 
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.BowItemParts;
+import com.yooksi.betterarchery.item.ItemBowPartBody;
 import com.yooksi.betterarchery.item.ItemColorHandler;
 import com.yooksi.betterarchery.item.ItemSubtype;
-import com.yooksi.betterarchery.item.TreeResinLiquid;
+import com.yooksi.betterarchery.item.ItemTreeResinLiquid;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -30,8 +30,12 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
-		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, BowItemParts.ItemPartType.values());
-		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, TreeResinLiquid.ResinLiquidType.values());	
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_PLAIN, 0, ModItems.LONG_BOW_PLAIN.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_LEATHER_GRIP, 0, ModItems.LONG_BOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_WOOLEN_GRIP, 0, ModItems.LONG_BOW_WOOLEN_GRIP.getModelResourceLocation());
+		
+		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, ItemBowPartBody.BodyPartType.values());
+		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, ItemTreeResinLiquid.ResinLiquidType.values());	
 	
 		ModelLoader.setCustomModelResourceLocation(ModItems.TREE_RESIN_GLUE, 0, new ModelResourceLocation(ModItems.TREE_RESIN_GLUE.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_STRING_ITEM, 0, new ModelResourceLocation(ModItems.BOW_STRING_ITEM.getRegistryName().toString()));

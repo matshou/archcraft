@@ -1,8 +1,8 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/recurve_bow_body_standby",
-		"layer1": "betterarchery:items/bow_string_standby"
+        "layer0": "betterarchery:items/item_recurve_bow_body",
+		"layer1": "betterarchery:items/layer_bow_string_standby"
     },
     "display": {
         "thirdperson_righthand": {

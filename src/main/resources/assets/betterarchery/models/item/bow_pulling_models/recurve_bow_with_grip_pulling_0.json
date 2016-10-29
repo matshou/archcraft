@@ -1,8 +1,8 @@
 {
     "parent": "item/bow",
     "textures": {
-        "layer0": "betterarchery:items/recurve_bow_body_standby",
-		"layer1": "betterarchery:items/bow_grip_layer",
+        "layer0": "betterarchery:items/item_recurve_bow_body",
+		"layer1": "betterarchery:items/layer_bow_grip",
 		"layer2": "betterarchery:items/bow_pulling_textures/bow_string_pulling_0",
 		"layer3": "betterarchery:items/bow_pulling_textures/bow_arrow_pulling_0"
     }
