@@ -30,6 +30,9 @@ public class ItemRecipes
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1),
 				new Object[] { " / ", "/@ ", " / ", '/', Items.STICK, '@', ModItems.TREE_RESIN_GLUE}));
 		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), 
+				new Object[] { " //", "/  ", " //", '/', Items.STICK}));
+		
 	    //================================================================================
 	    //                                  Bow Items
 	    //================================================================================
@@ -53,7 +56,6 @@ public class ItemRecipes
 				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', bowStringStack}));
 		
 		
-		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
 				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', bowStringStack}));
 		
@@ -69,7 +71,23 @@ public class ItemRecipes
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
 				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 6), '@', bowStringStack}));
 		
-	    
+
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_PLAIN), 
+				new Object[] { "  @", " /&", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_LEATHER_GRIP), 
+				new Object[] { "  @", "#/&", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '#', Items.LEATHER, '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_WOOLEN_GRIP), 
+				new Object[] { "  @", "#/&", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '#', woolItemStack, '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_LEATHER_GRIP), 
+				new Object[] { "  @", " /&", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 7), '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_WOOLEN_GRIP), 
+				new Object[] { "  @", " /&", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 8), '@', Items.STRING, '&', bowStringStack}));
+		
+		
 		// ========================== Alternative bow recipes ===========================
 		
 		
@@ -89,7 +107,6 @@ public class ItemRecipes
 				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', Items.STRING}));
 		
 		
-		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
 				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', Items.STRING}));
 		
@@ -104,6 +121,22 @@ public class ItemRecipes
 	
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
 				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 6), '@', Items.STRING}));
+		
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_PLAIN), 
+				new Object[] { " /&", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_LEATHER_GRIP), 
+				new Object[] { "#/&", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '#', Items.LEATHER, '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_WOOLEN_GRIP), 
+				new Object[] { "#/&", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '#', woolItemStack, '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_LEATHER_GRIP), 
+				new Object[] { " /&", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 7), '@', Items.STRING, '&', bowStringStack}));
+		
+		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.LONGBOW_WOOLEN_GRIP), 
+				new Object[] { " /&", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 8), '@', Items.STRING, '&', bowStringStack}));
 		
 		
 		//================================================================================
