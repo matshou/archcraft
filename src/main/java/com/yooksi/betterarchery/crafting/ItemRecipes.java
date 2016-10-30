@@ -47,15 +47,15 @@ public class ItemRecipes
 				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', woolItemStack, '@', bowStringStack}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.SIMPLE_BOW_LEATHER_GRIP), 
-				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '@', bowStringStack}));
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 3), '@', bowStringStack}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
-				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 3), '@', bowStringStack}));
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', bowStringStack}));
 		
 		
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_PLAIN), 
-				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', ModItems.BOW_STRING_ITEM}));
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '@', bowStringStack}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_LEATHER_GRIP), 
 				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', Items.LEATHER, '@', bowStringStack}));
@@ -64,10 +64,10 @@ public class ItemRecipes
 				new Object[] { "#/@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', woolItemStack, '@', bowStringStack}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_LEATHER_GRIP), 
-				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', bowStringStack}));
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 5), '@', bowStringStack}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
-				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 5), '@', bowStringStack}));
+				new Object[] { " /@", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 6), '@', bowStringStack}));
 		
 	    
 		// ========================== Alternative bow recipes ===========================
@@ -83,10 +83,10 @@ public class ItemRecipes
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 0), '#', woolItemStack, '@', Items.STRING}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.SIMPLE_BOW_LEATHER_GRIP), 
-				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 2), '@', Items.STRING}));
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 3), '@', Items.STRING}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.SIMPLE_BOW_WOOLEN_GRIP), 
-				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 3), '@', Items.STRING}));
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', Items.STRING}));
 		
 		
 		
@@ -100,10 +100,10 @@ public class ItemRecipes
 				new Object[] { "  @", "#/@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 1), '#', woolItemStack, '@', Items.STRING}));
 		
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_LEATHER_GRIP), 
-				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 4), '@', Items.STRING}));
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 5), '@', Items.STRING}));
 	
 		GameRegistry.addRecipe(new ArchersBowRecipe(new ItemStack(ModItems.RECURVE_BOW_WOOLEN_GRIP), 
-				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 5), '@', Items.STRING}));
+				new Object[] { "  @", " /@", "  @", '/', new ItemStack(ModItems.BOW_ITEM_PART_BODY, 1, 6), '@', Items.STRING}));
 		
 		
 		//================================================================================
