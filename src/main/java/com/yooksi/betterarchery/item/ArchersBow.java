@@ -61,7 +61,7 @@ public abstract class ArchersBow extends ItemBow
 	 *  @param type should have a parent <code>BowItemVariant</code>, otherwise return will be <code>null</code>.
 	 */
 	@Nullable
-	protected static ArchersBow getCraftingOutputFor(BodyPartType type)
+	public static ArchersBow getCraftingOutputFor(BodyPartType type)
 	{
 		return craftingContracts.get(type);
 	}

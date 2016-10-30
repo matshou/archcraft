@@ -2,6 +2,7 @@ package com.yooksi.betterarchery.network;
 
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
+import com.yooksi.betterarchery.item.ArchersBow;
 import com.yooksi.betterarchery.item.ItemBowPartBody;
 import com.yooksi.betterarchery.item.ItemColorHandler;
 import com.yooksi.betterarchery.item.ItemSubtype;
@@ -22,17 +23,11 @@ public class ClientProxy extends CommonProxy
 	{
 		super.preInit(event);
 
-		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_PLAIN, 0, ModItems.SIMPLE_BOW_PLAIN.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_LEATHER_GRIP, 0, ModItems.SIMPLE_BOW_LEATHER_GRIP.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.SIMPLE_BOW_WOOLEN_GRIP, 0, ModItems.SIMPLE_BOW_WOOLEN_GRIP.getModelResourceLocation());
-		
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_PLAIN, 0, ModItems.RECURVE_BOW_PLAIN.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
-		
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_PLAIN, 0, ModItems.LONGBOW_PLAIN.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_LEATHER_GRIP, 0, ModItems.LONGBOW_LEATHER_GRIP.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_WOOLEN_GRIP, 0, ModItems.LONGBOW_WOOLEN_GRIP.getModelResourceLocation());
+		for (ItemBowPartBody.BodyPartType type : ItemBowPartBody.BodyPartType.values())
+		{
+			ArchersBow item = ArchersBow.getCraftingOutputFor(type);
+			ModelLoader.setCustomModelResourceLocation(item, 0, item.getModelResourceLocation());
+		}
 		
 		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, ItemBowPartBody.BodyPartType.values());
 		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, ItemTreeResinLiquid.ResinLiquidType.values());	
