@@ -1,5 +1,5 @@
 {
-    "parent": "betterarchery:item/long_bow_with_grip",
+    "parent": "betterarchery:item/longbow_with_grip",
     "textures": {
         "layer0": "betterarchery:items/item_simple_bow_body",
 		"layer1": "betterarchery:items/layer_bow_grip",

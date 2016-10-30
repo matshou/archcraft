@@ -90,7 +90,7 @@ public abstract class ArchersBow extends ItemBow
 	{
 		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
 		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
-		LONG_BOW_PLAIN("long_bow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
+		LONGBOW_PLAIN("longbow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
 		
 		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
 		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
@@ -98,8 +98,8 @@ public abstract class ArchersBow extends ItemBow
 		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
 		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
 	
-		LONG_BOW_WOOLEN_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
-		LONG_BOW_LEATHER_GRIP("long_bow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
+		LONGBOW_WOOLEN_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
+		LONGBOW_LEATHER_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
 		
 		private final String modelFileName;
 		private final BodyPartType bodyType;

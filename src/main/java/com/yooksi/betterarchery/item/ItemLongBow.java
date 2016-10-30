@@ -20,11 +20,11 @@ public class ItemLongBow extends ArchersBow
 		
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
-		case LONG_BOW_LEATHER_GRIP:
+		case LONGBOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
 			
-		case LONG_BOW_WOOLEN_GRIP:
+		case LONGBOW_WOOLEN_GRIP:
 		{
 			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + (colorName == "pink" ? 

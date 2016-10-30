@@ -30,9 +30,9 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_LEATHER_GRIP, 0, ModItems.RECURVE_BOW_LEATHER_GRIP.getModelResourceLocation());
 		ModelLoader.setCustomModelResourceLocation(ModItems.RECURVE_BOW_WOOLEN_GRIP, 0, ModItems.RECURVE_BOW_WOOLEN_GRIP.getModelResourceLocation());
 		
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_PLAIN, 0, ModItems.LONG_BOW_PLAIN.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_LEATHER_GRIP, 0, ModItems.LONG_BOW_LEATHER_GRIP.getModelResourceLocation());
-		ModelLoader.setCustomModelResourceLocation(ModItems.LONG_BOW_WOOLEN_GRIP, 0, ModItems.LONG_BOW_WOOLEN_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_PLAIN, 0, ModItems.LONGBOW_PLAIN.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_LEATHER_GRIP, 0, ModItems.LONGBOW_LEATHER_GRIP.getModelResourceLocation());
+		ModelLoader.setCustomModelResourceLocation(ModItems.LONGBOW_WOOLEN_GRIP, 0, ModItems.LONGBOW_WOOLEN_GRIP.getModelResourceLocation());
 		
 		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, ItemBowPartBody.BodyPartType.values());
 		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, ItemTreeResinLiquid.ResinLiquidType.values());	

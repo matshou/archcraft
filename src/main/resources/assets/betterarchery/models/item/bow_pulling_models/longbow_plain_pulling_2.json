@@ -1,5 +1,5 @@
 {
-    "parent": "betterarchery:item/long_bow_plain",
+    "parent": "betterarchery:item/longbow_plain",
     "textures": {
         "layer0": "betterarchery:items/bow_pulling_textures/item_simple_bow_pulling_2",
 		"layer1": "betterarchery:items/bow_pulling_textures/bow_string_pulling_2",
