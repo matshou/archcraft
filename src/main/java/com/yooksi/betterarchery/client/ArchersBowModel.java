@@ -1,9 +1,5 @@
 package com.yooksi.betterarchery.client;
 
-import java.util.List;
-
-import javax.vecmath.Matrix4f;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.google.common.collect.ImmutableList;
@@ -35,7 +31,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	public ArchersBowModel(IBakedModel oldModel)
 	{	
 		ImmutableList<BakedQuad> layers = (ImmutableList<BakedQuad>) oldModel.getQuads(null, null, 0);
-		List<BakedQuad> tempList = new java.util.ArrayList<BakedQuad>();
+		java.util.List<BakedQuad> tempList = new java.util.ArrayList<BakedQuad>();
 		
 		UnmodifiableIterator<BakedQuad> iter;
 		for (iter = layers.iterator(); iter.hasNext();)
@@ -51,7 +47,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	}
 	
 	@Override
-	public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) 
+	public java.util.List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) 
 	{
 		return itemLayers;
 	}
@@ -93,11 +89,12 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	}
 
 	@Override
-	public Pair<? extends IBakedModel, Matrix4f> handlePerspective(ItemCameraTransforms.TransformType cameraTransformType) 
+	public Pair<? extends IBakedModel, javax.vecmath.Matrix4f> handlePerspective(ItemCameraTransforms.TransformType cameraTransformType) 
 	{
 		if (oldBakedModel instanceof IPerspectiveAwareModel) 
 		{
-			Matrix4f matrix4f = ((IPerspectiveAwareModel)oldBakedModel).handlePerspective(cameraTransformType).getRight();
+			IPerspectiveAwareModel model = ((IPerspectiveAwareModel)oldBakedModel);
+			javax.vecmath.Matrix4f matrix4f = model.handlePerspective(cameraTransformType).getRight();
 			return Pair.of(this, matrix4f);
 		} 
 		else 
@@ -109,7 +106,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 			ItemTransformVec3f itemTransformVec3f = itemCameraTransforms.getTransform(cameraTransformType);
 			TRSRTransformation tr = new TRSRTransformation(itemTransformVec3f);
 			
-			Matrix4f mat = tr != null ? tr.getMatrix() : null;
+			javax.vecmath.Matrix4f mat = tr != null ? tr.getMatrix() : null;
 			
 			// The TRSRTransformation for vanilla items have blockCenterToCorner() applied, however handlePerspective
 			// reverses it back again with blockCornerToCenter(), so we don't need to apply it here.

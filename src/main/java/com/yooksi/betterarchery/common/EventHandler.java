@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EventHandler 
 {
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void FOVUpdateEvent(net.minecraftforge.client.event.FOVUpdateEvent event)
 	{
 		net.minecraft.entity.player.EntityPlayer player = event.getEntity();
@@ -47,6 +48,7 @@ public class EventHandler
 	}
 	
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void onRenderSpecificHandEvent(net.minecraftforge.client.event.RenderSpecificHandEvent event)
 	{
 		net.minecraft.entity.player.EntityPlayer player = Minecraft.getMinecraft().thePlayer;

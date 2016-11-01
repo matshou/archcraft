@@ -118,6 +118,21 @@ public abstract class ArchersBow extends ItemBow
 		{
 			return bodyType.getColorRGB();
 		}
+		
+		/**
+		 *  Compile and return a list of all variants that are not assigned a color value.
+		 */
+		public static java.util.List<ArchersBow> getVariantsWithNoColor()
+    	{
+			java.util.List<ArchersBow> variantList = new java.util.ArrayList<ArchersBow>();
+    		for (BowItemVariant variant : BowItemVariant.values())
+    		{
+    			if (variant.getColorRGB() == -1)
+    				variantList.add(getCraftingOutputFor(variant.bodyType));
+    		}
+    		
+    		return variantList;
+    	}
 	}		
 	
 	/** 
