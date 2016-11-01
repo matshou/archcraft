@@ -81,7 +81,7 @@ public abstract class ArchersBow extends ItemBow
     	subItems.add(archersBow);
     }
 	
-	protected static BowItemVariant getBowItemVariant(Item item)
+	public static BowItemVariant getBowItemVariant(Item item)
 	{
 		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
 	}
@@ -108,6 +108,11 @@ public abstract class ArchersBow extends ItemBow
 		{
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;
+		}
+		
+		public BodyPartType getBodyType()
+		{
+			return bodyType;
 		}
 		
 		/**
