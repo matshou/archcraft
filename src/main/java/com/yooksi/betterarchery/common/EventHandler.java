@@ -102,7 +102,7 @@ public class EventHandler
 	public static void onModelBakeEvent(net.minecraftforge.client.event.ModelBakeEvent event)
 	{
 		/*
-		 *  Replace the models of all bows variants that should not be using ItemColorHandler.
+		 *  Replace the models of all bow variants that should not be using ItemColorHandler.
 		 *  Adding a custom model class allows us to reduce the amount of model files. 
 		 */
 		
@@ -111,12 +111,21 @@ public class EventHandler
 		
 		for (iter = bowsWithNoGrip.iterator(); iter.hasNext();)
 		{
-			final ModelResourceLocation location = iter.next().getModelResourceLocation();
-			Object object = event.getModelRegistry().getObject(location);
-			if (object instanceof IBakedModel) 
+			ArchersBow bowVariant = iter.next();
+			ModelResourceLocation[] locations = new ModelResourceLocation[]
+			{ 
+				bowVariant.getModelResourceLocation(), 
+				ArchersBow.getBowItemVariant(bowVariant).getBodyType().getModelResourceLocation()
+			};
+			
+			for (int i = 0; i < locations.length; i++)
 			{
-				IBakedModel oldBakedModel = (IBakedModel)object;
-				event.getModelRegistry().putObject(location, new ArchersBowModel(oldBakedModel));
+				Object object = event.getModelRegistry().getObject(locations[i]);
+				if (object instanceof IBakedModel) 
+				{
+					IBakedModel oldBakedModel = (IBakedModel)object;
+					event.getModelRegistry().putObject(locations[i], new ArchersBowModel(oldBakedModel));
+				}
 			}
 		}
 	}
