@@ -1,15 +1,19 @@
 package com.yooksi.betterarchery.common;
 
+import com.yooksi.betterarchery.client.ArchersBowModel;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ArchersBow;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class EventHandler 
@@ -83,6 +87,34 @@ public class EventHandler
 					ItemStack stack = new ItemStack(ModItems.TREE_RESIN_LIQUID, 1);
 				    player.setHeldItem(EnumHand.OFF_HAND, stack);
 				}
+			}
+		}
+	}
+	
+	/**
+	 * Called twice during startup, after creating a new model manager and setting up the model registry. <br>
+	 * Use this event to import custom IBakeModels for your items and blocks.
+	 */
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void onModelBakeEvent(net.minecraftforge.client.event.ModelBakeEvent event)
+	{
+		/*
+		 *  Replace the models of all bows variants that should not be using ItemColorHandler.
+		 *  Adding a custom model class allows us to reduce the amount of model files. 
+		 */
+		
+		java.util.List<ArchersBow> bowsWithNoGrip = ArchersBow.BowItemVariant.getVariantsWithNoColor();
+		final java.util.Iterator<ArchersBow> iter;
+		
+		for (iter = bowsWithNoGrip.iterator(); iter.hasNext();)
+		{
+			final ModelResourceLocation location = iter.next().getModelResourceLocation();
+			Object object = event.getModelRegistry().getObject(location);
+			if (object instanceof IBakedModel) 
+			{
+				IBakedModel oldBakedModel = (IBakedModel)object;
+				event.getModelRegistry().putObject(location, new ArchersBowModel(oldBakedModel));
 			}
 		}
 	}
