@@ -37,11 +37,14 @@ public class CommonProxy
 		registerItem(ModItems.LONGBOW_LEATHER_GRIP, "longbow_leather_grip", "longbow");
 		registerItem(ModItems.LONGBOW_WOOLEN_GRIP, "longbow_woolen_grip", "longbow");
 
-		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
 		registerItem(ModItems.BOW_STRING_ITEM, "item_bow_string", "archers_bow_string");
-		
-		registerItem(ModItems.TREE_RESIN_LIQUID, "tree_resin_liquid");
 		registerItem(ModItems.TREE_RESIN_GLUE, "tree_resin_glue");
+		
+		/*
+		 *  Registry name should be the same as the model file root directory name
+		 */
+		registerItem(ModItems.BOW_ITEM_PART_BODY, "bow_item_part_body");
+		registerItem(ModItems.TREE_RESIN_LIQUID, "tree_resin_liquid");
 		
 		Logger.info("Finished registering object instances. ");
 	}
