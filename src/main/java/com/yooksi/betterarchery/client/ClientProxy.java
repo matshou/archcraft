@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.network;
+package com.yooksi.betterarchery.client;
 
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
