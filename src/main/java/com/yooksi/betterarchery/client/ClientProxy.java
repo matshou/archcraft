@@ -41,7 +41,7 @@ public class ClientProxy extends CommonProxy
 		for (int i = 0; i < subtypes.length; i++)
 		{
 			ItemSubtype type = (ItemSubtype) subtypes[i];
-			ModelLoader.setCustomModelResourceLocation(item, type.getTypeMetadata(), type.getModelResourceLocation());
+			ModelLoader.setCustomModelResourceLocation(item, type.getTypeMetadata(), type.getModelResourceLocation(true));
 		}
 	}
 	

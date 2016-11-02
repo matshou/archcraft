@@ -3,6 +3,7 @@ package com.yooksi.betterarchery.common;
 import com.yooksi.betterarchery.client.ArchersBowModel;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ArchersBow;
+import com.yooksi.betterarchery.item.ItemBowPartBody;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -116,6 +117,22 @@ public class EventHandler
 		for (java.util.Iterator<ArchersBow.BowItemVariant> iter = parents.iterator(); iter.hasNext();) 
 		{
 			ArchersBow.BowItemVariant parent = iter.next();
+			ModelResourceLocation location = parent.getModelResourceLocation(false);
+			
+			Object object = event.getModelRegistry().getObject(location);
+			if (object instanceof IBakedModel) 
+			{
+				IBakedModel oldBakedModel = (IBakedModel)object;
+				ModelResourceLocation pseudoLocation = parent.getModelResourceLocation(true);
+				
+				event.getModelRegistry().putObject(pseudoLocation, new ArchersBowModel(oldBakedModel));
+			}
+		}
+		
+		java.util.List<ItemBowPartBody.BodyPartType> parents2 = ItemBowPartBody.BodyPartType.getParents();
+		for (java.util.Iterator<ItemBowPartBody.BodyPartType> iter = parents2.iterator(); iter.hasNext();) 
+		{
+			ItemBowPartBody.BodyPartType parent = iter.next();
 			ModelResourceLocation location = parent.getModelResourceLocation(false);
 			
 			Object object = event.getModelRegistry().getObject(location);

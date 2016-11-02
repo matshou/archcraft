@@ -103,13 +103,11 @@ public abstract class ArchersBow extends ItemBow
 		
 		private final BowItemVariant parent;
 		private final String modelFileName;
-		private final BodyPartType bodyType;
+		public final BodyPartType bodyType;
 		
 		BowItemVariant(String modelFile, BodyPartType bodyType)   // parents constructor
 		{
-			this.parent = null;
-			this.modelFileName = modelFile;
-			this.bodyType = bodyType;
+			this(modelFile, null, bodyType);
 		}
 		
 		BowItemVariant(String modelFile, BowItemVariant parent, BodyPartType bodyType)
