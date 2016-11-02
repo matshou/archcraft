@@ -3,7 +3,6 @@ package com.yooksi.betterarchery.client;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -16,6 +15,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.client.model.IPerspectiveAwareModel;
 import net.minecraftforge.common.model.TRSRTransformation;
 
+/**
+ *  Adding a custom model class allows us to reduce the amount of model files. 
+ */
 @SuppressWarnings("deprecation")
 public class ArchersBowModel implements IPerspectiveAwareModel
 {
@@ -30,11 +32,10 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	 */
 	public ArchersBowModel(IBakedModel oldModel)
 	{	
-		ImmutableList<BakedQuad> layers = (ImmutableList<BakedQuad>) oldModel.getQuads(null, null, 0);
+		java.util.List<BakedQuad> layers = oldModel.getQuads(null, null, 0);
 		java.util.List<BakedQuad> tempList = new java.util.ArrayList<BakedQuad>();
 		
-		UnmodifiableIterator<BakedQuad> iter;
-		for (iter = layers.iterator(); iter.hasNext();)
+		for (java.util.Iterator<BakedQuad> iter = layers.iterator(); iter.hasNext();)
 		{
 			BakedQuad layer = iter.next();
 			
