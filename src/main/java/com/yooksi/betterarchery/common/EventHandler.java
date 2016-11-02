@@ -94,38 +94,37 @@ public class EventHandler
 	}
 	
 	/**
-	 * Called twice during startup, after creating a new model manager and setting up the model registry. <br>
-	 * Use this event to import custom IBakeModels for your items and blocks.
+	 * Fired when the ModelManager is notified of the resource manager reloading. <br>
+	 * Called after model registry is setup, but before it's passed to BlockModelShapes. <p>
+	 * 
+	 * <i>Use this event to import custom IBakeModels for your items and blocks. </i>
 	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void onModelBakeEvent(net.minecraftforge.client.event.ModelBakeEvent event)
 	{
 		/*
-		 *  Replace the models of all bow variants that should not be using ItemColorHandler.
-		 *  Adding a custom model class allows us to reduce the amount of model files. 
+		 *  Model registry is mapping model locations to baked models,
+		 *  meaning that when you replace a model for some location in the registry,
+		 *  every item that is registered with that location will now use the overriding model.
+		 *  
+		 *  Remember that every item can ONLY have ONE resource location,
+		 *  and each resource location can only have one overriding model.
 		 */
-		
-		java.util.List<ArchersBow> bowsWithNoGrip = ArchersBow.BowItemVariant.getVariantsWithNoColor();
-		final java.util.Iterator<ArchersBow> iter;
-		
-		for (iter = bowsWithNoGrip.iterator(); iter.hasNext();)
+
+		java.util.List<ArchersBow.BowItemVariant> parents = ArchersBow.BowItemVariant.getParents();
+		for (java.util.Iterator<ArchersBow.BowItemVariant> iter = parents.iterator(); iter.hasNext();) 
 		{
-			ArchersBow bowVariant = iter.next();
-			ModelResourceLocation[] locations = new ModelResourceLocation[]
-			{ 
-				bowVariant.getModelResourceLocation(), 
-				ArchersBow.getBowItemVariant(bowVariant).getBodyType().getModelResourceLocation()
-			};
+			ArchersBow.BowItemVariant parent = iter.next();
+			ModelResourceLocation location = parent.getModelResourceLocation(false);
 			
-			for (int i = 0; i < locations.length; i++)
+			Object object = event.getModelRegistry().getObject(location);
+			if (object instanceof IBakedModel) 
 			{
-				Object object = event.getModelRegistry().getObject(locations[i]);
-				if (object instanceof IBakedModel) 
-				{
-					IBakedModel oldBakedModel = (IBakedModel)object;
-					event.getModelRegistry().putObject(locations[i], new ArchersBowModel(oldBakedModel));
-				}
+				IBakedModel oldBakedModel = (IBakedModel)object;
+				ModelResourceLocation pseudoLocation = parent.getModelResourceLocation(true);
+				
+				event.getModelRegistry().putObject(pseudoLocation, new ArchersBowModel(oldBakedModel));
 			}
 		}
 	}

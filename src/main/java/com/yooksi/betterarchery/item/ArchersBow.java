@@ -88,31 +88,35 @@ public abstract class ArchersBow extends ItemBow
 	
 	public enum BowItemVariant
 	{
-		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
-		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
-		LONGBOW_PLAIN("longbow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
+		SIMPLE_BOW_PLAIN("simple_bow", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
+		RECURVE_BOW_PLAIN("recurve_bow", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
+		LONGBOW_PLAIN("longbow", BodyPartType.TYPE_BODY_LONG_PLAIN),
 		
-		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
-		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
+		SIMPLE_BOW_WOOLEN_GRIP ("simple_bow", SIMPLE_BOW_PLAIN, BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
+		SIMPLE_BOW_LEATHER_GRIP ("simple_bow", SIMPLE_BOW_PLAIN, BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
 	
-		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
+		RECURVE_BOW_WOOLEN_GRIP ("recurve_bow", RECURVE_BOW_PLAIN, BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
+		RECURVE_BOW_LEATHER_GRIP ("recurve_bow", RECURVE_BOW_PLAIN, BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
 	
-		LONGBOW_WOOLEN_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
-		LONGBOW_LEATHER_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
+		LONGBOW_WOOLEN_GRIP ("longbow", LONGBOW_PLAIN, BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
+		LONGBOW_LEATHER_GRIP ("longbow", LONGBOW_PLAIN, BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
 		
+		private final BowItemVariant parent;
 		private final String modelFileName;
 		private final BodyPartType bodyType;
 		
-		BowItemVariant(String modelFile, BodyPartType bodyType)
+		BowItemVariant(String modelFile, BodyPartType bodyType)   // parents constructor
 		{
+			this.parent = null;
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;
 		}
 		
-		public BodyPartType getBodyType()
+		BowItemVariant(String modelFile, BowItemVariant parent, BodyPartType bodyType)
 		{
-			return bodyType;
+			this.parent = parent;
+			this.modelFileName = modelFile;
+			this.bodyType = bodyType;
 		}
 		
 		/**
@@ -125,18 +129,31 @@ public abstract class ArchersBow extends ItemBow
 		}
 		
 		/**
-		 *  Compile and return a list of all variants that are not assigned a color value.
+		 *  Get the location of the model file used by this variant.
+		 *  @param pseudo generate a non-existing location for parent variants. 
 		 */
-		public static java.util.List<ArchersBow> getVariantsWithNoColor()
+		public ModelResourceLocation getModelResourceLocation(boolean pseudo)
+		{
+			String fileName = (pseudo && parent == null ? modelFileName + "_pseudo" : modelFileName);
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + fileName);
+		}
+		
+		/**
+		 *  Compile and return a list of all variants that are considered parents.
+		 */
+		public static java.util.List<BowItemVariant> getParents()
     	{
-			java.util.List<ArchersBow> variantList = new java.util.ArrayList<ArchersBow>();
+			// TODO: Consider declaring this list as a static element if we 
+			//       start calling this method more often.
+			
+			java.util.List<BowItemVariant> list = new java.util.ArrayList<BowItemVariant>();
     		for (BowItemVariant variant : BowItemVariant.values())
     		{
-    			if (variant.getColorRGB() == -1)
-    				variantList.add(getCraftingOutputFor(variant.bodyType));
+    			if (variant.parent == null)
+    				list.add(variant);
     		}
     		
-    		return variantList;
+    		return list;
     	}
 	}		
 	
@@ -149,7 +166,7 @@ public abstract class ArchersBow extends ItemBow
      */
 	public ModelResourceLocation getModelResourceLocation()
 	{
-		return new ModelResourceLocation(BetterArchery.MODID + ":" + variant.modelFileName);
+		return variant.getModelResourceLocation(true);
 	}
 	
 	/** 
