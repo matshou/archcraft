@@ -1,18 +1,17 @@
 package com.yooksi.betterarchery.common;
 
-import net.minecraft.creativetab.CreativeTabs;
+import java.io.IOException;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = BetterArchery .MODID, version = BetterArchery.VERSION, name= BetterArchery.NAME, acceptedMinecraftVersions = "[1.10,1.10.2]")
+@Mod(modid = BetterArchery.MODID, version = BetterArchery.VERSION, name= BetterArchery.NAME, acceptedMinecraftVersions = "[1.10,1.10.2]")
 
 public class BetterArchery 
 {
@@ -34,7 +33,7 @@ public class BetterArchery
 	@Mod.Instance(MODID)
 	public static BetterArchery instance;
 	
-	@SidedProxy(clientSide = "com.yooksi.betterarchery.network.ClientProxy")
+	@SidedProxy(clientSide = "com.yooksi.betterarchery.client.ClientProxy")
 	
     public static CommonProxy proxy = new CommonProxy();
 	
@@ -43,7 +42,7 @@ public class BetterArchery
 	 *  @throws IOException if a serious I/O error has occurred.
 	 */
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event) throws java.io.IOException 
+	public void preInit(FMLPreInitializationEvent event) throws IOException 
 	{
 	    Logger.setLogger(event.getModLog());
 		Logger.createModLogFile();

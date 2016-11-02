@@ -81,31 +81,38 @@ public abstract class ArchersBow extends ItemBow
     	subItems.add(archersBow);
     }
 	
-	protected static BowItemVariant getBowItemVariant(Item item)
+	public static BowItemVariant getBowItemVariant(Item item)
 	{
 		return item instanceof ArchersBow ? ((ArchersBow) item).variant : null;
 	}
 	
 	public enum BowItemVariant
 	{
-		SIMPLE_BOW_PLAIN("simple_bow_plain", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
-		RECURVE_BOW_PLAIN("recurve_bow_plain", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
-		LONGBOW_PLAIN("longbow_plain", BodyPartType.TYPE_BODY_LONG_PLAIN),
+		SIMPLE_BOW_PLAIN("simple_bow", BodyPartType.TYPE_BODY_SIMPLE_PLAIN), 
+		RECURVE_BOW_PLAIN("recurve_bow", BodyPartType.TYPE_BODY_RECURVE_PLAIN),
+		LONGBOW_PLAIN("longbow", BodyPartType.TYPE_BODY_LONG_PLAIN),
 		
-		SIMPLE_BOW_WOOLEN_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
-		SIMPLE_BOW_LEATHER_GRIP("simple_bow_with_grip", BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
+		SIMPLE_BOW_WOOLEN_GRIP ("simple_bow", SIMPLE_BOW_PLAIN, BodyPartType.TYPE_BODY_SIMPLE_WITH_WOOLEN_GRIP),
+		SIMPLE_BOW_LEATHER_GRIP ("simple_bow", SIMPLE_BOW_PLAIN, BodyPartType.TYPE_BODY_SIMPLE_WITH_LEATHER_GRIP),
 	
-		RECURVE_BOW_WOOLEN_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
-		RECURVE_BOW_LEATHER_GRIP("recurve_bow_with_grip", BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
+		RECURVE_BOW_WOOLEN_GRIP ("recurve_bow", RECURVE_BOW_PLAIN, BodyPartType.TYPE_BODY_RECURVE_WITH_WOOLEN_GRIP),
+		RECURVE_BOW_LEATHER_GRIP ("recurve_bow", RECURVE_BOW_PLAIN, BodyPartType.TYPE_BODY_RECURVE_WITH_LEATHER_GRIP),
 	
-		LONGBOW_WOOLEN_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
-		LONGBOW_LEATHER_GRIP("longbow_with_grip", BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
+		LONGBOW_WOOLEN_GRIP ("longbow", LONGBOW_PLAIN, BodyPartType.TYPE_BODY_LONG_WITH_WOOLEN_GRIP),
+		LONGBOW_LEATHER_GRIP ("longbow", LONGBOW_PLAIN, BodyPartType.TYPE_BODY_LONG_WITH_LEATHER_GRIP);
 		
+		private final BowItemVariant parent;
 		private final String modelFileName;
-		private final BodyPartType bodyType;
+		public final BodyPartType bodyType;
 		
-		BowItemVariant(String modelFile, BodyPartType bodyType)
+		BowItemVariant(String modelFile, BodyPartType bodyType)   // parents constructor
 		{
+			this(modelFile, null, bodyType);
+		}
+		
+		BowItemVariant(String modelFile, BowItemVariant parent, BodyPartType bodyType)
+		{
+			this.parent = parent;
 			this.modelFileName = modelFile;
 			this.bodyType = bodyType;
 		}
@@ -118,6 +125,34 @@ public abstract class ArchersBow extends ItemBow
 		{
 			return bodyType.getColorRGB();
 		}
+		
+		/**
+		 *  Get the location of the model file used by this variant.
+		 *  @param pseudo generate a non-existing location for parent variants. 
+		 */
+		public ModelResourceLocation getModelResourceLocation(boolean pseudo)
+		{
+			String fileName = (pseudo && parent == null ? modelFileName + "_pseudo" : modelFileName);
+			return new ModelResourceLocation(BetterArchery.MODID + ":" + fileName);
+		}
+		
+		/**
+		 *  Compile and return a list of all variants that are considered parents.
+		 */
+		public static java.util.List<BowItemVariant> getParents()
+    	{
+			// TODO: Consider declaring this list as a static element if we 
+			//       start calling this method more often.
+			
+			java.util.List<BowItemVariant> list = new java.util.ArrayList<BowItemVariant>();
+    		for (BowItemVariant variant : BowItemVariant.values())
+    		{
+    			if (variant.parent == null)
+    				list.add(variant);
+    		}
+    		
+    		return list;
+    	}
 	}		
 	
 	/** 
@@ -129,7 +164,7 @@ public abstract class ArchersBow extends ItemBow
      */
 	public ModelResourceLocation getModelResourceLocation()
 	{
-		return new ModelResourceLocation(BetterArchery.MODID + ":" + variant.modelFileName);
+		return variant.getModelResourceLocation(true);
 	}
 	
 	/** 

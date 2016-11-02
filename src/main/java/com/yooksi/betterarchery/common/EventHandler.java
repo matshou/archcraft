@@ -1,20 +1,26 @@
 package com.yooksi.betterarchery.common;
 
+import com.yooksi.betterarchery.client.ArchersBowModel;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ArchersBow;
+import com.yooksi.betterarchery.item.ItemBowPartBody;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class EventHandler 
 {
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void FOVUpdateEvent(net.minecraftforge.client.event.FOVUpdateEvent event)
 	{
 		net.minecraft.entity.player.EntityPlayer player = event.getEntity();
@@ -43,6 +49,7 @@ public class EventHandler
 	}
 	
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void onRenderSpecificHandEvent(net.minecraftforge.client.event.RenderSpecificHandEvent event)
 	{
 		net.minecraft.entity.player.EntityPlayer player = Minecraft.getMinecraft().thePlayer;
@@ -83,6 +90,58 @@ public class EventHandler
 					ItemStack stack = new ItemStack(ModItems.TREE_RESIN_LIQUID, 1);
 				    player.setHeldItem(EnumHand.OFF_HAND, stack);
 				}
+			}
+		}
+	}
+	
+	/**
+	 * Fired when the ModelManager is notified of the resource manager reloading. <br>
+	 * Called after model registry is setup, but before it's passed to BlockModelShapes. <p>
+	 * 
+	 * <i>Use this event to import custom IBakeModels for your items and blocks. </i>
+	 */
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void onModelBakeEvent(net.minecraftforge.client.event.ModelBakeEvent event)
+	{
+		/*
+		 *  Model registry is mapping model locations to baked models,
+		 *  meaning that when you replace a model for some location in the registry,
+		 *  every item that is registered with that location will now use the overriding model.
+		 *  
+		 *  Remember that every item can ONLY have ONE resource location,
+		 *  and each resource location can only have one overriding model.
+		 */
+
+		java.util.List<ArchersBow.BowItemVariant> parents = ArchersBow.BowItemVariant.getParents();
+		for (java.util.Iterator<ArchersBow.BowItemVariant> iter = parents.iterator(); iter.hasNext();) 
+		{
+			ArchersBow.BowItemVariant parent = iter.next();
+			ModelResourceLocation location = parent.getModelResourceLocation(false);
+			
+			Object object = event.getModelRegistry().getObject(location);
+			if (object instanceof IBakedModel) 
+			{
+				IBakedModel oldBakedModel = (IBakedModel)object;
+				ModelResourceLocation pseudoLocation = parent.getModelResourceLocation(true);
+				
+				event.getModelRegistry().putObject(pseudoLocation, new ArchersBowModel(oldBakedModel));
+			}
+		}
+		
+		java.util.List<ItemBowPartBody.BodyPartType> parents2 = ItemBowPartBody.BodyPartType.getParents();
+		for (java.util.Iterator<ItemBowPartBody.BodyPartType> iter = parents2.iterator(); iter.hasNext();) 
+		{
+			ItemBowPartBody.BodyPartType parent = iter.next();
+			ModelResourceLocation location = parent.getModelResourceLocation(false);
+			
+			Object object = event.getModelRegistry().getObject(location);
+			if (object instanceof IBakedModel) 
+			{
+				IBakedModel oldBakedModel = (IBakedModel)object;
+				ModelResourceLocation pseudoLocation = parent.getModelResourceLocation(true);
+				
+				event.getModelRegistry().putObject(pseudoLocation, new ArchersBowModel(oldBakedModel));
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.network;
+package com.yooksi.betterarchery.client;
 
 import com.yooksi.betterarchery.common.CommonProxy;
 import com.yooksi.betterarchery.init.ModItems;
@@ -41,7 +41,7 @@ public class ClientProxy extends CommonProxy
 		for (int i = 0; i < subtypes.length; i++)
 		{
 			ItemSubtype type = (ItemSubtype) subtypes[i];
-			ModelLoader.setCustomModelResourceLocation(item, type.getTypeMetadata(), type.getModelResourceLocation());
+			ModelLoader.setCustomModelResourceLocation(item, type.getTypeMetadata(), type.getModelResourceLocation(true));
 		}
 	}
 	

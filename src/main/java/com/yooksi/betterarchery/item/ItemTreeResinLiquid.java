@@ -65,7 +65,7 @@ public class ItemTreeResinLiquid extends Item
     		return metadata;
     	} 
         
-		public ModelResourceLocation getModelResourceLocation()
+		public ModelResourceLocation getModelResourceLocation(boolean pseudo)
 		{
 			String registryName = ModItems.TREE_RESIN_LIQUID.getRegistryName().toString();
 			return new ModelResourceLocation(registryName + "/" + unlocalizedName);

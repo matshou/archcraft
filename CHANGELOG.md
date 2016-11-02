@@ -3,7 +3,20 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
-## Version 0.3.0 - 2016-10-29
+## Version 0.3.1 - 2016-11-02
+### Added
+- Longbow item recipes.
+- Custom item model class.
+
+### Fixed
+- Some incorrect recipes.
+
+### Changed
+- Expanded testing world.
+- Longbow item internal name.
+- Reduced amount of model files.
+
+## Version [0.3.0] - 2016-10-29
 ### Added
 - A new bow type, longbow.
 - New custom world for testing purposes.
@@ -171,6 +184,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a
 - Main mod classes.
 - Meta files needed by Eclipse.
 
+[0.3.0]: https://github.com/yooksi/Better-Archery-Reborn/compare/87a2fd28961d89636963b0bf5487590f1104e13e...43fa315837cc5f28c5d1c3ed8972751e2aacdec0
 [0.2.9]: https://github.com/yooksi/Better-Archery-Reborn/compare/3fd203337c9b8717051f1c34ef70bfdb4e583ade...87a2fd28961d89636963b0bf5487590f1104e13e
 [0.2.8]: https://github.com/yooksi/Better-Archery-Reborn/compare/3a9b4e68a9f2963be63e995cef15a12169ca9c34...3fd203337c9b8717051f1c34ef70bfdb4e583ade
 [0.2.7]: https://github.com/yooksi/Better-Archery-Reborn/pull/4

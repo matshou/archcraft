@@ -4,9 +4,9 @@ item.simple_bow.name=Self Bow
 item.recurve_bow.name=Recurve Bow
 item.longbow.name=Longbow
 
-item.simple_bow_body_plain.name=Unstrung Self Bow
-item.recurve_bow_body_plain.name=Unstrung Recurve Bow
-item.longbow_body_plain.name=Unstrung Longbow
+item.simple_bow_body.name=Unstrung Self Bow
+item.recurve_bow_body.name=Unstrung Recurve Bow
+item.longbow_body.name=Unstrung Longbow
 
 item.tree_resin_liquid_inpure.name=Inpure Tree Resin
 item.tree_resin_liquid_pure.name=Pure Tree Resin

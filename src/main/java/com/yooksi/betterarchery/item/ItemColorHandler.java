@@ -97,7 +97,7 @@ public class ItemColorHandler
 	{
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
 		
-		java.util.ArrayList<Item> colorVars = new java.util.ArrayList<Item>();
+		java.util.List<Item> colorVars = new java.util.ArrayList<Item>();
 		for (BodyPartType type : BodyPartType.values())
 		{
 			/*
