@@ -133,18 +133,16 @@ public class ItemBowPartBody extends Item
 	@Override
 	public boolean showDurabilityBar(ItemStack stack)
 	{
-		/*
-		 *  This method is called several times BEFORE we had a chance to create a new NBTTagCompound.
-		 */
-		return stack.hasTagCompound() ? stack.getTagCompound().getInteger("item_damage") > 0 : false;
+		return stack.getTagCompound().getInteger("item_damage") > 0;
 	}
 	
 	@Override
     public double getDurabilityForDisplay(ItemStack stack)
     {
-		ArchersBow craftingOutput = ArchersBow.getCraftingOutputFor(BodyPartType.getTypeByMeta(stack.getMetadata()));
-		double maxDamage = craftingOutput != null ? craftingOutput.getMaxDamage() : 0;
+		BodyPartType type = BodyPartType.getTypeByMeta(stack.getMetadata());
+		ArchersBow craftingOutput = ArchersBow.getCraftingOutputFor(type);
 		
+		double maxDamage = craftingOutput != null ? craftingOutput.getMaxDamage() : 0;
 		return (double)stack.getTagCompound().getInteger("item_damage") / maxDamage;
     }
 }

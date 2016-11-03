@@ -21,6 +21,8 @@ import net.minecraftforge.common.model.TRSRTransformation;
 @SuppressWarnings("deprecation")
 public class ArchersBowModel implements IPerspectiveAwareModel
 {
+	public final static int GRIP_TINT_INDEX = 2;
+	
 	private final ImmutableList<BakedQuad> itemLayers;
 	private final IBakedModel oldBakedModel;
 	
@@ -39,7 +41,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 		{
 			BakedQuad layer = iter.next();
 			
-			if (layer.getTintIndex() != 1)   // The bow grip
+			if (layer.getTintIndex() != GRIP_TINT_INDEX)
 				tempList.add(layer);
 		}
 		

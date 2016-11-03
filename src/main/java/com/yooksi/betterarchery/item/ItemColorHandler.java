@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.annotation.Nullable;
 
+import com.yooksi.betterarchery.client.ArchersBowModel;
 import com.yooksi.betterarchery.init.ModItems;
 import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
@@ -51,7 +52,7 @@ public class ItemColorHandler
 		@Override
 		public int getColorFromItemstack(ItemStack stack, int tintIndex) 
 		{
-			if (tintIndex == 1)
+			if (tintIndex == ArchersBowModel.GRIP_TINT_INDEX)
 			{
 				if (stack.hasTagCompound() && stack.getTagCompound().hasKey("dyeColorMeta"))
 				{
@@ -74,7 +75,7 @@ public class ItemColorHandler
 			 *  Skip first few subtypes because they don't have color values.
 			 *  This is a just a bit of performance optimizing.
 			 */
-			if (tintIndex == 1 && stack.getMetadata() > 2)
+			if (tintIndex == ArchersBowModel.GRIP_TINT_INDEX && stack.getMetadata() > 2)
 			{
 				/*
 				 *  The color value from NBT will always override default subtype color.
