@@ -40,9 +40,10 @@ public class ArchersBowRecipe extends ShapedOreRecipe
 
             else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
             {
-            	recipeOutput.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
+            	NBTTagCompound stackTagCompound = stack.getTagCompound();
+            	recipeOutput.setItemDamage(stackTagCompound.getInteger("item_damage"));
 
-            	if (stack.getTagCompound().hasKey("dyeColorMeta"))
+            	if (stackTagCompound.hasKey("dyeColorMeta"))
             		nbt.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
             }
             else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))

@@ -328,8 +328,10 @@ public abstract class ArchersBow extends ItemBow
                         		NBTTagCompound tagCompound = new NBTTagCompound();
                         		bowBody.setTagCompound(tagCompound);
 
-                        		tagCompound.setInteger("item_damage", stack.getItemDamage());
-                        		tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
+                        		tagCompound.setInteger("item_damage", 80);
+                        		
+                        		if (stack.getTagCompound().hasKey("dyeColorMeta"))
+                        			tagCompound.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
 
                         		entityplayer.setHeldItem(entityplayer.getActiveHand(), bowBody);
                         	}
