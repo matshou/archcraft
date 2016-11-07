@@ -23,7 +23,7 @@ import net.minecraftforge.common.model.TRSRTransformation;
 @SuppressWarnings("deprecation")
 public class ArchersBowModel implements IPerspectiveAwareModel
 {
-	public final static int GRIP_TINT_INDEX = 2;
+	public final static int GRIP_TINT_INDEX = 1;
 	
 	private final ModItemOverrideList overrideList;
 	private final ImmutableList<BakedQuad> itemLayers;
