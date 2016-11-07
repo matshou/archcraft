@@ -28,7 +28,7 @@ public class ArchersBowRecipe extends ShapedOreRecipe
         recipeOutput.setTagCompound(nbt);
 		
         if (recipeOutput.getItem() == ModItems.BOW_ITEM_PART_BODY)
-        	super.getCraftingResult(inv);
+        	return super.getCraftingResult(inv);
         
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
@@ -43,10 +43,7 @@ public class ArchersBowRecipe extends ShapedOreRecipe
             	recipeOutput.setItemDamage(stack.getTagCompound().getInteger("item_damage"));
 
             	if (stack.getTagCompound().hasKey("dyeColorMeta"))
-            	{
-                	int dyeColorMeta = stack.getTagCompound().getInteger("dyeColorMeta");
-            		nbt.setInteger("dyeColorMeta", EnumDyeColor.byMetadata(dyeColorMeta).getMapColor().colorValue);
-            	}
+            		nbt.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
             }
             else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
             {
