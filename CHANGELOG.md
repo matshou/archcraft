@@ -3,6 +3,10 @@ All notable changes to this mod project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and uses a custom versioning system.
 
+## Version 0.3.2 - 2016-11-07
+### Fixed
+- Resolved [#10](https://github.com/yooksi/Better-Archery-Reborn/issues/10) Model override issue
+
 ## Version 0.3.1 - 2016-11-02
 ### Added
 - Longbow item recipes.
