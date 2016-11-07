@@ -3,11 +3,13 @@ package com.yooksi.betterarchery.client;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.block.model.ItemOverride;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.block.model.ItemTransformVec3f;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -23,6 +25,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 {
 	public final static int GRIP_TINT_INDEX = 2;
 	
+	private final ModItemOverrideList overrideList;
 	private final ImmutableList<BakedQuad> itemLayers;
 	private final IBakedModel oldBakedModel;
 	
@@ -34,9 +37,27 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	 */
 	public ArchersBowModel(IBakedModel oldModel)
 	{	
+		/* 
+		 *  The way the override list is constructed in ItemOverrideList, is very anti-intuitive. 
+		 *  The constructor adds the override elements from the model file to the back of the list,
+		 *  which doesn't make much sense, because then we need to have to keep track of two different standards.
+		 *  
+		 *  In any case, we need to reverse the order of the override list before we do anything with it.
+		 */
+		
+		ImmutableList<ItemOverride> list = oldModel.getOverrides().getOverrides();
+		java.util.List<ItemOverride> list2 = new java.util.ArrayList<ItemOverride>();
+
+		for (UnmodifiableIterator<ItemOverride> iter = list.iterator(); iter.hasNext();)
+			list2.add(iter.next());
+
+		java.util.Collections.reverse(list2);
+		
+		this.overrideList = new ModItemOverrideList(list2);
+
 		java.util.List<BakedQuad> layers = oldModel.getQuads(null, null, 0);
 		java.util.List<BakedQuad> tempList = new java.util.ArrayList<BakedQuad>();
-		
+
 		for (java.util.Iterator<BakedQuad> iter = layers.iterator(); iter.hasNext();)
 		{
 			BakedQuad layer = iter.next();
@@ -88,7 +109,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 	@Override
 	public ItemOverrideList getOverrides() 
 	{
-		return oldBakedModel.getOverrides();
+		return this.overrideList;
 	}
 
 	@Override
