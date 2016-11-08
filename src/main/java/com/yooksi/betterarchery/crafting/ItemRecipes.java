@@ -151,13 +151,13 @@ public class ItemRecipes
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 
 				new Object[] { "#x", "y ", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 0), '#', Items.PAPER, 'y', Items.GLASS_BOTTLE});
     
-		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 2),
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 3),
 				new Object[] { "x ", "o#", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 'o', Items.BOWL, '#', new ItemStack(Items.COAL, 1, 0)});
 
-		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 2),
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 3),
 				new Object[] { "x ", "o#", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 1), 'o', Items.BOWL, '#', new ItemStack(Items.COAL, 1, 1)});
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 3),
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 2),
 				new Object[] { "xy", 'x', new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 2), 'y', Items.GLASS_BOTTLE});
 		
         GameRegistry.addSmelting(new ItemStack(ModItems.TREE_RESIN_LIQUID, 1, 3), new ItemStack(ModItems.TREE_RESIN_GLUE), 0.35F);
