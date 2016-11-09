@@ -449,8 +449,9 @@ a:hover {
 }
 
 header {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  height: 140px;
   font-family: 'BenchNine', 'Helvetica Neue', Helvetica, Arial, serif;
   background: url(../images/header-bg.jpg);
   border-bottom: solid 1px;
