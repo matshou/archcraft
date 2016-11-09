@@ -485,6 +485,12 @@ header h2 {
   margin: 0 auto;
 }
 
+.mage_archer {
+  position: relative;
+  top: -195px;
+  right: -465px;
+}
+
 #content-wrapper {
   padding-top: 30px;
   border-top: solid 1px #fff;
