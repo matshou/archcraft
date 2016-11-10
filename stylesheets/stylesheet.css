@@ -442,10 +442,10 @@ p {
 }
 
 a {
-  color: #2879d0;
+  color: green;
 }
 a:hover {
-  color: #2268b2;
+  color: darkgreen;
 }
 
 header {
@@ -576,7 +576,7 @@ pre {
 }
 pre code {
   padding: 0;
-  color: #2879d0;
+  color: green;
   background-color: #fff;
   border: none;
 }
@@ -848,7 +848,7 @@ footer a:hover {
     margin-top: 15px;
     font-size: 13px;
     line-height: 1;
-    color: #2879d0;
+    color: green;
     text-align: center;
     background-color: #9ddcff;
     background-image: none;
