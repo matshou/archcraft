@@ -522,16 +522,26 @@ a.button {
   width: 134px;
   height: 58px;
   padding-top: 22px;
-  padding-left: 68px;
+  padding-left: 75px;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 25px;
+  font-size: 28px;
   line-height: 1.2;
   color: #fff;
 }
+
+/*
+ * Correct button text position to be in the center of the button. 
+ */
+a.button p.button-text {
+  position: relative;
+  bottom: 3px;
+}
+
 a.button small {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
 }
+
 header a.button {
   position: absolute;
   top: 15px;
@@ -543,7 +553,7 @@ aside a.button {
   width: 138px;
   padding-left: 86px;
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 20px;
   background: transparent url(../images/download-button.png) 0 0 no-repeat;
 }
 
