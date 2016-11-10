@@ -441,13 +441,6 @@ p {
   margin-top: 0;
 }
 
-a {
-  color: green;
-}
-a:hover {
-  color: darkgreen;
-}
-
 header {
   padding-top: 75px;
   padding-bottom: 75px;
@@ -720,11 +713,6 @@ p {
 
 a {
   text-decoration: none;
-  color: green;
-}
-
-a:hover {
-	color: darkgreen;
 }
 
 p a {
