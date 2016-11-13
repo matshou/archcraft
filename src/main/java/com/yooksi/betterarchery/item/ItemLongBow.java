@@ -10,6 +10,7 @@ public class ItemLongBow extends ArchersBow
 	public ItemLongBow(BowItemVariant variant)
 	{
 		super(variant, 0.60F, 1.35F);
+		this.setMaxDamage(150);
 	}
 	
 	@SideOnly(Side.CLIENT)
