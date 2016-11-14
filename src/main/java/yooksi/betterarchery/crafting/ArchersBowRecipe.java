@@ -1,8 +1,6 @@
-package com.yooksi.betterarchery.crafting;
+package yooksi.betterarchery.crafting;
 
 import javax.annotation.Nullable;
-
-import com.yooksi.betterarchery.init.ModItems;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
@@ -11,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import yooksi.betterarchery.init.ModItems;
 
 public class ArchersBowRecipe extends ShapedOreRecipe
 {

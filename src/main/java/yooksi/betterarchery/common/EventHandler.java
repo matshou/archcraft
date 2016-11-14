@@ -1,9 +1,4 @@
-package com.yooksi.betterarchery.common;
-
-import com.yooksi.betterarchery.client.ArchersBowModel;
-import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ArchersBow;
-import com.yooksi.betterarchery.item.ItemBowPartBody;
+package yooksi.betterarchery.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -15,6 +10,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.client.ArchersBowModel;
+import yooksi.betterarchery.init.ModItems;
+import yooksi.betterarchery.item.ArchersBow;
+import yooksi.betterarchery.item.ItemBowPartBody;
 
 @Mod.EventBusSubscriber
 public class EventHandler 

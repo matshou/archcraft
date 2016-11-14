@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.item;
+package yooksi.betterarchery.item;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 

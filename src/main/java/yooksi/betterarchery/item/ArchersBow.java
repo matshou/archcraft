@@ -1,10 +1,6 @@
-package com.yooksi.betterarchery.item;
+package yooksi.betterarchery.item;
 
 import javax.annotation.Nullable;
-
-import com.yooksi.betterarchery.common.BetterArchery;
-import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,6 +25,9 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.common.BetterArchery;
+import yooksi.betterarchery.init.ModItems;
+import yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 /** 
  * An abstract parent class for all custom bows in this mod. <br>

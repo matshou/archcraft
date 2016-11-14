@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.common;
+package yooksi.betterarchery.common;
 
 import java.io.IOException;
 

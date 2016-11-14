@@ -1,8 +1,6 @@
-package com.yooksi.betterarchery.crafting;
+package yooksi.betterarchery.crafting;
 
 import static net.minecraftforge.oredict.RecipeSorter.Category.SHAPED;
-
-import com.yooksi.betterarchery.init.ModItems;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,6 +10,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
+import yooksi.betterarchery.init.ModItems;
 
 public class ItemRecipes 
 {

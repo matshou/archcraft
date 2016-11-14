@@ -1,12 +1,8 @@
-package com.yooksi.betterarchery.item;
+package yooksi.betterarchery.item;
 
 import java.awt.Color;
 
 import javax.annotation.Nullable;
-
-import com.yooksi.betterarchery.client.ArchersBowModel;
-import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -16,6 +12,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.client.ArchersBowModel;
+import yooksi.betterarchery.init.ModItems;
+import yooksi.betterarchery.item.ItemBowPartBody.BodyPartType;
 
 public class ItemColorHandler
 {

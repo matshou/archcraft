@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.client;
+package yooksi.betterarchery.client;
 
 import org.apache.commons.lang3.tuple.Pair;
 

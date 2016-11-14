@@ -1,4 +1,4 @@
-package com.yooksi.betterarchery.client;
+package yooksi.betterarchery.client;
 
 import java.util.List;
 

@@ -1,11 +1,10 @@
-package com.yooksi.betterarchery.common;
-
-import com.yooksi.betterarchery.crafting.ItemRecipes;
-import com.yooksi.betterarchery.init.ModItems;
+package yooksi.betterarchery.common;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import yooksi.betterarchery.crafting.ItemRecipes;
+import yooksi.betterarchery.init.ModItems;
 
 public class CommonProxy 
 {

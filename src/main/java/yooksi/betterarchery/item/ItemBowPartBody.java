@@ -1,10 +1,6 @@
-package com.yooksi.betterarchery.item;
+package yooksi.betterarchery.item;
 
 import java.util.Collections;
-
-import com.yooksi.betterarchery.common.Logger;
-import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ItemColorHandler.ArcheryColor;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,6 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.common.Logger;
+import yooksi.betterarchery.init.ModItems;
+import yooksi.betterarchery.item.ItemColorHandler.ArcheryColor;
 
 public class ItemBowPartBody extends Item
 {

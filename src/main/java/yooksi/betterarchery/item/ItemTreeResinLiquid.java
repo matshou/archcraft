@@ -1,7 +1,4 @@
-package com.yooksi.betterarchery.item;
-
-import com.yooksi.betterarchery.common.Logger;
-import com.yooksi.betterarchery.init.ModItems;
+package yooksi.betterarchery.item;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.common.Logger;
+import yooksi.betterarchery.init.ModItems;
 
 public class ItemTreeResinLiquid extends Item
 {

@@ -1,12 +1,4 @@
-package com.yooksi.betterarchery.client;
-
-import com.yooksi.betterarchery.common.CommonProxy;
-import com.yooksi.betterarchery.init.ModItems;
-import com.yooksi.betterarchery.item.ArchersBow;
-import com.yooksi.betterarchery.item.ItemBowPartBody;
-import com.yooksi.betterarchery.item.ItemColorHandler;
-import com.yooksi.betterarchery.item.ItemSubtype;
-import com.yooksi.betterarchery.item.ItemTreeResinLiquid;
+package yooksi.betterarchery.client;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -14,6 +6,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import yooksi.betterarchery.common.CommonProxy;
+import yooksi.betterarchery.init.ModItems;
+import yooksi.betterarchery.item.ArchersBow;
+import yooksi.betterarchery.item.ItemBowPartBody;
+import yooksi.betterarchery.item.ItemColorHandler;
+import yooksi.betterarchery.item.ItemSubtype;
+import yooksi.betterarchery.item.ItemTreeResinLiquid;
 
 public class ClientProxy extends CommonProxy
 {

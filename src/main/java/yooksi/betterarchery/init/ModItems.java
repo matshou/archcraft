@@ -1,7 +1,7 @@
-package com.yooksi.betterarchery.init;
+package yooksi.betterarchery.init;
 
-import com.yooksi.betterarchery.item.*;
-import com.yooksi.betterarchery.item.ArchersBow.BowItemVariant;
+import yooksi.betterarchery.item.*;
+import yooksi.betterarchery.item.ArchersBow.BowItemVariant;
 
 /** 
  *  All custom items are initialized and stored here. <br>
