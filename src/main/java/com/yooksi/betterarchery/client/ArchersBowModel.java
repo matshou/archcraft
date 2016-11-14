@@ -24,11 +24,11 @@ import net.minecraftforge.common.model.TRSRTransformation;
 public class ArchersBowModel implements IPerspectiveAwareModel
 {
 	public final static int GRIP_TINT_INDEX = 1;
-	
+
 	private final ModItemOverrideList overrideList;
 	private final ImmutableList<BakedQuad> itemLayers;
 	private final IBakedModel oldBakedModel;
-	
+
 	/**
 	 *  The model will constructed as a complete copy of the oldModel, <br>
 	 *  except the list of texture layers, which will be modified in the constructor.
@@ -44,7 +44,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 		 *  
 		 *  In any case, we need to reverse the order of the override list before we do anything with it.
 		 */
-		
+
 		ImmutableList<ItemOverride> list = oldModel.getOverrides().getOverrides();
 		java.util.List<ItemOverride> list2 = new java.util.ArrayList<ItemOverride>();
 
@@ -52,7 +52,7 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 			list2.add(iter.next());
 
 		java.util.Collections.reverse(list2);
-		
+
 		this.overrideList = new ModItemOverrideList(list2);
 
 		java.util.List<BakedQuad> layers = oldModel.getQuads(null, null, 0);
@@ -61,15 +61,15 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 		for (java.util.Iterator<BakedQuad> iter = layers.iterator(); iter.hasNext();)
 		{
 			BakedQuad layer = iter.next();
-			
+
 			if (layer.getTintIndex() != GRIP_TINT_INDEX)
 				tempList.add(layer);
 		}
-		
+
 		this.itemLayers = ImmutableList.copyOf(tempList);
 		this.oldBakedModel = oldModel;
 	}
-	
+
 	@Override
 	public java.util.List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) 
 	{
@@ -129,9 +129,9 @@ public class ArchersBowModel implements IPerspectiveAwareModel
 			ItemCameraTransforms itemCameraTransforms = oldBakedModel.getItemCameraTransforms();
 			ItemTransformVec3f itemTransformVec3f = itemCameraTransforms.getTransform(cameraTransformType);
 			TRSRTransformation tr = new TRSRTransformation(itemTransformVec3f);
-			
+
 			javax.vecmath.Matrix4f mat = tr != null ? tr.getMatrix() : null;
-			
+
 			// The TRSRTransformation for vanilla items have blockCenterToCorner() applied, however handlePerspective
 			// reverses it back again with blockCornerToCenter(), so we don't need to apply it here.
 

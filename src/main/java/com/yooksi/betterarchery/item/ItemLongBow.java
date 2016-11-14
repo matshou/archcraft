@@ -12,19 +12,19 @@ public class ItemLongBow extends ArchersBow
 		super(variant, 0.60F, 1.35F);
 		this.setMaxDamage(150);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, java.util.List<String> info, boolean par4) 
 	{		
 		info.add("In the right hands it's reach can touch the coulds.");
-		
+
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
 		case LONGBOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
-			
+
 		case LONGBOW_WOOLEN_GRIP:
 		{
 			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		

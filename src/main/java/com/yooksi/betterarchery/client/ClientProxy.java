@@ -28,14 +28,14 @@ public class ClientProxy extends CommonProxy
 			ArchersBow item = ArchersBow.getCraftingOutputFor(type);
 			ModelLoader.setCustomModelResourceLocation(item, 0, item.getModelResourceLocation());
 		}
-		
+
 		setCustomModelResourceLocationForItemSubtypes(ModItems.BOW_ITEM_PART_BODY, ItemBowPartBody.BodyPartType.values());
 		setCustomModelResourceLocationForItemSubtypes(ModItems.TREE_RESIN_LIQUID, ItemTreeResinLiquid.ResinLiquidType.values());	
-	
+
 		ModelLoader.setCustomModelResourceLocation(ModItems.TREE_RESIN_GLUE, 0, new ModelResourceLocation(ModItems.TREE_RESIN_GLUE.getRegistryName().toString()));
 		ModelLoader.setCustomModelResourceLocation(ModItems.BOW_STRING_ITEM, 0, new ModelResourceLocation(ModItems.BOW_STRING_ITEM.getRegistryName().toString()));
 	}
-	
+
 	private void setCustomModelResourceLocationForItemSubtypes(net.minecraft.item.Item item, final Enum<? extends ItemSubtype>[] subtypes)
 	{
 		for (int i = 0; i < subtypes.length; i++)
@@ -44,7 +44,7 @@ public class ClientProxy extends CommonProxy
 			ModelLoader.setCustomModelResourceLocation(item, type.getTypeMetadata(), type.getModelResourceLocation(true));
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void init(FMLInitializationEvent event)

@@ -12,19 +12,19 @@ public class ItemRecurveBow extends ArchersBow
 		super(variant, 0.85F, 1.20F);
 		this.setMaxDamage(250);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, java.util.List<String> info, boolean par4) 
 	{		
 		info.add("A swift, true-firing bow that almost aims itself.");
-		
+
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
 		case RECURVE_BOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
-			
+
 		case RECURVE_BOW_WOOLEN_GRIP:
 		{
 			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		

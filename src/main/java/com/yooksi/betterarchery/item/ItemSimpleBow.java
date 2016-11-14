@@ -12,13 +12,13 @@ public class ItemSimpleBow extends ArchersBow
 		super(variant, 1.0F, 1.0F);
 		this.setMaxDamage(150);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, java.util.List<String> info, boolean par4) 
 	{		
 		info.add("An effective weapon made from a single piece of wood.");
-		
+
 		switch(ArchersBow.getBowItemVariant(stack.getItem())) {
 
 		case SIMPLE_BOW_PLAIN:
@@ -28,7 +28,7 @@ public class ItemSimpleBow extends ArchersBow
 		case SIMPLE_BOW_LEATHER_GRIP:
 			info.add(com.mojang.realmsclient.gui.ChatFormatting.ITALIC + "It has a leather grip.");
 			break;
-			
+
 		case SIMPLE_BOW_WOOLEN_GRIP:
 		{
 			String colorName = ItemColorHandler.getDyeColorNameForStack(stack);		

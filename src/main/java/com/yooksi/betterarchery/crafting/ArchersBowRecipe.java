@@ -23,36 +23,36 @@ public class ArchersBowRecipe extends ShapedOreRecipe
 	public ItemStack getCraftingResult(InventoryCrafting inv)
 	{
 		ItemStack recipeOutput = super.getRecipeOutput();
-		
-        NBTTagCompound nbt = new NBTTagCompound();
-        recipeOutput.setTagCompound(nbt);
-		
-        if (recipeOutput.getItem() == ModItems.BOW_ITEM_PART_BODY)
-        	return super.getCraftingResult(inv);
-        
+
+		NBTTagCompound nbt = new NBTTagCompound();
+		recipeOutput.setTagCompound(nbt);
+
+		if (recipeOutput.getItem() == ModItems.BOW_ITEM_PART_BODY)
+			return super.getCraftingResult(inv);
+
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
-            if (stack == null) continue;
+			if (stack == null) continue;
 
-            if (stack.getItem() == ModItems.BOW_STRING_ITEM)
-            	nbt.setInteger("bow_string_damage", stack.getItemDamage());
+			if (stack.getItem() == ModItems.BOW_STRING_ITEM)
+				nbt.setInteger("bow_string_damage", stack.getItemDamage());
 
-            else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
-            {
-            	NBTTagCompound stackTagCompound = stack.getTagCompound();
-            	recipeOutput.setItemDamage(stackTagCompound.getInteger("item_damage"));
+			else if (stack.getItem() == ModItems.BOW_ITEM_PART_BODY)
+			{
+				NBTTagCompound stackTagCompound = stack.getTagCompound();
+				recipeOutput.setItemDamage(stackTagCompound.getInteger("item_damage"));
 
-            	if (stackTagCompound.hasKey("dyeColorMeta"))
-            		nbt.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
-            }
-            else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
-            {
-            	EnumDyeColor dyeColor = EnumDyeColor.byMetadata(stack.getMetadata());
-            	nbt.setInteger("dyeColorMeta", dyeColor.getMetadata());
-            }
+				if (stackTagCompound.hasKey("dyeColorMeta"))
+					nbt.setInteger("dyeColorMeta", stack.getTagCompound().getInteger("dyeColorMeta"));
+			}
+			else if (stack.getItem() == Item.getItemFromBlock(Blocks.WOOL))
+			{
+				EnumDyeColor dyeColor = EnumDyeColor.byMetadata(stack.getMetadata());
+				nbt.setInteger("dyeColorMeta", dyeColor.getMetadata());
+			}
 		}
-		
+
 		return super.getCraftingResult(inv);
 	}
 }

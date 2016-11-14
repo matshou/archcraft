@@ -21,20 +21,20 @@ import org.apache.logging.log4j.Marker;
 public class Logger 
 {
 	private static org.apache.logging.log4j.Logger logger;
-	
+
 	static final java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("[dd/MM/yyyy][HH:mm:ss]");
-    public static final String modLogFileName = "better-archery-reborn-logger.log";
-    public static final String modLogFileDirName = "logs";
-	    
-    /** A string representation of the mod log Path, here for convenience. */
+	public static final String modLogFileName = "better-archery-reborn-logger.log";
+	public static final String modLogFileDirName = "logs";
+
+	/** A string representation of the mod log Path, here for convenience. */
 	private static String modLogFilePath;
 	/** A file instance of the mod log file. Used to access file properties. */
 	private static File modLogFile;
-	
+
 	/** Any event level that has a value below this will not be logged. */
 	private static Level threshold = Level.DEBUG;
-	
-	
+
+
 	private static void log(Level level, String format, Object... data) 
 	{
 		logger.printf(level, format, data);
@@ -152,13 +152,13 @@ public class Logger
 
 		Logger.logger = logger;
 	}
-	
+
 	/** Sets the maximum event level that will be logged in the secondary mod log file. */
 	public static void setLevel(Level level)
 	{
 		threshold = level;
 	}
-	
+
 	/**
 	 * Create a log file for this mod, if one doesn't already exist.
 	 * 
@@ -169,7 +169,7 @@ public class Logger
 	{	
 		Path modLogFileDir = null;
 		Path pModLogFilePath = null;
-		
+
 		try
 		{
 			modLogFileDir = Paths.get(modLogFileDirName);
@@ -181,17 +181,17 @@ public class Logger
 			log(Level.ERROR, e.fillInStackTrace(), "Unable to create modLogFile.");
 			return;  // Files.exists will throw a NPE if we don't.
 		}
-		
+
 		if (!Files.exists(modLogFileDir))
 			Files.createDirectory(modLogFileDir);
-		
+
 		if (!Files.exists(pModLogFilePath))
- 		    Files.createFile(pModLogFilePath);
-		
+			Files.createFile(pModLogFilePath);
+
 		modLogFile = new File(modLogFilePath);
 		modLogFile.setWritable(true);
 	}
-	
+
 	/** 
 	 * Write a line of text to out custom log file.
 	 * 
@@ -208,42 +208,42 @@ public class Logger
 		java.io.FileWriter fileWriter = null;
 		java.io.BufferedWriter buffWriter = null;
 		java.io.PrintWriter printWriter = null;
-		
+
 		try  // The FileWriter is the only element that can throw an exception here.
 		{
 			String timeStamp = dateFormat.format(java.util.Calendar.getInstance().getTime());
-			
+
 			buffReader = new java.io.BufferedReader(new java.io.FileReader(modLogFilePath.toString())); 
 			fileWriter = new java.io.FileWriter(modLogFilePath.toString(), true);
-		    buffWriter= new java.io.BufferedWriter(fileWriter);
-	        printWriter = new java.io.PrintWriter(buffWriter);
+			buffWriter= new java.io.BufferedWriter(fileWriter);
+			printWriter = new java.io.PrintWriter(buffWriter);
 
-	        String throwableName = throwable != null ? " " + throwable.getClass().getSimpleName() + ":" : "";
-	        
-	        // Write a new line only if the file is NOT empty.
-	        if (buffReader != null && buffReader.readLine() != null)  
-	        	buffWriter.newLine(); 
-	        
-	        printWriter.printf("%s [%s]%s %s", timeStamp, level.name(), throwableName, message).flush();
+			String throwableName = throwable != null ? " " + throwable.getClass().getSimpleName() + ":" : "";
+
+			// Write a new line only if the file is NOT empty.
+			if (buffReader != null && buffReader.readLine() != null)  
+				buffWriter.newLine(); 
+
+			printWriter.printf("%s [%s]%s %s", timeStamp, level.name(), throwableName, message).flush();
 		}
 		catch (IOException e)
 		{
 			if (!modLogFile.canWrite())
 				log(Level.ERROR, "Unable to write to modLogFile, the file is marked as read-only.");
-			
+
 			else log(Level.ERROR, e.fillInStackTrace(), "Unable to write to modLogFile, reason unknown.");
 		}
 		finally  // Be sure to flush and close the open streams.
 		{
 			if (printWriter != null) 
 				printWriter.close(); 
-			
+
 			try { if (buffReader != null) buffReader.close(); }	
 			catch (IOException e) { log(Level.FATAL, e.fillInStackTrace(), "Unable to close BufferedReader."); }
-			
+
 			try { if (fileWriter != null) fileWriter.close(); }	
 			catch (IOException e) { log(Level.FATAL, e.fillInStackTrace(), "Unable to close FileWriter."); }
-			
+
 			try { if (buffWriter != null) buffWriter.close(); }
 			catch (IOException e) { log(Level.FATAL, e.fillInStackTrace(), "Unable to close BufferedWriter."); }
 		}

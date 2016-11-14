@@ -27,25 +27,25 @@ public class ItemColorHandler
 		COLOR_LEATHER(new Color(107, 46, 22)),
 		COLOR_WOOL(new Color(238, 238, 238)),
 		COLOR_NULL(null);
-		
+
 		private final Color color;
-		
+
 		ArcheryColor(@Nullable Color color)
 		{
 			this.color = color;
 		}
-		
+
 
 		/**
 		 *  Returns a decimal color value <i>(accepted by Minecraft)</i> 
 		 *  of the variant, or <b>-1</b> if no color.  
-         */
+		 */
 		public int getColor()
 		{
 			return this != COLOR_NULL ? this.color.getRGB() : -1;
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static class BowColorHandler implements IItemColor 
 	{	
@@ -64,7 +64,7 @@ public class ItemColorHandler
 			else return -1;
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static class BowBodyColorHandler implements IItemColor 
 	{
@@ -90,14 +90,14 @@ public class ItemColorHandler
 			else return -1;
 		}
 	}
-	
+
 	/**
 	 *  Register all item color handlers for this mod.
 	 */
 	public static void registerItemColorHandlers()
 	{
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-		
+
 		java.util.List<Item> colorVars = new java.util.ArrayList<Item>();
 		for (BodyPartType type : BodyPartType.values())
 		{
@@ -111,7 +111,7 @@ public class ItemColorHandler
 		itemColors.registerItemColorHandler(new BowColorHandler(), colorVars.toArray(new Item[colorVars.size()]));
 		itemColors.registerItemColorHandler(new BowBodyColorHandler(), ModItems.BOW_ITEM_PART_BODY);
 	}
-	
+
 	/** 
 	 *  Return the name of the color assigned to this ItemStack.
 	 *  @return <i>"unknown"</i> is no color was found.
