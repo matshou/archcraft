@@ -123,7 +123,7 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
-}}
+}
 
 // Generate sources when building mod
 task sourcesJar(type: Jar, dependsOn: classes) {
