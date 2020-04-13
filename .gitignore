@@ -1,18 +1,25 @@
-#eclipse
-/bin
-/.settings
-/.classpath
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
 
-#gradle
-/build
-/.gradle
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
 
-#Minecraft
-/logs
-/config
-/saves
-/crash-reports
+# gradle
+build
+.gradle
 
-#generics
-/*.json
-/*.txt
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
