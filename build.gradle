@@ -142,4 +142,15 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
+}}
+
+// Generate sources when building mod
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+build.dependsOn sourcesJar
+
+artifacts {
+    archives sourcesJar
 }
