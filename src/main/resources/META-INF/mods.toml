@@ -10,7 +10,7 @@ issueTrackerURL="https://github.com/yooksi/mc-better-archery/issues"
 # The modid of the mod
 modId="betterarchery"
 # The version number of the mod
-version="${file.jarVersion}"
+version="${version}"
  # A display name for the mod
 displayName="Better Archery Reborn"
 # A URL for the "homepage" for this mod, displayed in the mod UI
