@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import yooksi.archcraft.ArchCraft;
 import yooksi.archcraft.init.ModItems;
 
+@SuppressWarnings("unused")
 public class RegistryHandler {
 
 	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD, modid="archcraft")
