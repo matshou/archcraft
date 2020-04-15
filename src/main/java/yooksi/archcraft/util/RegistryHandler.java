@@ -17,7 +17,7 @@ public class RegistryHandler {
 		public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
 
 			ArchCraft.LOGGER.info("Registering mod items...");
-			event.getRegistry().registerAll(ModItems.get());
+			event.getRegistry().registerAll(ModItems.getAll());
 		}
 	}
 }

@@ -15,7 +15,7 @@ public enum ModItems {
 		this.item = item.setRegistryName(new ResourceLocation(ArchCraft.MODID, name));
 	}
 
-	public static Item[] get() {
+	public static Item[] getAll() {
 
 		final ModItems[] values = ModItems.values();
 		Item[] items = new Item[values.length];
@@ -24,5 +24,8 @@ public enum ModItems {
 			items[i] = values[i].item;
 		}
 		return items;
+	}
+	public Item get() {
+		return item;
 	}
 }
