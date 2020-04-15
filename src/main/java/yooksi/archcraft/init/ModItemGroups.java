@@ -1,11 +1,11 @@
 package yooksi.archcraft.init;
 
+import java.util.function.Supplier;
+
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import yooksi.archcraft.ArchCraft;
-
-import java.util.function.Supplier;
 
 @mcp.MethodsReturnNonnullByDefault
 public class ModItemGroups {
