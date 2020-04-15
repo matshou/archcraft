@@ -31,6 +31,12 @@
 # IntelliJ
 out/
 
+# Configurations
+/**/runConfigurations/
+
+# Grep
+GrepConsole.xml
+
 # Discord
 discord.xml
 
