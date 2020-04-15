@@ -8,6 +8,8 @@ import yooksi.archcraft.item.ModItem;
 
 public enum ModItems {
 
+	TREE_RESIN_GLUE(new ModItem(), "tree_resin_glue");
+
 	private final Item item;
 
 	ModItems(ModItem item, String name) {
