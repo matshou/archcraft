@@ -3,7 +3,6 @@ package yooksi.archcraft.init;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import yooksi.archcraft.ArchCraft;
-import yooksi.archcraft.item.ItemTreeResinGlue;
 import yooksi.archcraft.item.ModItem;
 
 public enum ModItems {
