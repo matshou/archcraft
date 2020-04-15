@@ -1,4 +1,4 @@
-package yooksi.betterarchery;
+package yooksi.archcraft;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,15 +11,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("unused")
-@Mod("betterarchery")
-public class BetterArchery
+@Mod("archcraft")
+public class ArchCraft
 {
-	public static final String MODID = "betterarchery";
+	public static final String MODID = "archcraft";
 
 	// Directly reference a log4j logger.
 	public static final Logger LOGGER = LogManager.getLogger();
 
-	public BetterArchery() {
+	public ArchCraft() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
