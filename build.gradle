@@ -46,7 +46,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'info'
 
-            mods { betterarchery { source sourceSets.main } }
+            mods { archcraft { source sourceSets.main } }
         }
 
         server {
@@ -58,7 +58,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'info'
 
-            mods { betterarchery { source sourceSets.main } }
+            mods { archcraft { source sourceSets.main } }
         }
 
         data {
@@ -72,7 +72,7 @@ minecraft {
 
             args '--mod', project.modId, '--all', '--output', file('src/generated/resources/')
 
-            mods { betterarchery { source sourceSets.main } }
+            mods { archcraft { source sourceSets.main } }
         }
     }
 }

@@ -1,9 +1,9 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/item_simple_bow_body",
-		"layer1": "betterarchery:items/layer_bow_grip",
-		"layer2": "betterarchery:items/layer_bow_string_standby"
+        "layer0": "archcraft:items/item_simple_bow_body",
+		"layer1": "archcraft:items/layer_bow_grip",
+		"layer2": "archcraft:items/layer_bow_string_standby"
     },
     "display": {
         "thirdperson_righthand": {
@@ -32,21 +32,21 @@
             "predicate": {
                 "pulling": 1
             },
-            "model": "betterarchery:item/bow_pulling_models/simple_bow_pulling_0"
+            "model": "archcraft:item/bow_pulling_models/simple_bow_pulling_0"
         },
         {
             "predicate": {
                 "pulling": 1,
                 "pull": 0.65
             },
-            "model": "betterarchery:item/bow_pulling_models/simple_bow_pulling_1"
+            "model": "archcraft:item/bow_pulling_models/simple_bow_pulling_1"
         },
         {
             "predicate": {
                 "pulling": 1,
                 "pull": 0.9
             },
-            "model": "betterarchery:item/bow_pulling_models/simple_bow_pulling_2"
+            "model": "archcraft:item/bow_pulling_models/simple_bow_pulling_2"
         }
     ]
 }

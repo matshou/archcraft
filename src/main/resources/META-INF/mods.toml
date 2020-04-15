@@ -8,7 +8,7 @@ issueTrackerURL="https://github.com/yooksi/mc-better-archery/issues"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]]
 # The modid of the mod
-modId="betterarchery"
+modId="archcraft"
 # The version number of the mod
 version="${version}"
  # A display name for the mod

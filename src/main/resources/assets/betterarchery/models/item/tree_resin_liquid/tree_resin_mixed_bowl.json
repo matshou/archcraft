@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/tree_resin_liquid/tree_resin_mixed_bowl"
+        "layer0": "archcraft:items/tree_resin_liquid/tree_resin_mixed_bowl"
     }
 }

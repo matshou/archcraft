@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "betterarchery:items/item_bow_string"
+        "layer0": "archcraft:items/item_bow_string"
     }
 }

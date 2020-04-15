@@ -1,17 +1,17 @@
-itemGroup.BetterArchery=Better Archery
+itemGroup.archcraft=Archcraft
 
-item.betterarchery.simple_bow.name=Self Bow
-item.betterarchery.recurve_bow.name=Recurve Bow
-item.betterarchery.longbow.name=Longbow
+item.archcraft.simple_bow.name=Self Bow
+item.archcraft.recurve_bow.name=Recurve Bow
+item.archcraft.longbow.name=Longbow
 
-item.betterarchery.simple_bow_body.name=Unstrung Self Bow
-item.betterarchery.recurve_bow_body.name=Unstrung Recurve Bow
-item.betterarchery.longbow_body.name=Unstrung Longbow
+item.archcraft.simple_bow_body.name=Unstrung Self Bow
+item.archcraft.recurve_bow_body.name=Unstrung Recurve Bow
+item.archcraft.longbow_body.name=Unstrung Longbow
 
-item.betterarchery.tree_resin_liquid_inpure.name=Inpure Tree Resin
-item.betterarchery.tree_resin_liquid_pure.name=Pure Tree Resin
-item.betterarchery.tree_resin_liquid_mixed.name=Mixed Tree Resin
-item.betterarchery.tree_resin_mixed_bowl.name=Mixed Tree Resin
+item.archcraft.tree_resin_liquid_inpure.name=Inpure Tree Resin
+item.archcraft.tree_resin_liquid_pure.name=Pure Tree Resin
+item.archcraft.tree_resin_liquid_mixed.name=Mixed Tree Resin
+item.archcraft.tree_resin_mixed_bowl.name=Mixed Tree Resin
 
-item.betterarchery.tree_resin_glue.name=Tree Resin Glue
-item.betterarchery.archers_bow_string.name=Bow String
+item.archcraft.tree_resin_glue.name=Tree Resin Glue
+item.archcraft.archers_bow_string.name=Bow String

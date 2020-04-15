@@ -1,8 +1,8 @@
 {
-    "parent": "betterarchery:item/recurve_bow",
+    "parent": "archcraft:item/recurve_bow",
     "textures": {
-	    "layer0": "betterarchery:items/bow_pulling_textures/item_recurve_bow_pulling_1",
-		"layer1": "betterarchery:items/bow_pulling_textures/bow_string_pulling_1",
-		"layer3": "betterarchery:items/bow_pulling_textures/bow_arrow_pulling_1"
+	    "layer0": "archcraft:items/bow_pulling_textures/item_recurve_bow_pulling_1",
+		"layer1": "archcraft:items/bow_pulling_textures/bow_string_pulling_1",
+		"layer3": "archcraft:items/bow_pulling_textures/bow_arrow_pulling_1"
     }
 }
